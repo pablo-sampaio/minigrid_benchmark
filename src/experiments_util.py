@@ -1,5 +1,6 @@
 
 import os
+import time
 from datetime import datetime
 import json
 import re
@@ -27,6 +28,8 @@ DEFAULT_ENVIRONMENT_IDS = {
 }
 
 RUNS_PER_ENV = 5 #10
+EPISODE_MAX_RETRIES_ON_ERROR = 1
+EPISODE_RETRY_DELAY_SECONDS = 30
 
 def wrapper1(env):
     return MiniGridTextWrapper1(env)
@@ -198,8 +201,29 @@ def run_and_save_experiments(experiment_configs, experiment_name=None, verbose=F
                             runs_iter.set_postfix_str(f"run {run_number} skipped (already done)")
                         continue
 
-                    obs, _ = test_env.reset(seed=seed)
-                    reward = agent.solve_environment(test_env, obs, max_steps=max_steps)
+                    reward = None
+                    for episode_attempt in range(EPISODE_MAX_RETRIES_ON_ERROR + 1):
+                        obs, _ = test_env.reset(seed=seed)
+                        try:
+                            reward = agent.solve_environment(test_env, obs, max_steps=max_steps)
+                            break
+                        except RuntimeError as exc:
+                            is_last_attempt = episode_attempt == EPISODE_MAX_RETRIES_ON_ERROR
+                            if is_last_attempt:
+                                raise
+
+                            if verbose:
+                                print(
+                                    f"Run {run_number} failed due to API error. "
+                                    f"Retrying episode in {EPISODE_RETRY_DELAY_SECONDS}s "
+                                    f"(attempt {episode_attempt + 1}/{EPISODE_MAX_RETRIES_ON_ERROR + 1}). "
+                                    f"Last error: {exc}"
+                                )
+                            time.sleep(EPISODE_RETRY_DELAY_SECONDS)
+
+                    if reward is None:
+                        raise RuntimeError("Episode finished without reward due to unexpected retry flow.")
+
                     success = 1 if reward > 0 else 0
 
                     run_payload = {

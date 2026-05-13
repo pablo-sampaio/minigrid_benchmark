@@ -146,9 +146,8 @@ class ReActAgent:
             except RuntimeError as e:
                 if self.verbose:
                     print(f"ERROR: Failed to get response from model: {e}")
-                # Mark episode as truncated due to API error
-                truncated = True
-                break
+                # Propagate to caller so it can decide based on an episode-level policy.
+                raise
             
             self.step_count += 1
 
