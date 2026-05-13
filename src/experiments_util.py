@@ -18,7 +18,7 @@ from wrappers import MiniGridTextWrapper1, MiniGridTextWrapper2
 from react_agent import ReActAgent
 
 
-RESULTS_BASE_DIR = path.join(path.dirname(__file__), "results")
+RESULTS_BASE_DIR = path.join(path.dirname(path.dirname(__file__)), "results")
 BASE_SEED = 3712
 
 DEFAULT_ENVIRONMENT_IDS = {
@@ -26,7 +26,7 @@ DEFAULT_ENVIRONMENT_IDS = {
     "MiniGrid-LavaCrossingS9N3-v0": 25,
 }
 
-RUNS_PER_ENV = 10 #1 #4
+RUNS_PER_ENV = 5 #10
 
 def wrapper1(env):
     return MiniGridTextWrapper1(env)

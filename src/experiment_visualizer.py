@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 from typing import Any
@@ -7,8 +8,22 @@ from typing import Any
 import pandas as pd
 import streamlit as st
 
-ROOT_DIR = Path(__file__).resolve().parent
-RESULTS_DIR = ROOT_DIR / "results"
+import experiments_util
+
+RESULTS_DIR = experiments_util.RESULTS_BASE_DIR
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(add_help=False)
+    parser.add_argument(
+        "--results-dir",
+        dest="results_dir",
+        type=str,
+        default=None,
+        help="Optional path to experiment results directory.",
+    )
+    args, _ = parser.parse_known_args()
+    return args
 
 
 @st.cache_data(show_spinner=False)
@@ -143,6 +158,9 @@ def render_history_chat(history: Any) -> None:
 
 
 def main() -> None:
+    args = parse_args()
+    selected_results_dir = args.results_dir or RESULTS_DIR
+
     st.set_page_config(
         page_title="MiniGrid Results Visualizer",
         page_icon="🧭",
@@ -216,10 +234,11 @@ div[data-testid="stSidebar"] {
 
     st.title("MiniGrid Experiment Visualizer")
     st.caption("Browse experiment JSONs, inspect run metadata, and read the full conversation history as chat.")
+    st.caption(f"Results directory: {selected_results_dir}")
 
-    experiments = discover_experiments(str(RESULTS_DIR))
+    experiments = discover_experiments(str(selected_results_dir))
     if not experiments:
-        st.error(f"No experiment folders with summary JSON found under: {RESULTS_DIR}")
+        st.error(f"No experiment folders with summary JSON found under: {selected_results_dir}")
         return
 
     experiment_labels = [item["name"] for item in experiments]
