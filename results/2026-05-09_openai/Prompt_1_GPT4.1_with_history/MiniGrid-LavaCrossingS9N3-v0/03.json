@@ -2,15 +2,211 @@
     "experiment": "Prompt_1_GPT4.1_with_history",
     "env": "MiniGrid-LavaCrossingS9N3-v0",
     "run": 3,
-    "seed": 121923,
+    "seed": 98163,
     "max_steps": 25,
-    "steps": 0,
+    "steps": 25,
     "success": 0,
     "reward": 0.0,
     "history": [
         {
             "role": "human",
-            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#>....L.#\n#.L...L.#\n#.L...L.#\n#.L...L.#\n#.L...L.#\n#LL.LLLL#\n#.L....O#\n#########\n"
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#>L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: O agente está voltado para a direita, mas há lava imediatamente à frente, então não posso seguir para frente. Vou girar no sentido horário para buscar um caminho seguro.\nACTION: GIRA_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#vL.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Agora estou olhando para baixo, mas há lava logo à frente, bloquearia o movimento. Vou girar no sentido horário novamente para tentar abrir caminho.\nACTION: GIRA_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#<L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Agora estou olhando para a esquerda, mas a célula à frente contém lava, então mover para frente não é seguro. Vou girar no sentido horário para buscar um caminho livre.\nACTION: GIRA_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#^L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Estou olhando para cima, a célula à frente é uma parede, não posso avançar. Vou girar no sentido horário para tentar avançar para a direita.\nACTION: GIRA_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#>L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Estou olhando para a direita, mas a próxima célula é lava, seguir em frente é perigoso. Vou girar no sentido horário para tentar ir para baixo.\nACTION: GIRA_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#vL.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Estou olhando para baixo e a próxima célula à frente é segura (chão), posso avançar com segurança seguindo para o objetivo que está perto do canto inferior direito.\nACTION: FRENTE"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#vL.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Continuo olhando para baixo, a próxima célula é lava, não posso avançar. Vou girar no sentido horário para tentar ir para a esquerda.\nACTION: GIRA_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#<L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Estou olhando para a esquerda e a próxima célula é lava, não posso avançar. Vou girar no sentido horário para olhar para cima e buscar outra rota.\nACTION: GIRA_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#^L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Olhando para cima, a próxima célula é lava; não posso avançar. Giro no sentido horário para olhar para a direita e tentar encontrar caminho seguro.\nACTION: GIRA_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#>L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Olhando para a direita, a próxima célula é lava; não posso avançar. Giro no sentido horário para olhar para baixo e tentar seguir pelo caminho seguro.\nACTION: GIRA_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#vL.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Olhando para baixo, a próxima célula está livre, posso avançar em direção ao objetivo.\nACTION: FRENTE"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#.L.L.L.#\n#vL.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Continuo olhando para baixo, a próxima célula está livre, então posso andar para frente.\nACTION: FRENTE"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#vL.L.L.#\n#.....L.#\n#.L.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Ainda vejo o caminho livre à frente para descer em direção ao objetivo.\nACTION: FRENTE"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#v....L.#\n#.L.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Posso continuar descendo diretamente, pois o caminho à frente está livre.\nACTION: FRENTE"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#vL.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Estou na borda da lava e a frente está bloqueada, preciso girar para a direita para contornar.\nACTION: GIRA_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#<L.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Agora que estou virado para a esquerda, posso andar para alcançar o caminho para o objetivo.\nACTION: FRENTE"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#<L.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: O caminho à frente está bloqueado pela lava, preciso girar para cima para explorar outro caminho.\nACTION: GIRA_ANTI_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#vL.L.L.#\n#.L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Estou virado para baixo e a célula à minha frente está livre, posso avançar nesta direção sem perigo.\nACTION: FRENTE"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#vL.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Estou virado para baixo, mas à minha frente está uma parede; preciso girar para encontrar um caminho disponível.\nACTION: GIRA_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#<L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Estou virado para a esquerda e a frente está livre, então posso avançar em direção ao objetivo.\nACTION: FRENTE"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#<L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: A frente está bloqueada por lava, preciso girar para achar uma direção livre para avançar.\nACTION: GIRA_ANTI_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#vL.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Estou virado para baixo e a frente está livre, próximo passo em direção ao objetivo.\nACTION: FRENTE"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#vL.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Não houve mudança na posição, provavelmente encontrei um obstáculo ou borda, preciso girar para explorar outras direções.\nACTION: GIRA_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#<L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Agora estou virado para esquerda; vérifico se posso avançar em direção ao objetivo que está à direita; não, então preciso girar para tentar outra direção.\nACTION: GIRA_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#.L.L.L.#\n#.L.L.L.#\n#.L.L...#\n#.L.L.L.#\n#.....L.#\n#.L.L.L.#\n#^L.L.LO#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Estou olhando para cima e o objetivo está à direita; preciso girar para a direita para alinhar com o objetivo.\nACTION: GIRA_HORARIO"
         }
     ]
 }

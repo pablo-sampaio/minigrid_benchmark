@@ -1,0 +1,132 @@
+{
+    "experiment": "Prompt_2d_gemma-3-4b-it_with_history",
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 1,
+    "seed": 45108,
+    "max_steps": 15,
+    "steps": 15,
+    "success": 0,
+    "reward": 0.0,
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|>|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|O|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing right (`>`). My goal is at row 02 column C. I need to move left to get to column C. To move left, I need to rotate counter-clockwise, which is `GIRA_ANTI_HORARIO`.\n</thought>\n<action>\nGIRA_ANTI_HORARIO\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|^|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|O|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing right (`>`). My goal is at row 02 column C. I rotated counter-clockwise and now I am facing up (`^`). I need to move left to get to column C. I can't move left because there is a wall. I need to move down to row 04. Then I can move left to column C. So, I will move down first.\n</thought>\n<action>\nFRENTE\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|^|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|O|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing up (`^`). My goal is at row 02 column C. I moved down to row 04. Now I am at row 04 column B and I am facing up (`^`). I need to move left to get to column C. I can't move left because there is a wall. I need to move down to row 03. Then I can move left to column C. So, I will move down first.\n</thought>\n<action>\nFRENTE\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|^|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|O|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing up (`^`). My goal is at row 02 column C. I moved down to row 04, then down to row 03. Now I am at row 03 column B and I am facing up (`^`). I need to move left to get to column C. I can't move left because there is a wall. I need to move down to row 02. Then I can move left to column C. So, I will move down first.\n</thought>\n<action>\nFRENTE\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|^|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|O|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing up (`^`). My goal is at row 02 column C. I moved down to row 04, then down to row 03, then down to row 02. Now I am at row 02 column B and I am facing up (`^`). I need to move left to get to column C. I can't move left because there is a wall. I need to move right to reach column C.\n</thought>\n<action>\nFRENTE\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|^|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|O|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 02 column B and I am facing up (`^`). My goal is at row 02 column C. I moved right to column C. Now I am at row 02 column C and I am facing up (`^`). I have reached the goal.\n</thought>\n<action>\nFRENTE\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|^|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|O|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing up (`^`). My goal is at row 02 column C. I need to move down to row 04, then right to column C, then down to row 03, then right to column C, then down to row 02 and finally right to column C. I am currently facing up. I need to move forward to reach row 04. However, there is a lava cell at row 04 column B. I need to turn right to face right (`>`).\n</thought>\n<action>\nGIRA_ANTI_HORARIO\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|<|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|O|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing left (`<`). My goal is at row 02 column C. I need to move down to row 04, then left to column C, then down to row 03, then left to column C, then down to row 02 and finally left to column C. I am currently facing left. I need to move forward to reach row 04. However, there is a lava cell at row 04 column B. I need to turn around to face right (`>`).\n</thought>\n<action>\nGIRA_ANTI_HORARIO\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|v|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|O|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing down (`v`). My goal is at row 02 column C. I need to turn around to face up (`^`), then move up to row 02, then move right to column C, then move down to row 03, then move right to column C, then move down to row 04, then move right to column C, and finally move down to row 02 and then right to column C. I am currently facing down. I need to turn around to face up.\n</thought>\n<action>\nGIRA_ANTI_HORARIO\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|>|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|O|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing up (`^`). My goal is at row 02 column C. I need to turn around to face right (`>`), then move right to column C, then move down to row 03, then move right to column C, then move down to row 04, then move right to column C, then move down to row 02 and then right to column C. I am currently facing up. I need to turn around to face right.\n</thought>\n<action>\nGIRA_ANTI_HORARIO\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|^|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|O|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing right (`>`). My goal is at row 02 column C. I need to turn around to face down (`v`), then move down to row 03, then move right to column C, then move down to row 04, then move right to column C, then move down to row 02 and then right to column C. I am currently facing right. I need to turn around to face down.\n</thought>\n<action>\nGIRA_ANTI_HORARIO\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|<|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|O|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing left (`<`). My goal is at row 02 column C. I need to turn around to face down (`v`), then move down to row 03, then move right to column C, then move down to row 04, then move right to column C, then move down to row 02 and then right to column C. I am currently facing left. I need to turn around to face down.\n</thought>\n<action>\nGIRA_ANTI_HORARIO\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|v|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|O|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing down (`v`). My goal is at row 02 column C. I need to turn around to face right (`>`), then move right to column C, then move down to row 03, then move right to column C, then move down to row 04, then move right to column C, then move down to row 02 and then right to column C. I am currently facing down. I need to turn around to face right.\n</thought>\n<action>\nGIRA_ANTI_HORARIO\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|>|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|O|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing right (`>`). My goal is at row 02 column C. I need to turn around to face down (`v`), then move down to row 03, then move right to column C, then move down to row 04, then move right to column C, then move down to row 02 and then right to column C. I am currently facing right. I need to turn around to face down.\n</thought>\n<action>\nGIRA_ANTI_HORARIO\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|^|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|O|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing down (`v`). My goal is at row 02 column C. I need to turn around to face left (`<`), then move left to column A, then move down to row 03, then move left to column A, then move down to row 04, then move left to column A, then move down to row 02 and then left to column C. I am currently facing down. I need to turn around to face left.\n</thought>\n<action>\nGIRA_ANTI_HORARIO\n</action>"
+        }
+    ]
+}

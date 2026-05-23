@@ -15,7 +15,7 @@ try:
 except ImportError:
     colab_output = None
 
-from wrappers import MiniGridTextWrapper1, MiniGridTextWrapper2
+from wrappers import MiniGridTextWrapper1, MiniGridTextWrapper2, MiniGridTextLocalObsWrapper
 from react_agent import ReActAgent
 
 
@@ -39,6 +39,12 @@ def wrapper2_with_numbers(env):
 
 def wrapper2_without_numbers(env):
     return MiniGridTextWrapper2(env, show_numbers=False)
+
+def wrapper_local_obs(env):
+    return MiniGridTextLocalObsWrapper(env, show_numbers=False)
+
+def wrapper_local_obs_with_numbers(env):
+    return MiniGridTextLocalObsWrapper(env, show_numbers=True)
 
 
 def _safe_path_component(name: str) -> str:

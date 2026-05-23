@@ -2,15 +2,51 @@
     "experiment": "Prompt_1_GPT4.1_with_history",
     "env": "MiniGrid-LavaCrossingS9N3-v0",
     "run": 2,
-    "seed": 49526,
+    "seed": 3745,
     "max_steps": 25,
-    "steps": 0,
+    "steps": 5,
     "success": 0,
     "reward": 0.0,
     "history": [
         {
             "role": "human",
-            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#>......#\n#LLLLL.L#\n#...L...#\n#...L...#\n#...L...#\n#LLLLLL.#\n#...L..O#\n#########\n"
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#>L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#......O#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: O agente está voltado para a direita, mas há lava diretamente na frente. Preciso virar para cima para evitar a lava e tentar contornar.\nACTION: GIRA_ANTI_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#^L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#......O#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Virando para cima, há lava diretamente à frente também. Melhor girar novamente para evitar a lava.\nACTION: GIRA_ANTI_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#<L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#......O#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Virado para a esquerda, a próxima célula é uma parede, então preciso girar para baixo para tentar outro caminho.\nACTION: GIRA_ANTI_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#vL.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#......O#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Virado para baixo, a frente é lava, então devo girar para a esquerda para evitar a lava.\nACTION: GIRA_ANTI_HORARIO"
+        },
+        {
+            "role": "human",
+            "content": "\nOBSERVAÇÃO ATUAL:\n#########\n#>L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#......O#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "THOUGHT: Virado para a direita, a próxima célula está livre, posso avançar.\nACTION: FRENTE"
         }
     ]
 }

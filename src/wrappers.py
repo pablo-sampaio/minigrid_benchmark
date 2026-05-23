@@ -1,11 +1,25 @@
 import gymnasium as gym
 import minigrid
+import numpy as np
 
 # Requires
 # !pip install -q minigrid==3.0.0
 
 MAP_CELLS = {'wall': '#', 'floor': '.', 'goal': 'O', 'key': 'C', 'lava': 'L', 'open_door': '_', 'locked_dor': 'X', 'unlocked_closed_door': 'P'}
 PLAYER_DIRECTIONS = ['>', 'v', '<', '^']
+OBJECT_IDX_TO_TYPE = {
+    0: 'unseen',
+    1: 'empty',
+    2: 'wall',
+    3: 'floor',
+    4: 'door',
+    5: 'key',
+    6: 'ball',
+    7: 'box',
+    8: 'goal',
+    9: 'lava',
+    10: 'agent',
+}
 
 class MiniGridTextWrapper1(gym.ObservationWrapper):
     def __init__(self, env):
@@ -104,6 +118,78 @@ class MiniGridTextWrapper2(gym.ObservationWrapper):
             grid_str += line + ("|\n" if y != last_line else "|")
 
         return grid_str
+
+
+class MiniGridTextLocalObsWrapper(gym.ObservationWrapper):
+    def __init__(self, env, show_numbers=False):
+        super().__init__(env)
+        self.map_cells_repr = MAP_CELLS
+        self.directions_repr = PLAYER_DIRECTIONS
+        self.unknown = "?"
+        self.show_numbers = show_numbers
+
+    def _decode_cell(self, encoded_cell):
+        obj_idx, _, state_idx = int(encoded_cell[0]), int(encoded_cell[1]), int(encoded_cell[2])
+        obj_type = OBJECT_IDX_TO_TYPE.get(obj_idx)
+
+        if obj_type in (None, 'unseen'):
+            return self.unknown
+        if obj_type in ('empty', 'floor'):
+            return self.map_cells_repr['floor']
+        if obj_type == 'door':
+            if state_idx == 0:
+                return self.map_cells_repr['open_door']
+            if state_idx == 2:
+                return self.map_cells_repr['locked_dor']
+            return self.map_cells_repr['unlocked_closed_door']
+
+        return self.map_cells_repr.get(obj_type, self.unknown)
+
+    def _normalize_to_view_window(self, obs_image):
+        target_size = int(getattr(self.unwrapped, 'agent_view_size', obs_image.shape[0]))
+
+        if obs_image.shape[0] == target_size and obs_image.shape[1] == target_size:
+            return obs_image
+
+        normalized = np.zeros((target_size, target_size, obs_image.shape[2]), dtype=obs_image.dtype)
+
+        copy_h = min(target_size, obs_image.shape[0])
+        copy_w = min(target_size, obs_image.shape[1])
+
+        src_y_start = max(0, obs_image.shape[0] - target_size)
+        src_x_start = max(0, (obs_image.shape[1] - target_size) // 2)
+
+        normalized[:copy_h, :copy_w] = obs_image[src_y_start:src_y_start + copy_h, src_x_start:src_x_start + copy_w]
+        return normalized
+
+    def observation(self, obs):
+        obs_image = self._normalize_to_view_window(obs['image'])
+        view_height, view_width = obs_image.shape[0], obs_image.shape[1]
+
+        grid_lines = []
+        for y in range(view_height):
+            line_cells = []
+            for x in range(view_width):
+                line_cells.append(self._decode_cell(obs_image[y, x]))
+            grid_lines.append(line_cells)
+
+        # In MiniGrid partial observation, the agent is at the bottom-center of the view.
+        agent_x = view_width // 2
+        agent_y = view_height - 1
+        grid_lines[agent_y][agent_x] = '^'
+
+        if self.show_numbers:
+            output_lines = []
+            header = "--" + "".join(f"|{chr(65 + x)}" for x in range(view_width)) + "|"
+            output_lines.append(header)
+
+            for y, line_cells in enumerate(grid_lines):
+                line = f"{y + 1:02d}" + "".join(f"|{cell}" for cell in line_cells) + "|"
+                output_lines.append(line)
+
+            return "\n".join(output_lines)
+
+        return "\n".join("".join(line_cells) for line_cells in grid_lines)
 
 SYSTEM_PROMPT_WRAPPER_1 = """
 Você é um agente ReAct que navega em um mapa quadriculado 2D (um "grid").
