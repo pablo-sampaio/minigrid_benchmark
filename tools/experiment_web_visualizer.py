@@ -8,6 +8,13 @@ from typing import Any
 import pandas as pd
 import streamlit as st
 
+from os import path
+import sys
+
+# add upper dir as path
+#sys.path.append(path.dirname(path.dirname(path.abspath(__file__))) + "/src")
+sys.path.append(path.join(path.dirname(path.dirname(path.abspath(__file__))), "src"))
+
 import experiments_util
 
 RESULTS_DIR = experiments_util.RESULTS_BASE_DIR

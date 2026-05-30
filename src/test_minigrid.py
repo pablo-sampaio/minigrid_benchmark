@@ -14,7 +14,7 @@ def explain(obs):
     Textually explains the object, color and state of each part of the observation grid, grouped by visual row.
     '''
     print("\n=== OBSERVATION ===")
-    height = obs.shape[1]
+    height = obs.shape[1]  # depth of agent's vision
     width = obs.shape[0]
 
     for row in range(height):

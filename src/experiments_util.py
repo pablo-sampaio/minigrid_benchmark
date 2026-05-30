@@ -43,6 +43,9 @@ def wrapper2_without_numbers(env):
 def wrapper_local_obs(env):
     return MiniGridTextLocalObsWrapper(env, show_numbers=False)
 
+def wrapper_local_obs_noseparation(env):
+    return MiniGridTextLocalObsWrapper(env, show_numbers=False, separate_cells=False)
+
 def wrapper_local_obs_with_numbers(env):
     return MiniGridTextLocalObsWrapper(env, show_numbers=True)
 

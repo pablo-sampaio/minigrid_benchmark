@@ -10,6 +10,10 @@ def _print_wrapper_obs(env_id, wrapper, label):
 	env = wrapper(original_env)
 	obs, _ = env.reset()
 	print(obs)
+	# turn right
+	obs, reward, terminated, truncated, info = env.step(1)
+	print("After turning right:")
+	print(obs)
 
 
 def test_wrapper1():
@@ -39,8 +43,8 @@ def test_local_wrapper_with_numbers():
 
 if __name__ == '__main__':
 	#test_local_wrapper_with_numbers()
-	#test_local_wrapper_without_numbers()
+	test_local_wrapper_without_numbers()
 	
-	test_wrapper1()
+	#test_wrapper1()
 	#test_wrapper2_without_numbers()
-	test_wrapper2_with_numbers()
+	#test_wrapper2_with_numbers()

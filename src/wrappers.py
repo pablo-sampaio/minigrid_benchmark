@@ -121,12 +121,15 @@ class MiniGridTextWrapper2(gym.ObservationWrapper):
 
 
 class MiniGridTextLocalObsWrapper(gym.ObservationWrapper):
-    def __init__(self, env, show_numbers=False):
+    
+    def __init__(self, env, show_numbers=False, separate_cells=True):
         super().__init__(env)
         self.map_cells_repr = MAP_CELLS
         self.directions_repr = PLAYER_DIRECTIONS
         self.unknown = "?"
+        assert not (show_numbers and not separate_cells), "To show numbers, cells must be separated with `|`."
         self.show_numbers = show_numbers
+        self.separate_cells = separate_cells
 
     def _decode_cell(self, encoded_cell):
         obj_idx, _, state_idx = int(encoded_cell[0]), int(encoded_cell[1]), int(encoded_cell[2])
@@ -145,46 +148,38 @@ class MiniGridTextLocalObsWrapper(gym.ObservationWrapper):
 
         return self.map_cells_repr.get(obj_type, self.unknown)
 
-    def _normalize_to_view_window(self, obs_image):
-        target_size = int(getattr(self.unwrapped, 'agent_view_size', obs_image.shape[0]))
-
-        if obs_image.shape[0] == target_size and obs_image.shape[1] == target_size:
-            return obs_image
-
-        normalized = np.zeros((target_size, target_size, obs_image.shape[2]), dtype=obs_image.dtype)
-
-        copy_h = min(target_size, obs_image.shape[0])
-        copy_w = min(target_size, obs_image.shape[1])
-
-        src_y_start = max(0, obs_image.shape[0] - target_size)
-        src_x_start = max(0, (obs_image.shape[1] - target_size) // 2)
-
-        normalized[:copy_h, :copy_w] = obs_image[src_y_start:src_y_start + copy_h, src_x_start:src_x_start + copy_w]
-        return normalized
-
     def observation(self, obs):
-        obs_image = self._normalize_to_view_window(obs['image'])
-        view_height, view_width = obs_image.shape[0], obs_image.shape[1]
+        obs_image = obs['image']
+        target_size = int(getattr(self.unwrapped, 'agent_view_size', obs_image.shape[0]))
+        assert obs_image.shape[0] == target_size and obs_image.shape[1] == target_size, (
+            f"Expected local observation shape ({target_size}, {target_size}, C), "
+            f"got {obs_image.shape}"
+        )
+        # MiniGrid local observation uses [col, row, channel].
+        view_width, view_height = obs_image.shape[0], obs_image.shape[1]
 
         grid_lines = []
-        for y in range(view_height):
-            line_cells = []
-            for x in range(view_width):
-                line_cells.append(self._decode_cell(obs_image[y, x]))
+        for row in range(view_height):
+            line_cells = ['|'] if self.separate_cells else []
+            for col in range(view_width):
+                # In MiniGrid partial observation, the agent is at the bottom-center of the view.
+                if col == view_width // 2 and row == view_height - 1:
+                    line_cells.append('^')
+                else:
+                    line_cells.append(self._decode_cell(obs_image[col, row]))
+                
+                if self.separate_cells:
+                    line_cells.append('|')
+            
             grid_lines.append(line_cells)
-
-        # In MiniGrid partial observation, the agent is at the bottom-center of the view.
-        agent_x = view_width // 2
-        agent_y = view_height - 1
-        grid_lines[agent_y][agent_x] = '^'
-
+        
         if self.show_numbers:
             output_lines = []
             header = "--" + "".join(f"|{chr(65 + x)}" for x in range(view_width)) + "|"
             output_lines.append(header)
 
             for y, line_cells in enumerate(grid_lines):
-                line = f"{y + 1:02d}" + "".join(f"|{cell}" for cell in line_cells) + "|"
+                line = f"{y + 1:02d}" + "".join(cell for cell in line_cells)  #"".join(f"|{cell}" for cell in line_cells) + "|"
                 output_lines.append(line)
 
             return "\n".join(output_lines)
@@ -314,6 +309,133 @@ I am at cell row 04 column B and I am facing down (`v`). To reach the goal at ro
 </thought>
 <action>
 GIRA_ANTI_HORARIO
+</action>
+
+# FINAL COMMENT
+Examine the observation, think about it and output your next step using the XML tags.
+"""
+
+
+SYSTEM_PROMPT_WRAPPER_3a = """
+You are a ReAct agent navigating a 2D grid, using a local view.
+Your goal is to move through the map to reach the goal cell while avoiding lava cells.
+
+# OBSERVATION:
+- You will receive a text-based local map observation from the user.
+- The observation is egocentric and centered on your current view.
+- The agent is shown at the bottom-center of the view as `^`.
+- If row numbers and column letters are present, they label the visible cells.
+- Each cell is represented by a single character:
+    * `#` (wall, a cell that you cannot occupy)
+    * `.` (floor, empty cell)
+    * `O` (goal position)
+    * `L` (lava, deadly cell)
+    * `?` (unseen or unknown cell)
+- The `|` character is used as a separator between cells.
+
+# AVAILABLE ACTIONS:
+- Choose one of the following actions at each step:
+    * GIRA_HORARIO: rotate 90 degrees clockwise.
+    * GIRA_ANTI_HORARIO: rotate 90 degrees counter-clockwise.
+    * FRENTE: move one cell forward in the direction you are facing.
+
+# YOUR MISSION
+- Examine the observation carefully and output your next step using the XML tags.
+- Think about your current local view, the next cell you want to reach, what cells
+are safe or not, and which ones lead you to the goal.
+
+# RESPONSE FORMAT:
+Your response MUST follow this XML format exactly:
+<thought>
+Your reasoning for the next action.
+</thought>
+<action>
+One of the actions listed above.
+</action>
+
+## EXAMPLES
+
+# Observation (user message sent to you)
+
+CURRENT OBSERVATION:
+--|A|B|C|D|E|F|G|
+01|?|?|?|?|?|?|?|
+02|?|?|?|?|?|?|?|
+03|?|?|?|?|?|?|?|
+04|?|?|#|#|#|#|#|
+05|?|?|#|.|.|O|#|
+06|?|?|#|L|.|L|#|
+07|?|?|#|^|.|.|#|
+
+# Response (to be sent from you to the user)
+
+<thought>
+The goal is visible at row 05 column E, three cells ahead and three cells to the right of my location. The cell in front of me is a deadly lava cell, so I cannot move forward. I will turn clockwise to head to the free neighbor cell at my right.
+</thought>
+<action>
+GIRA_HORARIO
+</action>
+
+# FINAL COMMENT
+Examine the observation, think about it and output your next step using the XML tags.
+"""
+
+SYSTEM_PROMPT_WRAPPER_3b = """
+You are a ReAct agent navigating a 2D grid, using a local view.
+Your goal is to move through the map to reach the goal cell while avoiding lava cells.
+
+# OBSERVATION:
+- You will receive a text-based local map observation from the user.
+- The observation is egocentric and centered on your current view.
+- The agent is shown at the bottom-center of the view as `^`.
+- Each cell is represented by a single character:
+    * `#` (wall, a cell that you cannot occupy)
+    * `.` (floor, empty cell)
+    * `O` (goal position)
+    * `L` (lava, deadly cell)
+    * `?` (unseen or unknown cell)
+- The `|` character is used as a separator between cells.
+
+# AVAILABLE ACTIONS:
+- Choose one of the following actions at each step:
+    * GIRA_HORARIO: rotate 90 degrees clockwise.
+    * GIRA_ANTI_HORARIO: rotate 90 degrees counter-clockwise.
+    * FRENTE: move one cell forward in the direction you are facing.
+
+# YOUR MISSION
+- Examine the observation carefully and output your next step using the XML tags.
+- Think about your current local view, the next cell you want to reach, what cells
+are safe or not, and which ones lead you to the goal.
+
+# RESPONSE FORMAT:
+Your response MUST follow this XML format exactly:
+<thought>
+Your reasoning for the next action.
+</thought>
+<action>
+One of the actions listed above.
+</action>
+
+## EXAMPLES
+
+# Observation (user message sent to you)
+
+CURRENT OBSERVATION:
+|?|?|?|?|?|?|?|
+|?|?|?|?|?|?|?|
+|?|?|?|?|?|?|?|
+|?|?|#|#|#|#|#|
+|?|?|#|.|.|O|#|
+|?|?|#|L|.|L|#|
+|?|?|#|^|.|.|#|
+
+# Response (to be sent from you to the user)
+
+<thought>
+The goal O is visible three cells ahead and three cells to the right of my location. The cell in front of me is a deadly lava cell, so I cannot move forward. I will turn clockwise to head to the free neighbor cell at my right.
+</thought>
+<action>
+GIRA_HORARIO
 </action>
 
 # FINAL COMMENT
