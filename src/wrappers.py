@@ -1,4 +1,5 @@
 import gymnasium as gym
+from matplotlib.pyplot import grid
 import minigrid
 import numpy as np
 
@@ -7,6 +8,7 @@ import numpy as np
 
 MAP_CELLS = {'wall': '#', 'floor': '.', 'goal': 'O', 'key': 'C', 'lava': 'L', 'open_door': '_', 'locked_dor': 'X', 'unlocked_closed_door': 'P'}
 PLAYER_DIRECTIONS = ['>', 'v', '<', '^']
+PLAYER_DIRECTIONS_DESCR = ['East', 'South', 'West', 'North']
 OBJECT_IDX_TO_TYPE = {
     0: 'unseen',
     1: 'empty',
@@ -21,115 +23,98 @@ OBJECT_IDX_TO_TYPE = {
     10: 'agent',
 }
 
-class MiniGridTextWrapper1(gym.ObservationWrapper):
-    def __init__(self, env):
-        super().__init__(env)
-        self.map_cells_repr = MAP_CELLS
-        self.directions_repr = PLAYER_DIRECTIONS
-        self.unknown = "?"
-
-    def observation(self, obs):
-        env = self.unwrapped
-        agent_pos = env.agent_pos
-        current_room = None
-        if hasattr(env, 'rooms'):
-            for room in env.rooms:
-                top_x, top_y = room.top
-                w, h = room.size
-                if (top_x <= agent_pos[0] < top_x + w and top_y <= agent_pos[1] < top_y + h):
-                    current_room = room
-                    break
-
-        x_s, y_s = (current_room.top, current_room.size) if current_room else ((0,0), (env.grid.width, env.grid.height))
-
-        # Grid logic for the loop execution:
-        grid_str = ""
-        last_line = y_s[1] - 1
-        for y in range(y_s[1]):
-            line = ""
-            for x in range(x_s[0], x_s[0] + y_s[0]):
-                real_x, real_y = x, y + x_s[1]
-                if [real_x, real_y] == list(agent_pos):
-                    line += self.directions_repr[env.agent_dir]
-                else:
-                    tile = env.grid.get(real_x, real_y)
-                    if tile is None:
-                        line += self.map_cells_repr['floor']
-                    elif tile.type == 'door':
-                        line += (MAP_CELLS['open_door'] if tile.is_open else (MAP_CELLS['locked_dor'] if tile.is_locked else MAP_CELLS['unlocked_closed_door']))
-                    else:
-                        line += self.map_cells_repr.get(tile.type, self.unknown)
-            grid_str += line + ("\n" if y != last_line else "")
-
-        return grid_str
-
-#MAP_CELLS = {'wall': '#', 'floor': '.', 'goal': 'O', 'key': 'C', 'lava': 'L', 'open_door': '_', 'locked_dor': 'X', 'unlocked_closed_door': 'P'}
-#PLAYER_DIRECTIONS = ['>', 'v', '<', '^']
-
-class MiniGridTextWrapper2(gym.ObservationWrapper):
-    def __init__(self, env, show_numbers=False):
-        super().__init__(env)
-        self.map_cells_repr = MAP_CELLS
-        self.directions_repr = PLAYER_DIRECTIONS
-        self.unknown = "?"
-        self.show_numbers = show_numbers
-
-    def observation(self, obs):
-        env = self.unwrapped
-        agent_pos = env.agent_pos
-        current_room = None
-        if hasattr(env, 'rooms'):
-            for room in env.rooms:
-                top_x, top_y = room.top
-                w, h = room.size
-                if (top_x <= agent_pos[0] < top_x + w and top_y <= agent_pos[1] < top_y + h):
-                    current_room = room
-                    break
-
-        x_s, y_s = (current_room.top, current_room.size) if current_room else ((0,0), (env.grid.width, env.grid.height))
-
-        grid_str = ""
-
-        # Add column letters header
-        if self.show_numbers:
-            header = "--"
-            for x in range(y_s[0]):
-                header += f"|{chr(65 + x)}"
-            grid_str += header + "|\n"
-
-        last_line = y_s[1] - 1
-        for y in range(y_s[1]):
-            line = ""
-            if self.show_numbers:
-                line += f"{y+1:02d}"
-
-            for x in range(x_s[0], x_s[0] + y_s[0]):
-                real_x, real_y = x, y + x_s[1]
-                if [real_x, real_y] == list(agent_pos):
-                    line += "|" + self.directions_repr[env.agent_dir]
-                else:
-                    tile = env.grid.get(real_x, real_y)
-                    if tile is None:
-                        line += "|" + self.map_cells_repr['floor']
-                    elif tile.type == 'door':
-                        line += "|" + (MAP_CELLS['open_door'] if tile.is_open else (MAP_CELLS['locked_dor'] if tile.is_locked else MAP_CELLS['unlocked_closed_door']))
-                    else:
-                        line += "|" + self.map_cells_repr.get(tile.type, self.unknown)
-            grid_str += line + ("|\n" if y != last_line else "|")
-
-        return grid_str
-
-
-class MiniGridTextLocalObsWrapper(gym.ObservationWrapper):
-    
+class MiniGridTextGlobalObsWrapper(gym.ObservationWrapper):
     def __init__(self, env, show_numbers=False, separate_cells=True):
         super().__init__(env)
         self.map_cells_repr = MAP_CELLS
         self.directions_repr = PLAYER_DIRECTIONS
         self.unknown = "?"
-        assert not (show_numbers and not separate_cells), "To show numbers, cells must be separated with `|`."
         self.show_numbers = show_numbers
         self.separate_cells = separate_cells
+
+    def _render_cell(self, env, x, y):
+        if [x, y] == list(env.agent_pos):
+            return self.directions_repr[env.agent_dir]
+
+        tile = env.grid.get(x, y)
+        if tile is None:
+            return self.map_cells_repr['floor']
+        if tile.type == 'door':
+            return self.map_cells_repr['open_door'] if tile.is_open else (self.map_cells_repr['locked_dor'] if tile.is_locked else self.map_cells_repr['unlocked_closed_door'])
+
+        return self.map_cells_repr.get(tile.type, self.unknown)
+
+    def _get_view_bounds(self, env):
+        agent_pos = env.agent_pos
+        current_room = None
+        if hasattr(env, 'rooms'):
+            for room in env.rooms:
+                top_x, top_y = room.top
+                w, h = room.size
+                if top_x <= agent_pos[0] < top_x + w and top_y <= agent_pos[1] < top_y + h:
+                    current_room = room
+                    break
+
+        if current_room is None:
+            return 0, 0, env.grid.width, env.grid.height
+
+        start_x, start_y = current_room.top
+        width, height = current_room.size
+        return start_x, start_y, width, height
+
+    def observation(self, obs):
+        env = self.unwrapped
+        start_x, start_y, width, height = self._get_view_bounds(env)
+        output_lines = []
+
+        if self.show_numbers:
+            header = ['--']
+            if self.separate_cells:
+                header.append('|')
+            for x in range(width):
+                header.append(f"{chr(65 + x)}")
+                if self.separate_cells:
+                    header.append('|')
+            output_lines.append(header)
+
+        for row in range(height):
+            if self.show_numbers:
+                line_cells = [f"{(row + 1):02d}"]
+            else:
+                line_cells = []
+
+            if self.separate_cells:
+                line_cells.append('|')
+
+            for col in range(width):
+                line_cells.append(self._render_cell(env, start_x + col, start_y + row))
+                if self.separate_cells:
+                    line_cells.append('|')
+
+            output_lines.append(line_cells)
+
+        return "\n".join("".join(line_cells) for line_cells in output_lines)
+
+
+class MiniGridTextWrapper1(MiniGridTextGlobalObsWrapper):
+    def __init__(self, env):
+        super().__init__(env, show_numbers=False, separate_cells=False)
+
+
+class MiniGridTextWrapper2(MiniGridTextGlobalObsWrapper):
+    def __init__(self, env, show_numbers=False):
+        super().__init__(env, show_numbers=show_numbers, separate_cells=True)
+
+
+class MiniGridTextLocalObsWrapper(gym.ObservationWrapper):
+    
+    def __init__(self, env, show_numbers=False, separate_cells=True, show_direction=True):
+        super().__init__(env)
+        self.map_cells_repr = MAP_CELLS
+        self.unknown = "?"
+        self.show_numbers = show_numbers
+        self.separate_cells = separate_cells
+        self.show_direction = show_direction
 
     def _decode_cell(self, encoded_cell):
         obj_idx, _, state_idx = int(encoded_cell[0]), int(encoded_cell[1]), int(encoded_cell[2])
@@ -158,9 +143,29 @@ class MiniGridTextLocalObsWrapper(gym.ObservationWrapper):
         # MiniGrid local observation uses [col, row, channel].
         view_width, view_height = obs_image.shape[0], obs_image.shape[1]
 
-        grid_lines = []
+        output_lines = []
+        
+        # prepare header with column letters if show_numbers is True
+        if self.show_numbers:
+            header = ['--']
+            if self.separate_cells:
+                header.append('|')
+            for x in range(view_width):
+                header.append(f"{chr(65 + x)}")
+                if self.separate_cells:
+                    header.append('|')
+            output_lines.append(header)
+
+        # the lines describing the grid cells
         for row in range(view_height):
-            line_cells = ['|'] if self.separate_cells else []
+            if self.show_numbers:
+                line_cells = [f"{(row + 1):02d}"]
+            else:
+                line_cells = []
+
+            if self.separate_cells:
+                line_cells.append('|')
+            
             for col in range(view_width):
                 # In MiniGrid partial observation, the agent is at the bottom-center of the view.
                 if col == view_width // 2 and row == view_height - 1:
@@ -171,22 +176,20 @@ class MiniGridTextLocalObsWrapper(gym.ObservationWrapper):
                 if self.separate_cells:
                     line_cells.append('|')
             
-            grid_lines.append(line_cells)
-        
-        if self.show_numbers:
-            output_lines = []
-            header = "--" + "".join(f"|{chr(65 + x)}" for x in range(view_width)) + "|"
-            output_lines.append(header)
+            output_lines.append(line_cells)
 
-            for y, line_cells in enumerate(grid_lines):
-                line = f"{y + 1:02d}" + "".join(cell for cell in line_cells)  #"".join(f"|{cell}" for cell in line_cells) + "|"
-                output_lines.append(line)
+        obs_str = "\n".join("".join(line_cells) for line_cells in output_lines)
 
-            return "\n".join(output_lines)
+        if self.show_direction:
+            direction_idx = int(obs.get('direction', getattr(self.unwrapped, 'agent_dir', 0)))
+            direction_str = PLAYER_DIRECTIONS_DESCR[direction_idx % len(PLAYER_DIRECTIONS_DESCR)]
+            obs_str = f"direction: {direction_str}\n\n" + obs_str
 
-        return "\n".join("".join(line_cells) for line_cells in grid_lines)
+        return obs_str
 
-SYSTEM_PROMPT_WRAPPER_1 = """
+
+# for: global view, w/out separators or numbers
+SYSTEM_PROMPT_GLOBAL_1 = """
 Você é um agente ReAct que navega em um mapa quadriculado 2D (um "grid").
 Seu objetivo é mover-se pelo mapa para alcançar a posição da célula objetivo.
 
@@ -217,39 +220,8 @@ THOUGHT: Estou de frente para o objetivo, que está na próxima célula adiante.
 ACTION: FRENTE
 """
 
-SYSTEM_PROMPT_WRAPPER_2a = """
-Você é um agente ReAct que navega em um mapa quadriculado 2D (um "grid").
-Seu objetivo é mover-se pelo mapa para alcançar a posição da célula objetivo.
-
-# OBSERVAÇÃO:
-- Você receberá a observação do mapa, em formato de texto.
-- Linhas são identificadas por números, e colunas são identificadas por letras maiúsculas.
-- Cada célula é representada por um único caractere, seguindo esta representação:
-    - `#` (parede, não pode ser ocupada pelo agente)
-    - `.` (chão, célula vazia)
-    - `O` (posição do objetivo)
-    - `L` (lava, que é uma célula mortal)
-- Um caractere `|` é usado entre células de uma mesma linha como separador.
-- Indicadores da orientação do agente: são colocados na representação do mapa para mostrar sua posição atual e a direção para a qual você está voltado.
-    - Pode ser um dos seguintes: `^` (agente direcionado para cima), `v` (para baixo), `<` (para a esquerda) ou `>` (para a direita).
-
-# AÇÕES DISPONÍVEIS:
-- A cada passo, você deve escolher uma das seguintes ações:
-    - GIRA_ANTI_HORARIO: gira 90 graus no sentido anti-horário.
-    - GIRA_HORARIO: gira 90 graus no sentido horário.
-    - FRENTE: move uma célula na direção para a qual você está voltado.
-
-# FORMATO DA RESPOSTA:
-Sua resposta deve ter apenas duas linhas e NADA MAIS. Não inclua texto conversacional.
-THOUGHT: <Explique um breve raciocínio para justificar a escolha da próxima ação>
-ACTION: <Sua próxima ação. Escolha uma das ações listadas acima>
-
-## EXEMPLO DE RESPOSTA:
-THOUGHT: Estou de frente para o objetivo, que está na próxima célula adiante.
-ACTION: FRENTE
-"""
-
-SYSTEM_PROMPT_WRAPPER_2d = """
+# for: global view, with separators and numbers (in English)
+SYSTEM_PROMPT_GLOBAL_2 = """
 You are a ReAct agent navigating a 2D grid map.
 Your goal is to move through the map to reach the goal cell while avoiding lava cells.
 
@@ -315,8 +287,9 @@ GIRA_ANTI_HORARIO
 Examine the observation, think about it and output your next step using the XML tags.
 """
 
-
-SYSTEM_PROMPT_WRAPPER_3a = """
+# TODO: FALTA informar a observação da direção (absoluta) do agente
+# for: local view, with separators and numbers (in English) -- era 3a
+SYSTEM_PROMPT_LOCAL_2 = """
 You are a ReAct agent navigating a 2D grid, using a local view.
 Your goal is to move through the map to reach the goal cell while avoiding lava cells.
 
@@ -324,7 +297,7 @@ Your goal is to move through the map to reach the goal cell while avoiding lava 
 - You will receive a text-based local map observation from the user.
 - The observation is egocentric and centered on your current view.
 - The agent is shown at the bottom-center of the view as `^`.
-- If row numbers and column letters are present, they label the visible cells.
+- Numbers are used to label rows, and letters are used to label columns.
 - Each cell is represented by a single character:
     * `#` (wall, a cell that you cannot occupy)
     * `.` (floor, empty cell)
@@ -380,7 +353,9 @@ GIRA_HORARIO
 Examine the observation, think about it and output your next step using the XML tags.
 """
 
-SYSTEM_PROMPT_WRAPPER_3b = """
+# TODO: FALTA informar a observação da direção (absoluta) do agente
+# for: local view, without separators or numbers (in English)
+SYSTEM_PROMPT_LOCAL_1 = """
 You are a ReAct agent navigating a 2D grid, using a local view.
 Your goal is to move through the map to reach the goal cell while avoiding lava cells.
 
@@ -394,7 +369,6 @@ Your goal is to move through the map to reach the goal cell while avoiding lava 
     * `O` (goal position)
     * `L` (lava, deadly cell)
     * `?` (unseen or unknown cell)
-- The `|` character is used as a separator between cells.
 
 # AVAILABLE ACTIONS:
 - Choose one of the following actions at each step:
@@ -421,13 +395,13 @@ One of the actions listed above.
 # Observation (user message sent to you)
 
 CURRENT OBSERVATION:
-|?|?|?|?|?|?|?|
-|?|?|?|?|?|?|?|
-|?|?|?|?|?|?|?|
-|?|?|#|#|#|#|#|
-|?|?|#|.|.|O|#|
-|?|?|#|L|.|L|#|
-|?|?|#|^|.|.|#|
+???????
+???????
+???????
+??#####
+??#..O#
+??#L.L#
+??#^..#
 
 # Response (to be sent from you to the user)
 
@@ -444,12 +418,6 @@ Examine the observation, think about it and output your next step using the XML 
 
 
 OBS_TEMPLATE = """
-OBSERVAÇÃO ATUAL:
-{SALA_ATUAL}
-"""
-
-
-OBS_TEMPLATE_ENG = """
 CURRENT OBSERVATION:
 {SALA_ATUAL}
 """

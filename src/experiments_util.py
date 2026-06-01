@@ -15,7 +15,8 @@ try:
 except ImportError:
     colab_output = None
 
-from wrappers import MiniGridTextWrapper1, MiniGridTextWrapper2, MiniGridTextLocalObsWrapper
+from wrappers import MiniGridTextLocalObsWrapper, MiniGridTextGlobalObsWrapper
+from wrappers import SYSTEM_PROMPT_GLOBAL_1, SYSTEM_PROMPT_GLOBAL_2, SYSTEM_PROMPT_LOCAL_1, SYSTEM_PROMPT_LOCAL_2, OBS_TEMPLATE
 from react_agent import ReActAgent
 
 
@@ -31,14 +32,15 @@ RUNS_PER_ENV = 5 #10
 EPISODE_MAX_RETRIES_ON_ERROR = 1
 EPISODE_RETRY_DELAY_SECONDS = 30
 
+# TODO: remove all
 def wrapper1(env):
-    return MiniGridTextWrapper1(env)
+    return MiniGridTextGlobalObsWrapper(env, show_numbers=False, separate_cells=False)
 
 def wrapper2_with_numbers(env):
-    return MiniGridTextWrapper2(env, show_numbers=True)
+    return MiniGridTextGlobalObsWrapper(env, show_numbers=True, separate_cells=True)
 
 def wrapper2_without_numbers(env):
-    return MiniGridTextWrapper2(env, show_numbers=False)
+    return MiniGridTextGlobalObsWrapper(env, show_numbers=False, separate_cells=True)
 
 def wrapper_local_obs(env):
     return MiniGridTextLocalObsWrapper(env, show_numbers=False)
@@ -49,6 +51,38 @@ def wrapper_local_obs_noseparation(env):
 def wrapper_local_obs_with_numbers(env):
     return MiniGridTextLocalObsWrapper(env, show_numbers=True)
 
+
+def create_experiment_config(model_name, model, global_view, show_numbers, separate_cells, history_size=1):
+    prompt = None
+    view_str = ""
+    if global_view:
+        wrapper_fn = lambda env: MiniGridTextGlobalObsWrapper(env, show_numbers=show_numbers, separate_cells=separate_cells)
+        if show_numbers and separate_cells:
+            view_str = "global_special"
+            prompt = SYSTEM_PROMPT_GLOBAL_2
+        elif not show_numbers and not separate_cells:
+            view_str = "global_simple"
+            prompt = SYSTEM_PROMPT_GLOBAL_1
+        else:
+            raise ValueError("Invalid combination of show_numbers and separate_cells for global view. Only (False, False) and (True, True) are supported.")
+    else:
+        wrapper_fn = lambda env: MiniGridTextLocalObsWrapper(env, show_numbers=show_numbers, separate_cells=separate_cells)
+        if separate_cells and separate_cells:
+            view_str = "local_special"
+            prompt = SYSTEM_PROMPT_LOCAL_2
+        elif not show_numbers and not separate_cells:
+            view_str = "local_simple"
+            prompt = SYSTEM_PROMPT_LOCAL_1
+        else:
+            raise ValueError("Invalid combination of show_numbers and separate_cells for local view. Only separator-based views or fully simple views are supported.")
+
+    agent = ReActAgent(model, prompt, OBS_TEMPLATE, history_window=history_size, verbose=False)
+    config_name = f"{model_name}-{view_str}-history{history_size}"
+    return {
+        'name': config_name,
+        'agent': agent,
+        'wrapper_fn': wrapper_fn,
+    }
 
 def _safe_path_component(name: str) -> str:
     # Replace invalid Windows path chars and trim trailing dots/spaces.
@@ -94,6 +128,71 @@ def _sort_agent_results(agent_results):
     )
 
 
+def recompute_main_json_from_run_files(results_dir: str, write_file: bool = True):
+    """
+    Recompute the main summary JSON for an experiment directory by scanning
+    per-run JSON files under: <results_dir>/<agent_name>/<env_id>/<run>.json
+
+    Args:
+        results_dir: Path to one experiment directory inside RESULTS_BASE_DIR.
+        write_file: If True, writes the reconstructed summary to
+                    <results_dir>/<basename(results_dir)>.json.
+
+    Returns:
+        Tuple[dict, str]: (reconstructed_summary, output_main_json_path)
+    """
+    results_dir = os.path.abspath(os.fspath(results_dir))
+    experiment_name = os.path.basename(results_dir.rstrip("/\\"))
+    main_json_path = os.path.join(results_dir, f"{experiment_name}.json")
+
+    reconstructed = {}
+
+    if not os.path.isdir(results_dir):
+        if write_file:
+            _write_json_atomic(main_json_path, reconstructed)
+        return reconstructed, main_json_path
+
+    for agent_name in sorted(os.listdir(results_dir)):
+        agent_dir = os.path.join(results_dir, agent_name)
+        if not os.path.isdir(agent_dir):
+            continue
+
+        entries = {}
+        for env_name in sorted(os.listdir(agent_dir)):
+            env_dir = os.path.join(agent_dir, env_name)
+            if not os.path.isdir(env_dir):
+                continue
+
+            for filename in sorted(os.listdir(env_dir)):
+                if not filename.lower().endswith('.json'):
+                    continue
+
+                run_file_path = os.path.join(env_dir, filename)
+                payload = _load_json_if_exists(run_file_path)
+                if not payload:
+                    continue
+
+                run_number = int(payload.get('run', os.path.splitext(filename)[0]))
+                run_key = (env_name, run_number)
+                entries[run_key] = {
+                    'env': str(payload.get('env', env_name)),
+                    'run': run_number,
+                    'seed': int(payload.get('seed', -1)),
+                    'max_steps': int(payload.get('max_steps', -1)),
+                    'steps': int(payload.get('steps', payload.get('step_count', -1))),
+                    'success': int(payload.get('success', 0)),
+                    'reward': payload.get('reward', 0.0),
+                    'history_file': _normalize_history_path(results_dir, run_file_path),
+                }
+
+        reconstructed[agent_name] = _sort_agent_results(list(entries.values()))
+
+    if write_file:
+        _write_json_atomic(main_json_path, reconstructed)
+
+    return reconstructed, main_json_path
+
+
 
 def run_and_save_experiments(experiment_configs, experiment_name=None, verbose=False):
     """
@@ -122,6 +221,9 @@ def run_and_save_experiments(experiment_configs, experiment_name=None, verbose=F
         if verbose:
             print(f"Resuming from: {filepath}")
     else:
+        # To make resume less dependent on the main summary file, this is the
+        # place to call recompute_main_json_from_run_files(results_dir) and
+        # initialize all_experiment_data from per-run JSON files.
         all_experiment_data = {}
 
     env_ids = list(DEFAULT_ENVIRONMENT_IDS.keys())

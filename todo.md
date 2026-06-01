@@ -2,14 +2,24 @@
 
 # Prioridades
 
+1. Testar as modificações (rodar note de openai). Depois partir para o item abaixo.
+
 1. Criar mecanismos de setar atributos por "experimento" ou por "run"?
+   * pedir para deixar de identificar unicamente por meio de nome e trocar por um conjunto de atributos como identificação
    * fazer alterações nos antigos
-   * usar nos gráficos -> agrupar por 1 atributo ou por 2 atributos (gráfico de barra dividido)
 
+1. Usar os atributos nos gráficos -> agrupar por 1 atributo ou por 2 atributos (gráfico de barra dividido)
 
-# Prioridades v2 (com + contribuições)
+1. Corrigir o streamlit para lidar com o novo sistema de atributos
 
-1. Criar wrapper que ofereça apenas as observações locais, como no minigrd original
+1. Corrigir os prompts locais para informarem que a observação informa a direção global do player
+
+# Alvo
+
+- Fazer comparações entre os modelos com formato 1 (simples) e 2 (com separadores e números), locais e globais
+- Em vários ambientes, sem necessidade de pegar chave, etc
+- Reportar os resultados entre modelos
+  * openai parece ir especialmente mal
 
 
 # Outros

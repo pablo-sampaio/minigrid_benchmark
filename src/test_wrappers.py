@@ -31,19 +31,17 @@ def test_wrapper2_with_numbers():
 		_print_wrapper_obs(env_id, lambda e: MiniGridTextWrapper2(e, show_numbers=True), "MiniGridTextWrapper2(with numbers)")
 
 
-def test_local_wrapper_without_numbers():
+def test_local_wrapper(show_numbers=False, separate=False):
 	for env_id in ["MiniGrid-LavaGapS5-v0", "MiniGrid-LavaCrossingS9N3-v0"]:
-		_print_wrapper_obs(env_id, lambda e: MiniGridTextLocalObsWrapper(e, show_numbers=False), "MiniGridTextLocalObsWrapper(no numbers)")
+		_print_wrapper_obs(env_id, lambda e: MiniGridTextLocalObsWrapper(e, show_numbers=show_numbers, separate_cells=separate), f"MiniGridTextLocalObsWrapper(show_numbers={show_numbers}, separate_cells={separate})")
 
-
-def test_local_wrapper_with_numbers():
-	for env_id in ["MiniGrid-LavaGapS5-v0", "MiniGrid-LavaCrossingS9N3-v0"]:
-		_print_wrapper_obs(env_id, lambda e: MiniGridTextLocalObsWrapper(e, show_numbers=True), "MiniGridTextLocalObsWrapper(with numbers)")
 
 
 if __name__ == '__main__':
-	#test_local_wrapper_with_numbers()
-	test_local_wrapper_without_numbers()
+	test_local_wrapper(show_numbers=True, separate=True)
+	#test_local_wrapper(show_numbers=True, separate=False)
+	#test_local_wrapper(show_numbers=False, separate=True)
+	test_local_wrapper(show_numbers=False, separate=False)
 	
 	#test_wrapper1()
 	#test_wrapper2_without_numbers()

@@ -5,7 +5,7 @@ from asyncio import sleep
 import gymnasium as gym
 from langchain_openai import ChatOpenAI
 
-from wrappers import MiniGridTextWrapper2, SYSTEM_PROMPT_WRAPPER_2d, OBS_TEMPLATE_ENG
+from wrappers import MiniGridTextWrapper2, SYSTEM_PROMPT_GLOBAL_2, OBS_TEMPLATE
 from react_agent import ReActAgent
 
 OPENAI_API_KEY = os.getenv("OPENAI_PABLO") #"OPENAI_API_KEY")
@@ -24,7 +24,7 @@ N = 3
 original_env = gym.make("MiniGrid-LavaGapS5-v0") 
 #original_env = gym.make("MiniGrid-LavaCrossingS9N3-v0")
 
-agente = ReActAgent(OPENAI_MODEL, SYSTEM_PROMPT_WRAPPER_2d, OBS_TEMPLATE_ENG, verbose=True)
+agente = ReActAgent(OPENAI_MODEL, SYSTEM_PROMPT_GLOBAL_2, OBS_TEMPLATE, verbose=True)
 env = MiniGridTextWrapper2(original_env, show_numbers=True)
 
 SUCESSOS = 0
