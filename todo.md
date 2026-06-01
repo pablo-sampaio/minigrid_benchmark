@@ -2,17 +2,27 @@
 
 # Prioridades
 
-1. Testar as modificações (rodar note de openai). Depois partir para o item abaixo.
+1. (Del)Testar as modificações (rodar note de openai). Depois partir para o item abaixo. (Acho melhor pular para o item abaixo)
 
 1. Criar mecanismos de setar atributos por "experimento" ou por "run"?
    * pedir para deixar de identificar unicamente por meio de nome e trocar por um conjunto de atributos como identificação
-   * fazer alterações nos antigos
+   * fazer alterações nos antigos?? (não vale a pena, por conta de diferenças nos prompts)
+
+1. Consertar/ajustar e organizar prompts.
+   * criar arquivo separado?? 
+   * apenas rever nomes das variáveis?? 
+   * ou criar função com parâmetros (global, separador, numerar, incluir_exemplo)??
+   * prompts locais: informar que a observação informa a direção global do player
+
+1. Salvar a pasta de resultados antiga separada, com note de plot. Criar uma pasta vazia. Só fazer commit quando: 
+   - refactor para usar atributos de execução (no lugar do nome)
+   - testar execução do experimento
+   - testar o plot 
 
 1. Usar os atributos nos gráficos -> agrupar por 1 atributo ou por 2 atributos (gráfico de barra dividido)
 
-1. Corrigir o streamlit para lidar com o novo sistema de atributos
+1. Corrigir o dashboard de streamlit para lidar com o novo sistema de atributos
 
-1. Corrigir os prompts locais para informarem que a observação informa a direção global do player
 
 # Alvo
 
