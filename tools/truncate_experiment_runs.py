@@ -42,14 +42,18 @@ def detect_default_runs_per_env() -> int:
 
 
 def find_main_summary_file(experiment_dir: Path) -> Path | None:
-    """Find the main summary JSON (usually <experiment_dir_name>.json)."""
+    """Find the main summary JSON (prefer summary.json, fallback to legacy names)."""
     candidates = sorted(p for p in experiment_dir.glob("*.json") if p.is_file())
     if not candidates:
         return None
 
-    preferred = experiment_dir / f"{experiment_dir.name}.json"
+    preferred = experiment_dir / "summary.json"
     if preferred in candidates:
         return preferred
+
+    legacy = experiment_dir / f"{experiment_dir.name}.json"
+    if legacy in candidates:
+        return legacy
 
     return candidates[0]
 

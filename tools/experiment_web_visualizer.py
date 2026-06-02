@@ -11,8 +11,6 @@ import streamlit as st
 from os import path
 import sys
 
-# add upper dir as path
-#sys.path.append(path.dirname(path.dirname(path.abspath(__file__))) + "/src")
 sys.path.append(path.join(path.dirname(path.dirname(path.abspath(__file__))), "src"))
 
 import experiments_util
@@ -51,9 +49,14 @@ def discover_experiments(results_dir_str: str) -> list[dict[str, str]]:
         if not child.is_dir():
             continue
 
-        named_summary = child / f"{child.name}.json"
+        named_summary = child / "summary.json"
         if named_summary.exists():
             experiments.append({"name": child.name, "dir": str(child), "summary": str(named_summary)})
+            continue
+
+        legacy_summary = child / f"{child.name}.json"
+        if legacy_summary.exists():
+            experiments.append({"name": child.name, "dir": str(child), "summary": str(legacy_summary)})
             continue
 
         fallback_json_files = sorted(child.glob("*.json"), key=lambda p: p.name.lower())

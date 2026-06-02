@@ -7,9 +7,18 @@ from chat_history import SlidingWindowChatHistory
 
 
 ACTION_LOOKUP = {
-    "GIRA_ANTI_HORARIO": 0,
-    "GIRA_HORARIO": 1,
-    "FRENTE": 2,
+    "TURN_LEFT": 0,
+    "TURN_RIGHT": 1,
+    "MOVE_FORWARD": 2,
+}
+
+ACTION_ALIASES = {
+    "GIRA_ANTI_HORARIO": "TURN_LEFT",
+    "GIRA_HORARIO": "TURN_RIGHT",
+    "FRENTE": "MOVE_FORWARD",
+    "TURN_LEFT": "TURN_LEFT",
+    "TURN_RIGHT": "TURN_RIGHT",
+    "MOVE_FORWARD": "MOVE_FORWARD",
 }
 
 
@@ -20,6 +29,11 @@ def _normalize_action_name(action_text: str) -> str:
     return re.sub(r"[^A-Z_]", "", action)
 
 
+def _canonicalize_action_name(action_text: str) -> str:
+    normalized = _normalize_action_name(action_text)
+    return ACTION_ALIASES.get(normalized, "")
+
+
 def extract_thought_and_action(response_text):
     # Try XML format first
     thought_xml = re.search(r"<thought>(.*?)</thought>", response_text, re.DOTALL)
@@ -27,21 +41,18 @@ def extract_thought_and_action(response_text):
 
     if thought_xml and action_xml:
         thought_str = thought_xml.group(1).strip()
-        action_str = _normalize_action_name(action_xml.group(1))
+        action_str = _canonicalize_action_name(action_xml.group(1))
         return thought_str, action_str
 
     # Fallback to legacy text formats
     thought_match = re.search(r"(?:\*\*)?(?:THOUGHT|PENSAMENTO)(?:\*\*)?\s*:\s*(.*)", response_text, re.IGNORECASE)
     thought_str = thought_match.group(1).strip() if thought_match else "(not found)"
 
-    action_match = re.search(
-        r"(?:\*\*)?(?:ACTION|AÇÃO)(?:\*\*)?\s*:\s*(GIRA_ANTI_HORARIO|GIRA_ANTI_HORÁRIO|GIRA_HORARIO|GIRA_HORÁRIO|FRENTE)\b",
-        response_text,
-        re.IGNORECASE,
-    )
+    action_match = re.search(r"(?:\*\*)?(?:ACTION|AÇÃO)(?:\*\*)?\s*:\s*([A-Z_ÁÃÇ]+)", response_text, re.IGNORECASE)
     if action_match:
-        action_str = _normalize_action_name(action_match.group(1))
-        return thought_str, action_str
+        action_str = _canonicalize_action_name(action_match.group(1))
+        if action_str:
+            return thought_str, action_str
 
     return thought_str, ""
 
