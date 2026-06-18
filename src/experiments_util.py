@@ -282,7 +282,7 @@ def run_and_save_experiments(experiment_configs, experiment_name=None, verbose=F
         os.makedirs(experiment_dir, exist_ok=True)
 
         if verbose:
-            agents_iter.set_postfix_str(agent_name)
+            agents_iter.set_postfix_str("Config " + agent_name + "...")
         
         agent_results_index = {
             (item.get('env'), int(item.get('run', 0))): item
@@ -326,7 +326,7 @@ def run_and_save_experiments(experiment_configs, experiment_name=None, verbose=F
                             runs_iter.set_postfix_str(f"run {run_number} skipped (already in summary)")
                         continue
                     if verbose:
-                        runs_iter.set_postfix_str(f"run {run_number}...")
+                        runs_iter.set_postfix_str(f"run {run_number} in progress...")
 
                     if os.path.exists(run_file_path):
                         existing = _load_json_if_exists(run_file_path)

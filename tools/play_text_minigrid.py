@@ -20,7 +20,7 @@ SRC_DIR = REPO_ROOT / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
-from wrappers import MiniGridTextLocalObsWrapper, MiniGridTextWrapper1, MiniGridTextWrapper2  # noqa: E402
+from wrappers import MiniGridTextLocalObsWrapper, MiniGridTextGlobalObsWrapper  # noqa: E402
 
 ACTION_MAP = {
     "GIRA_ANTI_HORARIO": 0,
