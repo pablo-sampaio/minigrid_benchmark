@@ -59,7 +59,10 @@ def build_chat_model(provider: str, model_id: str, api_key: str|None, max_output
         from langchain_huggingface import ChatHuggingFace, HuggingFacePipeline
         from transformers import BitsAndBytesConfig
 
-        model_kwargs = {}
+        # Ensure HF auth is available to transformers in Colab/Kaggle/local runs.
+        os.environ.setdefault("HF_TOKEN", api_key)
+
+        model_kwargs = {"token": api_key}
         if hf_quantization not in (None, "none"):
             import torch
             hf_quantization = hf_quantization.lower()
@@ -81,7 +84,6 @@ def build_chat_model(provider: str, model_id: str, api_key: str|None, max_output
         hf_pipeline = HuggingFacePipeline.from_model_id(
             model_id=model_id,
             task="text-generation",
-            token=api_key,
             pipeline_kwargs={
                 "do_sample": True,
                 "max_new_tokens": max_output_tokens,
