@@ -1,0 +1,224 @@
+{
+    "experiment": "deepseek-v4-flash-local_special-history5",
+    "config": {
+        "model_name": "deepseek-v4-flash",
+        "global_view": false,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "107a275f9eaf758f6d17630cbc08e7723914f186",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 3,
+    "seed": 98163,
+    "max_steps": 25,
+    "steps": 25,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-19T08:27:22",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|L|L|.|L|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is at row 07, column D, facing north. The cell directly ahead (north) is lava, so moving forward is fatal. The cell to the left (west) is a wall. The cell to the right (east) is empty floor. Therefore, I should turn right to face east, then I can move forward safely.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|L|.|L|.|#|?|?|\n02|L|.|L|.|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is facing east. The cell directly ahead (east) is a wall, so cannot move forward. Turning right would face south, which is out of the map (row 07 is the bottom). Turning left will face north, and the cell north at (06,D) is safe floor. Then we can move forward to explore the corridor northward.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|L|L|.|L|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell directly ahead is lava, so moving forward is impossible. The right (east) cell is empty floor, so I will turn right to face east and then move forward to explore that area.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|L|.|L|.|#|?|?|\n02|L|.|L|.|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|L|.|L|.|#|?|?|\n02|L|.|L|.|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is at (7,D) facing north. The cell ahead (6,D) is floor, safe. The only accessible direction is forward, as left (west) is lava and right (east) is wall. Moving forward will reveal more of the map.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|#|#|#|#|#|?|?|\n02|L|.|L|.|#|?|?|\n03|L|.|L|.|#|?|?|\n04|.|.|.|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|#|#|#|#|#|?|?|\n02|L|.|L|.|#|?|?|\n03|L|.|L|.|#|?|?|\n04|.|.|.|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|#|#|#|#|#|?|?|\n02|L|.|L|.|#|?|?|\n03|L|.|L|.|#|?|?|\n04|.|.|.|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|#|#|#|#|#|?|?|\n02|L|.|L|.|#|?|?|\n03|L|.|L|.|#|?|?|\n04|.|.|.|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 7 column D, facing north (up). The cell directly ahead (row 6 column D) is a safe floor tile (`.`). There are no immediate hazards ahead, and moving forward will allow me to explore further. The goal is not visible yet, so I will proceed into the unexplored area.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|#|#|#|#|#|?|?|\n03|L|.|L|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|.|.|.|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|#|#|#|#|#|?|?|\n03|L|.|L|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|.|.|.|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|#|#|#|#|#|?|?|\n03|L|.|L|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|.|.|.|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|#|#|#|#|#|?|?|\n03|L|.|L|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|.|.|.|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row7, column D, facing north. The cell directly ahead (row6, column D) is a floor cell (`.`), so it is safe to move forward. There is a wall to the east and lava to the west, so moving forward is the best option to explore new areas and potentially find the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|#|#|#|#|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|.|.|.|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|#|#|#|#|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|.|.|.|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|#|#|#|#|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|.|.|.|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|#|#|#|#|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|.|.|.|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|#|#|#|#|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|.|.|.|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is at row 7, column D, facing north. The cell directly ahead (row 6, column D) is a floor (.), which is safe to move into. No goal is visible in the current observation, so exploring further is needed. Moving north is the only forward option that is safe and expands the explored area.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|#|#|#|#|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|#|#|#|#|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|#|#|#|#|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|#|#|#|#|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|#|#|#|#|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|#|#|#|#|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|#|#|#|#|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        }
+    ]
+}

@@ -1,0 +1,72 @@
+{
+    "experiment": "deepseek-v4-flash-global_special-history1",
+    "config": {
+        "model_name": "deepseek-v4-flash",
+        "global_view": true,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 1
+    },
+    "code_version": {
+        "git_commit": "107a275f9eaf758f6d17630cbc08e7723914f186",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 5,
+    "seed": 41726,
+    "max_steps": 15,
+    "steps": 6,
+    "success": 1,
+    "reward": 0.946,
+    "completed_at": "2026-06-18T17:52:19",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|>|L|.|#|\n03|#|.|L|.|#|\n04|#|.|.|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell (row2, colB) facing right. Directly ahead is a lava cell at (2,C), so I cannot move forward. To progress, I need to turn to face down, which will allow me to move onto safe floor cells. Turning right from facing right results in facing down.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|v|L|.|#|\n03|#|.|L|.|#|\n04|#|.|.|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 02 column B facing down (v). The goal is at row 04 column D. To reach it, I need to move south to (3,B) which is empty, then later to (4,B), then turn left to face right, then move east to (4,C) and (4,D). The cell directly in front of me (3,B) is safe (floor). So I will move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|L|.|#|\n03|#|v|L|.|#|\n04|#|.|.|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell (3,B) facing down (`v`). The goal is at (4,D). The cell directly below me (4,B) is floor (`.`), so I can safely move forward. After that, I will need to turn left to face right, then move right to (4,C) and then to (4,D) to reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|L|.|#|\n03|#|.|L|.|#|\n04|#|v|.|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 04 column B, facing down. The goal is at row 04 column D. To move right, I need to face right. Turning left (counter-clockwise) from down gives right orientation. Then I can move forward.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|L|.|#|\n03|#|.|L|.|#|\n04|#|>|.|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 4 column B, facing right (`>`). The goal is at row 4 column D, directly to my right. The cell in front of me (row 4 column C) is floor (`.`), so I can safely move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|L|.|#|\n03|#|.|L|.|#|\n04|#|.|>|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 04 column C, facing right. The goal is directly to my right at row 04 column D. I can move forward to reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

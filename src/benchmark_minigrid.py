@@ -1,6 +1,7 @@
 import argparse
 import os
 import warnings
+import datetime
 from typing import Any
 
 from langchain.chat_models.base import BaseChatModel
@@ -34,12 +35,12 @@ def _build_default_8_configs(model_name: str, model: Any) -> list[dict[str, Any]
     return experiment_configs
 
 
-def benchmark_minigrid(
+def run_benchmark_minigrid(
         provider: str,
         model_id: str,
-        experiment_name: str | None = None,
-        results_base_dir: str | None = None,
         api_key: str | None = None,
+        results_base_dir: str | None = None,
+        results_folder_name: str | None = None,
         max_new_tokens: int = 2048,
         quantization: str | None = None,
         verbose: bool = True,
@@ -73,11 +74,12 @@ def benchmark_minigrid(
     )
     configs = _build_default_8_configs(model_name=model_id, model=model)
 
-    if experiment_name is None:
+    if results_folder_name is None or results_folder_name.strip() == "":
         model_id_simplified = model_id.replace("/", "_")  # replace / with _ for file/folder names
-        experiment_name = f"benchmark_{provider}_{model_id_simplified}"
+        curr_date_time_str = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        experiment_name = f"benchmark_{provider}_{model_id_simplified}_{curr_date_time_str}"
 
-    run_results = run_and_save_experiments(configs, experiment_name=experiment_name, verbose=verbose)
+    run_results = run_and_save_experiments(configs, experiment_name=results_folder_name, verbose=verbose)
 
     return run_results
 
@@ -88,7 +90,6 @@ def _build_arg_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("provider", choices=SUPPORTED_PROVIDERS, help="Um desses: openai | deepseek | hf")
     parser.add_argument("model_id", help="ID do modelo (Exemplos: gpt-5.4-mini, deepseek-v4-flash, google/gemma-3-4b-it)")
-    parser.add_argument("--experiment-name", default=None, help="Nome da pasta do experimento (permite retomar se ja existir)")
     parser.add_argument("--results-dir", default=None, help="Diretorio base para salvar resultados")
     parser.add_argument("--api-key", default=None, help="API key (opcional). Se omitido, busca nas variaveis de ambiente")
     parser.add_argument("--quiet", action="store_true", help="Desativa barras de progresso")
@@ -105,10 +106,9 @@ def main() -> None:
     parser = _build_arg_parser()
     args = parser.parse_args()
 
-    final_results, filepath = benchmark_minigrid(
+    final_results, filepath = run_benchmark_minigrid(
         provider=args.provider,
         model_id=args.model_id,
-        experiment_name=args.experiment_name,
         results_base_dir=args.results_dir,
         api_key=args.api_key,
         verbose=not args.quiet,

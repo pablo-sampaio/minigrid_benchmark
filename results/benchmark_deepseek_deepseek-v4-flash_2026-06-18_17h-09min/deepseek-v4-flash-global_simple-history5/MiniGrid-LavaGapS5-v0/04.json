@@ -1,0 +1,64 @@
+{
+    "experiment": "deepseek-v4-flash-global_simple-history5",
+    "config": {
+        "model_name": "deepseek-v4-flash",
+        "global_view": true,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "107a275f9eaf758f6d17630cbc08e7723914f186",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 4,
+    "seed": 31804,
+    "max_steps": 15,
+    "steps": 5,
+    "success": 1,
+    "reward": 0.955,
+    "completed_at": "2026-06-18T18:24:18",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#>..#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at position (row1, col1) facing right. The goal is at (row3, col3). A safe path is to move right twice to (row1, col3), then turn right and move down twice. The cell directly in front of me is empty (floor), so I will move forward to begin the path.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.>.#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (row2, col2) facing right. The cell directly ahead is empty floor. Moving forward will bring me to (row2, col3), which is part of a clear path to the goal. After that, I can turn right and move down twice to reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#..>#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (row1, col3) facing right. The cell ahead is a wall (#). I need to go down to row2 col3 then row3 col3 (goal). So I should turn right to face downward.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#..v#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing down at (row1, col3). The cell directly below is floor (row2, col3). Moving forward will get me closer to the goal at (row3, col3). No lava or wall in that cell.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#...#\n#.Lv#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am directly above the goal. Moving forward will land me on the goal cell.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

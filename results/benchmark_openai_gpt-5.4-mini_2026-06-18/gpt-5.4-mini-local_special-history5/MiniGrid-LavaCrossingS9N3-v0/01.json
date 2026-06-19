@@ -1,0 +1,56 @@
+{
+    "experiment": "gpt-5.4-mini-local_special-history5",
+    "config": {
+        "model_name": "gpt-5.4-mini",
+        "global_view": false,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "107a275f9eaf758f6d17630cbc08e7723914f186",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 1,
+    "seed": 40926,
+    "max_steps": 25,
+    "steps": 4,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-18T14:48:10",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|L|\n02|?|?|#|L|L|L|L|\n03|?|?|#|.|.|.|L|\n04|?|?|#|.|.|.|L|\n05|?|?|#|.|.|.|L|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing upward. The cell directly in front of me is a wall, so moving forward is impossible. The open cell to my right is safe, so I will turn right to face it and prepare to move through the corridor.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|L|.|#|?|?|\n02|.|.|L|.|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|L|L|.|#|?|?|\n05|.|.|L|.|#|?|?|\n06|.|.|L|.|#|?|?|\n07|.|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m facing upward and the cell in front of me is open, while the cell to the right is a wall. Since I can safely advance toward the open path, I will move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|#|#|#|#|#|?|?|\n02|.|.|L|.|#|?|?|\n03|.|.|L|.|#|?|?|\n04|.|.|.|.|#|?|?|\n05|L|L|L|.|#|?|?|\n06|.|.|L|.|#|?|?|\n07|.|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m still facing upward, but the cell directly ahead is a wall, so I cannot move forward. Turning left would keep me adjacent to the wall on the right side and is the safest step to reorient toward open space.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|#|.|.|.|L|.|\n02|?|#|L|L|L|L|L|\n03|?|#|.|.|.|L|.|\n04|?|#|.|.|.|L|.|\n05|?|#|.|.|.|L|.|\n06|?|#|L|L|L|L|.|\n07|?|#|.|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m facing left now. The cell in front of me is open, and moving forward keeps me within the clear corridor while avoiding the nearby lava and wall. I will advance.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

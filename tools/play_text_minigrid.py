@@ -43,7 +43,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--env", default="MiniGrid-LavaGapS5-v0", help="Environment id.")
     parser.add_argument(
         "--wrapper",
-        choices=["w1", "w2", "local"],
+        choices=["global", "local"],
         default="local",
         help="Text wrapper to use.",
     )
@@ -51,13 +51,13 @@ def parse_args() -> argparse.Namespace:
         "--numbers",
         action="store_true",
         default=True,
-        help="Show row/column labels (only used by w2/local).",
+        help="Show row/column labels.",
     )
     parser.add_argument(
         "--no-numbers",
         dest="numbers",
         action="store_false",
-        help="Hide row/column labels (only used by w2/local).",
+        help="Hide row/column labels.",
     )
     parser.add_argument("--seed", type=int, default=None, help="Optional reset seed.")
     parser.add_argument(
@@ -75,10 +75,8 @@ def build_wrapped_env(env_id: str, wrapper_name: str, show_numbers: bool, max_st
         env_kwargs["max_episode_steps"] = max_steps
 
     env = gym.make(env_id, **env_kwargs)
-    if wrapper_name == "w1":
-        return MiniGridTextWrapper1(env)
-    if wrapper_name == "w2":
-        return MiniGridTextWrapper2(env, show_numbers=show_numbers)
+    if wrapper_name == "global":
+        return MiniGridTextGlobalObsWrapper(env, show_numbers=show_numbers)
     return MiniGridTextLocalObsWrapper(env, show_numbers=show_numbers)
 
 

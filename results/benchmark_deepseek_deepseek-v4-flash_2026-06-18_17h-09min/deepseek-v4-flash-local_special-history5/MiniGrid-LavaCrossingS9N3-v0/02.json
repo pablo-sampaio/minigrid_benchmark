@@ -1,0 +1,224 @@
+{
+    "experiment": "deepseek-v4-flash-local_special-history5",
+    "config": {
+        "model_name": "deepseek-v4-flash",
+        "global_view": false,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "107a275f9eaf758f6d17630cbc08e7723914f186",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 2,
+    "seed": 3745,
+    "max_steps": 25,
+    "steps": 25,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-19T08:19:46",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|.|.|.|.|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|.|.|.|.|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 7, column D, facing north. Directly ahead is lava (L), so I cannot move forward. The only safe adjacent cell is to my right (east) at (7, E), which is floor. I need to turn right to face east so I can move into that safe cell and continue exploring.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|.|.|#|?|?|\n02|L|L|L|.|#|?|?|\n03|L|.|L|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|.|.|#|?|?|\n02|L|L|L|.|#|?|?|\n03|L|.|L|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (7,D) facing east. The cell ahead (7,E) is a wall (#), so I cannot move forward. To my left (north) at (6,D) is a floor cell (.), while my right (south) is off-grid and west (7,C) is lava (L). The only safe direction to go is north. Therefore, I need to turn left to face north, then I can move forward.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|.|.|.|.|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (7,D) facing north. The cell directly ahead (6,D) is lava, so I cannot move forward. To my right (east) is a floor cell at (7,E), which is safe. To my left (west) is a wall, so the only viable direction is to turn right and then move forward. This will allow me to explore eastward.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|.|.|#|?|?|\n02|L|L|L|.|#|?|?|\n03|L|.|L|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (7,D) facing east. Ahead (7,E) is a wall, so I cannot move forward. To my left (north) at (6,D) is a floor cell, which is safe. To my right (south) is off-grid and behind (west) is lava. The best option is to turn left to face north, then I can move forward onto the safe floor cell.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|.|.|.|.|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|.|.|.|.|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (7,D) facing north. The cell directly ahead (6,D) is lava, so I cannot move forward. My only safe adjacent cell is to the east at (7,E), which is floor. I need to turn right to face east, then I can move forward in the next step.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|.|.|#|?|?|\n02|L|L|L|.|#|?|?|\n03|L|.|L|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing east with a wall directly ahead. The path to the north along column D is clear floor. I will turn left to face north so I can move forward in the next step.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|.|.|.|.|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|.|.|.|.|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|.|.|.|.|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|.|.|.|.|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell directly in front of me (north) is lava, so I cannot move forward. Turning left would face a wall (west), so turning right to face east is the best option to move towards the floor cell to my east.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|.|.|#|?|?|\n02|L|L|L|.|#|?|?|\n03|L|.|L|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|.|.|#|?|?|\n02|L|L|L|.|#|?|?|\n03|L|.|L|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently facing east. The cell directly east is a wall (#), so I cannot move forward. The cell to the north (06,D) is a floor (.), safe to step onto. I will turn left to face north, then I can move forward.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|.|.|.|.|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing north, but the cell directly north is lava. The only safe adjacent cell is east, which is a floor. I will turn right to face east, then I can move forward.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|.|.|#|?|?|\n02|L|L|L|.|#|?|?|\n03|L|.|L|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|.|.|#|?|?|\n02|L|L|L|.|#|?|?|\n03|L|.|L|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at D7 facing east. Directly east is a wall (#). To the west is lava (L). To the north is a floor cell (D6). I need to turn left to face north, then I can move forward to explore the corridor.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|.|.|.|.|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|.|.|.|.|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>The agent is at D7 facing north. Directly north is lava (L), and west is a wall (#). The only safe adjacent cell is east (E7), which is floor. I need to turn right to face east before moving forward.</thought>\n<action>TURN_RIGHT</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|.|.|#|?|?|\n02|L|L|L|.|#|?|?|\n03|L|.|L|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is at D7 facing east. The cell directly east (E7) is a wall, so I cannot move forward. The only safe adjacent cells are north (D6, floor) and possibly south (out of bounds). Turning left will make me face north, allowing me to move forward to the safe floor cell. This will lead me into an unexplored area where I might find the goal.\n</thought>\n<action>TURN_LEFT</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|.|.|.|.|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at D7 facing north. Directly north is lava, west is wall, east is floor. I need to go east to explore. So I will turn right to face east.\n</thought>\n<action>TURN_RIGHT</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|.|.|#|?|?|\n02|L|L|L|.|#|?|?|\n03|L|.|L|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at D7 facing east. Directly east is a wall. The cell to the north (D6) is floor. I will turn left to face north, then proceed forward to explore the open area.\n</thought>\n<action>TURN_LEFT</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|.|.|.|.|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at D7 facing north. Directly north is lava, west is a wall, east is floor. I need to explore the map to find the goal. Turning right to face east will allow me to move forward into the open floor at E7.\n</thought>\n<action>TURN_RIGHT</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|.|.|#|?|?|\n02|L|L|L|.|#|?|?|\n03|L|.|L|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at D7 facing east. Directly east is a wall (#). The cell to the north (D6) is floor, so I will turn left to face north and then move forward to explore.\n</thought>\n<action>TURN_LEFT</action>"
+        }
+    ]
+}

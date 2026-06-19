@@ -1,0 +1,224 @@
+{
+    "experiment": "deepseek-v4-flash-local_simple-history5",
+    "config": {
+        "model_name": "deepseek-v4-flash",
+        "global_view": false,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "107a275f9eaf758f6d17630cbc08e7723914f186",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 1,
+    "seed": 40926,
+    "max_steps": 25,
+    "steps": 25,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-18T21:17:47",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n??#...L\n??#LLLL\n??#...L\n??#...L\n??#...L\n??#LLLL\n??#^...\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is facing north. The cell directly in front is lava (L). The cell to the left (west) is a wall (#). The only safe adjacent cell is to the right (east), which is floor (.). To move east, I need to turn right first. After turning right, I will face east, and the cell in front will be the floor cell, allowing me to move forward.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n..L.#??\n..L.#??\n....#??\nLLL.#??\n..L.#??\n..L.#??\n..L^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n..L.#??\n..L.#??\n....#??\nLLL.#??\n..L.#??\n..L.#??\n..L^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n..L.#??\n..L.#??\n....#??\nLLL.#??\n..L.#??\n..L.#??\n..L^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n..L.#??\n..L.#??\n....#??\nLLL.#??\n..L.#??\n..L.#??\n..L^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is facing north. The cell directly ahead (north) is floor ('.') and safe to move into. There are lava cells to the left and a wall to the right, so moving forward is the only immediate safe action. This will allow further exploration.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####??\n..L.#??\n..L.#??\n....#??\nLLL.#??\n..L.#??\n..L^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is facing north. The cell directly ahead is floor ('.'), so it is safe to move forward. Continuing north may reveal more of the map and potentially the goal.\n"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####??\n..L.#??\n..L.#??\n....#??\nLLL.#??\n..L.#??\n..L^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####??\n..L.#??\n..L.#??\n....#??\nLLL.#??\n..L.#??\n..L^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is facing north. The cell directly ahead is floor ('.'), so it is safe to move forward. The goal is not visible yet, so exploring northwards is a reasonable step.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n#####??\n..L.#??\n..L.#??\n....#??\nLLL.#??\n..L^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n#####??\n..L.#??\n..L.#??\n....#??\nLLL.#??\n..L^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n#####??\n..L.#??\n..L.#??\n....#??\nLLL.#??\n..L^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n#####??\n..L.#??\n..L.#??\n....#??\nLLL.#??\n..L^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n#####??\n..L.#??\n..L.#??\n....#??\nLLL.#??\n..L^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is facing north, and the cell directly ahead is floor (row6, col4). Moving forward is safe and will reveal more of the map. The left and right cells are lava and wall respectively, so forward is the only viable option.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n#####??\n..L.#??\n..L.#??\n....#??\nLLL^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n#####??\n..L.#??\n..L.#??\n....#??\nLLL^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n#####??\n..L.#??\n..L.#??\n....#??\nLLL^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe only safe adjacent cell is directly ahead (up), which is floor. Left is lava and right is wall. I will move forward to explore further.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n???????\n#####??\n..L.#??\n..L.#??\n...^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n???????\n#####??\n..L.#??\n..L.#??\n...^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n???????\n#####??\n..L.#??\n..L.#??\n...^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n???????\n#####??\n..L.#??\n..L.#??\n...^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n???????\n#####??\n..L.#??\n..L.#??\n...^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n???????\n#####??\n..L.#??\n..L.#??\n...^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n???????\n#####??\n..L.#??\n..L.#??\n...^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n???????\n#####??\n..L.#??\n..L.#??\n...^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n???????\n#####??\n..L.#??\n..L.#??\n...^#??\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        }
+    ]
+}

@@ -1,0 +1,64 @@
+{
+    "experiment": "gpt-5.4-mini-global_simple-history5",
+    "config": {
+        "model_name": "gpt-5.4-mini",
+        "global_view": true,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "107a275f9eaf758f6d17630cbc08e7723914f186",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 1,
+    "seed": 45108,
+    "max_steps": 15,
+    "steps": 5,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-18T14:33:07",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#>L.#\n#...#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing right on the second row. The cell directly ahead is lava, so I should not move forward. I need to go around it by turning downward first.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#vL.#\n#...#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am now facing down, with an open cell directly ahead. Moving forward will take me into the safe path below the lava, toward the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.L.#\n#v..#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing down on the middle-left side. The cell ahead is open, and moving forward will continue me toward the lower area where I can approach the goal from the left side.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.L.#\n#...#\n#vLG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am on the bottom row facing down, so moving forward would hit the wall. The goal is immediately to my right, so I need to turn left to face right.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.L.#\n#...#\n#>LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am now facing right, and the goal is directly ahead of me. I should move forward into the goal cell.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

@@ -6,7 +6,7 @@ import numpy as np
 # Requires
 # !pip install -q minigrid==3.0.0
 
-MAP_CELLS = {'wall': '#', 'floor': '.', 'goal': 'O', 'key': 'C', 'lava': 'L', 'open_door': '_', 'locked_dor': 'X', 'unlocked_closed_door': 'P'}
+MAP_CELLS = {'wall': '#', 'floor': '.', 'goal': 'G', 'key': 'K', 'lava': 'L', 'open_door': '_', 'unlocked_closed_door': 'D', 'locked_dor': 'X'}
 PLAYER_DIRECTIONS = ['>', 'v', '<', '^']
 PLAYER_DIRECTIONS_DESCR = ['East', 'South', 'West', 'North']
 OBJECT_IDX_TO_TYPE = {
@@ -22,6 +22,7 @@ OBJECT_IDX_TO_TYPE = {
     9: 'lava',
     10: 'agent',
 }
+
 
 class MiniGridTextGlobalObsWrapper(gym.ObservationWrapper):
     def __init__(self, env, show_numbers=False, separate_cells=True):
@@ -94,17 +95,6 @@ class MiniGridTextGlobalObsWrapper(gym.ObservationWrapper):
             output_lines.append(line_cells)
 
         return "\n".join("".join(line_cells) for line_cells in output_lines)
-
-
-'''class MiniGridTextWrapper1(MiniGridTextGlobalObsWrapper):
-    def __init__(self, env):
-        super().__init__(env, show_numbers=False, separate_cells=False)
-
-
-class MiniGridTextWrapper2(MiniGridTextGlobalObsWrapper):
-    def __init__(self, env, show_numbers=False):
-        super().__init__(env, show_numbers=show_numbers, separate_cells=True)
-'''
 
 
 class MiniGridTextLocalObsWrapper(gym.ObservationWrapper):

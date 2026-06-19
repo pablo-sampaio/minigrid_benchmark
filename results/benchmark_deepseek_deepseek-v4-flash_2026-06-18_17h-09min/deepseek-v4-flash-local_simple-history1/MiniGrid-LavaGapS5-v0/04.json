@@ -1,0 +1,64 @@
+{
+    "experiment": "deepseek-v4-flash-local_simple-history1",
+    "config": {
+        "model_name": "deepseek-v4-flash",
+        "global_view": false,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 1
+    },
+    "code_version": {
+        "git_commit": "107a275f9eaf758f6d17630cbc08e7723914f186",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 4,
+    "seed": 31804,
+    "max_steps": 15,
+    "steps": 5,
+    "success": 1,
+    "reward": 0.955,
+    "completed_at": "2026-06-18T19:19:35",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n???????\n??#####\n??#..G#\n??#.LL#\n??#^..#\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing north. The cell directly ahead (6,4) is floor, so it's safe to move forward. This will bring me closer to the goal which is located to the northeast. After moving forward, I can then proceed to turn right and move east to reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n???????\n???????\n??#####\n??#..G#\n??#^LL#\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>The cell directly in front of me is a floor cell. The goal G is located one cell ahead and two cells to the right. I will move forward to approach the goal.</thought><action>MOVE_FORWARD</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n???????\n???????\n???????\n??#####\n??#^.G#\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is facing north. The cell directly north is a wall (#). The goal G is two cells to the east. The cell immediately east is a floor (.). To move towards the goal, I need to face east first. Therefore, I will turn right.\n</thought>\n<action>TURN_RIGHT</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n???????\n??#####\n??#GL.#\n??#.L.#\n??#^..#\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal G is directly ahead two cells. The cell directly in front is a floor (.). Moving forward will bring me closer to the goal. There are no obstacles in the immediate path.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n???????\n???????\n???????\n???????\n??#####\n??#GL.#\n??#^L.#\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal G is directly in front of me in the cell above. The cell in front is G, which is the goal and is safe to occupy. Moving forward will reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

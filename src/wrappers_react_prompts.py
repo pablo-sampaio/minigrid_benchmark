@@ -17,7 +17,7 @@ Your goal is to move through the map to reach the goal cell.
 - Each cell is represented by a single character, using this representation:
     - `#` (wall)
     - `.` (floor, empty cell)
-    - `O` (goal position)
+    - `G` (goal position)
     - `L` (lava)
 - Orientation indicators are placed directly in the map representation to show your current position and the direction you are facing.
     - It may be one of the following: `^` (agent facing up), `v` (down), `<` (left), or `>` (right).
@@ -43,7 +43,7 @@ Your next action. Choose one of the actions listed above.
 
 CURRENT OBSERVATION:
 ####
-#LO#
+#LG#
 #..#
 #v.#
 ####
@@ -71,7 +71,7 @@ Seu objetivo é mover-se pelo mapa para alcançar a posição da célula objetiv
 - Cada célula é representada por um único caractere, seguindo esta representação:
     - `#` (parede)
     - `.` (chão, célula vazia)
-    - `O` (posição do objetivo)
+    - `G` (posição do objetivo)
     - `L` (lava)
 - Indicadores da orientação do agente: são colocados na representação do mapa para mostrar sua posição atual e a direção para a qual você está voltado.
     - Pode ser um dos seguintes: `^` (agente direcionado para cima), `v` (para baixo), `<` (para a esquerda) ou `>` (para a direita).
@@ -93,7 +93,7 @@ ACTION: <Sua próxima ação. Escolha uma das ações listadas acima>
 
 CURRENT OBSERVATION:
 ####
-#LO#
+#LG#
 #..#
 #v.#
 ####
@@ -121,7 +121,7 @@ Your goal is to move through the map to reach the goal cell while avoiding lava 
 - Each cell is represented by a single character:
     * `#` (wall, a cell that you cannot ocupy)
     * `.` (floor, empty cell)
-    * `O` (goal position)
+    * `G` (goal position)
     * `L` (lava, deadly cell)
     * orientation symbol (see below)
 - An orientation symbol marks your current position and direction:
@@ -158,7 +158,7 @@ One of the actions listed above.
 CURRENT OBSERVATION:
 --|A|B|C|D|
 01|#|#|#|#|
-02|#|L|O|#|
+02|#|L|G|#|
 03|#|.|.|#|
 04|#|v|.|#|
 05|#|#|#|#|
@@ -186,7 +186,7 @@ Your goal is to move through the map to reach the goal cell while avoiding lava 
 - Each cell is represented by a single character:
     * `#` (wall, a cell that you cannot occupy)
     * `.` (floor, empty cell)
-    * `O` (goal position)
+    * `G` (goal position)
     * `L` (lava, deadly cell)
     * `?` (unseen or unknown cell)
 
@@ -219,14 +219,14 @@ CURRENT OBSERVATION:
 ???????
 ???????
 ??#####
-??#..O#
+??#..G#
 ??#L.L#
 ??#^..#
 
 # Response (to be sent from you to the user)
 
 <thought>
-The goal O is visible three cells ahead and three cells to the right of my location. The cell in front of me is a deadly lava cell, so I cannot move forward. I will turn clockwise to head to the free neighbor cell at my right.
+The goal G is visible three cells ahead and three cells to the right of my location. The cell in front of me is a deadly lava cell, so I cannot move forward. I will turn clockwise to head to the free neighbor cell at my right.
 </thought>
 <action>
 TURN_RIGHT
@@ -248,7 +248,7 @@ Your goal is to move through the map to reach the goal cell while avoiding lava 
 - Each cell is represented by a single character:
     * `#` (wall, a cell that you cannot occupy)
     * `.` (floor, empty cell)
-    * `O` (goal position)
+    * `G` (goal position)
     * `L` (lava, deadly cell)
     * `?` (unseen or unknown cell)
 - The `|` character is used as a separator between cells.
@@ -283,7 +283,7 @@ CURRENT OBSERVATION:
 02|?|?|?|?|?|?|?|
 03|?|?|?|?|?|?|?|
 04|?|?|#|#|#|#|#|
-05|?|?|#|.|.|O|#|
+05|?|?|#|.|.|G|#|
 06|?|?|#|L|.|L|#|
 07|?|?|#|^|.|.|#|
 
