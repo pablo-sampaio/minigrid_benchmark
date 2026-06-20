@@ -1,0 +1,80 @@
+{
+    "experiment": "deepseek-v4-pro-local_special-history1",
+    "config": {
+        "model_name": "deepseek-v4-pro",
+        "global_view": false,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 1
+    },
+    "code_version": {
+        "git_commit": "e8be24e326f6e3a39b677fdb472b451275a25a62",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 1,
+    "seed": 45108,
+    "max_steps": 15,
+    "steps": 7,
+    "success": 1,
+    "reward": 0.9369999999999999,
+    "completed_at": "2026-06-20T13:07:56",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|#|#|#|#|#|\n05|?|?|#|.|.|G|#|\n06|?|?|#|L|.|L|#|\n07|?|?|#|^|.|.|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is visible at row 05 column F. The cell directly in front of me (row 06 column D) is lava, so moving forward is deadly. I will turn right to face the free cell to my east.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|#|#|#|#|#|?|?|\n05|#|G|L|.|#|?|?|\n06|#|.|.|.|#|?|?|\n07|#|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at D7 facing north. The cell directly ahead (D6) is a safe floor cell (`.`). The goal is visible at B5. To reach it, I need to navigate leftwards. Moving forward now will position me at D6, allowing me to then turn left and proceed toward B6 and then B5. There is no immediate danger ahead.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|#|#|#|#|#|?|?|\n06|#|G|L|.|#|?|?|\n07|#|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is at 06B, which is two cells west and one cell north of my current position (07D). Moving north first would lead to 06D, a dead end with lava to the west and walls elsewhere, requiring backtracking. Instead, I should move west along the corridor (07C, 07B) and then north to the goal. I am currently facing north, so I need to turn left to face west.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|#|#|#|#|#|?|\n05|?|#|.|.|G|#|?|\n06|?|#|L|.|L|#|?|\n07|?|#|.|^|.|#|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is visible at row 05 column E, two cells ahead and one cell to the right of my current position. The cell directly in front of me (D06) is a safe floor cell. Moving forward will bring me closer to the goal. I will move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|#|#|#|#|#|?|\n06|?|#|.|.|G|#|?|\n07|?|#|L|^|L|#|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is visible at (06,E), one step forward and one step right from my current position. The cell directly in front of me (06,D) is a floor and safe. The cells to my left (07,C) and right (07,E) are lava, so I cannot turn and move sideways. Moving forward is the only safe option. From (06,D), I can later turn right and move into the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|#|#|#|#|#|?|\n07|?|#|.|^|G|#|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is at E07, which is directly to the right of my current position at D07. I am currently facing up (north), so I need to turn right to face the goal. The cell in front of me (north) is a wall, so moving forward is not possible. Turning right will align me with the goal, allowing me to move forward in the next step.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|#|#|#|#|#|\n06|?|?|#|G|L|.|#|\n07|?|?|#|^|.|.|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is directly in front of me at row 06, column D, one cell away. The cell is marked as G, which is safe. I will move forward to reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

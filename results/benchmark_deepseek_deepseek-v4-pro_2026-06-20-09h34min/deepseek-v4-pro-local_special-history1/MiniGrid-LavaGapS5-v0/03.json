@@ -1,0 +1,64 @@
+{
+    "experiment": "deepseek-v4-pro-local_special-history1",
+    "config": {
+        "model_name": "deepseek-v4-pro",
+        "global_view": false,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 1
+    },
+    "code_version": {
+        "git_commit": "e8be24e326f6e3a39b677fdb472b451275a25a62",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 3,
+    "seed": 56605,
+    "max_steps": 15,
+    "steps": 5,
+    "success": 1,
+    "reward": 0.955,
+    "completed_at": "2026-06-20T13:10:50",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|#|#|#|#|#|\n05|?|?|#|.|.|G|#|\n06|?|?|#|.|L|L|#|\n07|?|?|#|^|.|.|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is at row 07, col D, facing north (up). The cell immediately ahead (row 06, col D) is safe floor ('.'). The goal is at row 05, col E. I can reach it by moving forward to (06, D), then forward to (05, D), then turning right and moving forward to (05, E). There is no lava in the forward path. So moving forward is the best next step.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|#|#|#|#|#|\n06|?|?|#|.|.|G|#|\n07|?|?|#|^|L|L|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is visible at row 06, column F. My current position is row 07, column D, facing north. The cell directly in front (row 06, column D) is a safe floor cell. Turning right would face east into lava (row 07, column E), and turning left would face west into a wall (row 07, column C). Therefore, moving forward is the only safe option to progress toward the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|?|#|#|#|#|#|\n07|?|?|#|^|.|G|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is visible at row 07 column F, two cells to the right. I am currently facing north. The cell in front is a wall, so I cannot move forward. The cell to my right is a free floor, so I will turn right to face east, then I can move forward towards the goal.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|#|#|#|#|#|\n05|?|?|#|G|L|.|#|\n06|?|?|#|.|L|.|#|\n07|?|?|#|^|.|.|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is at row 7, column D, facing upward. The cell directly ahead at row 6, column D is a safe floor tile. The goal is visible at row 5, column D, two steps ahead. Moving forward is the correct next step.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|#|#|#|#|#|\n06|?|?|#|G|L|.|#|\n07|?|?|#|^|L|.|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is directly in front of me at row 06, column D. I am facing north, and the cell ahead is marked G (goal). There is no lava in that cell. Moving forward will reach the goal safely.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

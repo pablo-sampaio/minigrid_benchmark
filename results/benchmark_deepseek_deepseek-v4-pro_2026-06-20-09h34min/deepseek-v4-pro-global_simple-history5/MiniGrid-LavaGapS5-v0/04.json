@@ -1,0 +1,64 @@
+{
+    "experiment": "deepseek-v4-pro-global_simple-history5",
+    "config": {
+        "model_name": "deepseek-v4-pro",
+        "global_view": true,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "e8be24e326f6e3a39b677fdb472b451275a25a62",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 4,
+    "seed": 31804,
+    "max_steps": 15,
+    "steps": 5,
+    "success": 1,
+    "reward": 0.955,
+    "completed_at": "2026-06-20T11:06:58",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#>..#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (1,1) facing right (`>`). The cell directly ahead at (1,2) is a floor (`.`). Moving forward is safe and moves me closer to the goal at (3,3). I will move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.>.#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am now at (1,2) facing right (`>`). The cell ahead at (1,3) is a floor (`.`). Moving forward is safe and brings me closer to the goal. I will move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#..>#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (1,3) facing right (`>`), but the cell ahead is a wall (`#`). To reach the goal at (3,3), I need to go down. From facing right, turning right will make me face down.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#..v#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI'm at (1,3) facing down (`v`). Moving forward will take me to (2,3), which is a floor cell. This brings me closer to the goal at (3,3).\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#...#\n#.Lv#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (2,3) facing down, and the goal is directly below me at (3,3). Moving forward will immediately reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

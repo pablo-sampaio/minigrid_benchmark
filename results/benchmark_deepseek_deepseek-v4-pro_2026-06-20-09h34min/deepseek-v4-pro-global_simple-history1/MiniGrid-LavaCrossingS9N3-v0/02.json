@@ -1,0 +1,152 @@
+{
+    "experiment": "deepseek-v4-pro-global_simple-history1",
+    "config": {
+        "model_name": "deepseek-v4-pro",
+        "global_view": true,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 1
+    },
+    "code_version": {
+        "git_commit": "e8be24e326f6e3a39b677fdb472b451275a25a62",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 2,
+    "seed": 3745,
+    "max_steps": 25,
+    "steps": 16,
+    "success": 1,
+    "reward": 0.9611111111111111,
+    "completed_at": "2026-06-20T09:52:04",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#>L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#>L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (1,1) facing right. To reach the goal at (7,7), a safe path is to go down along column 1 to row 7, then move right. Since I am facing right, I need to turn right to face down.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#vL.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (1,1) facing down. The cell directly ahead (2,1) is a safe floor (`.`). Moving forward will keep me on a clear path straight down column 1, which leads to row 7 without encountering lava. From there I can later turn right to reach the goal. Any turn now would face me into lava or a wall, so moving forward is the only safe and direct option.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#vL.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#vL.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (2,1) facing down (`v`). The goal is at (7,7). To avoid lava, I must move straight down along column 1 (all floor) until row 7, then turn left to face right and move to the goal. The cell directly ahead (row 3, column 1) is a floor (`.`), so moving forward is safe.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#vL.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 3, column 1, facing down. The cell directly in front of me (row 4, column 1) is a floor tile (`.`), which is safe to step onto. Moving forward will bring me closer to the goal, as I can continue down the leftmost column to reach the lower corridor.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#vL.L...#\n#.L.L...#\n#.LLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 4, column 1, facing down. The cell directly ahead (row 5, column 1) is a floor cell ('.'), which is safe. Moving forward will start my path toward the goal by heading downwards to reach row 7, where I can then go right along the clear path to the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#vL.L...#\n#.LLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 5, column 1, facing down (v). The cell directly ahead (row 6, column 1) is an empty floor (`.`), so moving forward is safe and brings me closer to the goal. I will move forward now and navigate around the lava later.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#vLLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 6, col 1, facing down. The cell directly below me is empty ('.'), and the goal is at row 7, col 7. To get to the goal, I need to move down into the empty row and then turn right. Moving forward now is safe and brings me closer to the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#v.....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am in the bottom row, facing down (v), and the goal (G) is to my right in the same row. To reach it, I need to turn left so that I face right (>).\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#>.....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 7, column 1, facing right (`>`). The goal `G` is at row 7, column 7. The cells directly ahead are all empty (`.`). Moving forward repeatedly will bring me to the goal. I should take one step forward now.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#.>....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am on row 7, facing right (`>`), with the goal `G` directly ahead in the same row and no obstacles. Moving forward will bring me closer to the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#..>...G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 7, column 3, facing right (>). The goal (G) is at row 7, column 7, and the cells between are all floor (.). I can move forward safely to get closer to the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#...>..G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 7, column 4, facing right (`>`). The goal `G` is at row 7, column 7, which is directly ahead along the same row with empty floor tiles in between. Moving forward will bring me closer to the goal without any obstacles or lava.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#....>.G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am in the bottom row (row 7), column 5, facing right. The cell directly ahead (col 6) is empty, and the goal is at col 7. There is no obstacle, so I can move forward to approach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#.....>G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am in the bottom row, facing right `>`, and the goal `G` is directly to my right. Moving forward will take me to the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

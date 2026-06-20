@@ -1,0 +1,64 @@
+{
+    "experiment": "deepseek-v4-pro-global_simple-history1",
+    "config": {
+        "model_name": "deepseek-v4-pro",
+        "global_view": true,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 1
+    },
+    "code_version": {
+        "git_commit": "e8be24e326f6e3a39b677fdb472b451275a25a62",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 4,
+    "seed": 31804,
+    "max_steps": 15,
+    "steps": 5,
+    "success": 1,
+    "reward": 0.955,
+    "completed_at": "2026-06-20T09:38:16",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#>..#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (1,1) facing right. The path to the goal at (3,3) requires moving right twice to (1,3), then down twice. Moving forward now is safe and moves me closer to the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.>.#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (1,2) facing right, as shown by `>`. The cell in front of me (1,3) is empty floor. Moving forward will bring me closer to the goal at (3,3) and keep me safe from the nearby lava. I will move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#..>#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 1, column 3 facing right. The goal is at row 3, column 3, directly below me. There is a wall directly in front of me, so I cannot move forward. I need to turn clockwise to face down, so I can then move toward the goal.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#..v#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (1,3) facing down, and the goal is at (3,3). The cell directly below me at (2,3) is empty, so moving forward is safe and brings me one step closer to the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#...#\n#.Lv#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (2,3) facing down. The cell directly in front of me is (3,3), which contains 'G' (the goal). Moving forward will successfully reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

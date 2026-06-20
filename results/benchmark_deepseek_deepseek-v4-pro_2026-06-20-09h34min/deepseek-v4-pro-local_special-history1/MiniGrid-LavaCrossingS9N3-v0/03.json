@@ -1,0 +1,224 @@
+{
+    "experiment": "deepseek-v4-pro-local_special-history1",
+    "config": {
+        "model_name": "deepseek-v4-pro",
+        "global_view": false,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 1
+    },
+    "code_version": {
+        "git_commit": "e8be24e326f6e3a39b677fdb472b451275a25a62",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 3,
+    "seed": 98163,
+    "max_steps": 25,
+    "steps": 25,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-20T13:36:41",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|L|L|.|L|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing north at row 7, column D. Directly ahead (row 6, column D) is lava, so moving forward is unsafe. To my left is a wall (column C all '#'). To my right is floor (row 7, column E). Turning right to face east will allow me to move onto safe ground and explore further, possibly finding a path around the lava and toward the goal.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|L|.|L|.|#|?|?|\n02|L|.|L|.|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is not visible in the current observation. My current position is at row 07, column D, facing up. Directly ahead, the cell at row 06, column D is a safe floor (`.`). The cells to my left (column C) and further left (column A) contain lava, and the cell to my right (column E) is a wall (`#`). Since the forward path is clear and safe, moving forward is the best option to explore and potentially locate the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|#|#|#|#|#|?|?|\n02|L|.|L|.|#|?|?|\n03|L|.|L|.|#|?|?|\n04|.|.|.|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at D07 facing north. The cell in front (D06) is empty floor, so moving forward is safe. There is a wall to my right (E07) and lava to my left (C07). I see no goal yet, but moving north along column D will allow me to explore further.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|#|#|#|#|#|?|?|\n03|L|.|L|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|.|.|.|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is at row 07, column D facing up. The cell directly ahead (row 06, col D) is a floor cell, so moving forward is safe. The left and right cells are lava and wall respectively, so forward is the only safe immediate move. Moving forward will reveal more of the map above, which is currently unknown beyond row 02. I will move forward to explore.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|#|#|#|#|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|.|.|.|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell directly in front of me (06D) is a safe floor (`.`). The goal is not currently visible, so I need to explore further. Moving forward will bring me to a new position and reveal more of the map, which could help locate the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|#|#|#|#|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|#|#|#|#|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|#|#|#|#|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|#|#|#|#|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (7,D) facing up. The cell directly ahead at (6,D) is floor (`.`), safe to step on. The lava cells are to the left and right. There is a wall at (4,D) ahead but not immediately dangerous. I will move forward to explore further, as the goal is not yet visible.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|#|#|#|#|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|#|#|#|#|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|#|#|#|#|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|#|#|#|#|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 7, column D, facing north. The cell in front of me (06D) is empty but it leads to a dead end: forward is a wall (05D), left is lava (06C), and right is a wall (06E). Moving forward would trap me. I cannot move left or right because those cells are lava and wall. Therefore, the only unexplored direction is behind me (south). To see what's behind, I need to turn around. I'll start by turning right to eventually face south.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|#|#|#|#|#|#|\n07|?|#|.|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|#|#|#|#|#|#|\n07|?|#|.|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is at row 07, column D. The cell directly in front (if facing up) is a wall (# at D06). To the left (C07) is floor, to the right (E07) is floor. Since the right side has a longer open corridor (E07, F07, G07 are all floor), I will turn right to face east in order to explore that direction.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|#|#|#|#|\n02|?|?|#|.|L|.|L|\n03|?|?|#|.|L|.|L|\n04|?|?|#|.|L|.|L|\n05|?|?|#|.|L|.|L|\n06|?|?|#|.|.|.|.|\n07|?|?|#|^|L|.|L|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is at row 07, column D, facing north. The cell directly ahead (row 06, column D) is a safe floor (`.`). The cells to the left and right are a wall (`#`) and lava (`L`), respectively, so turning would not allow forward movement. The goal is not yet visible, so moving forward is the best way to explore and find it.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|#|#|#|#|#|\n03|?|?|#|.|L|.|L|\n04|?|?|#|.|L|.|L|\n05|?|?|#|.|L|.|L|\n06|?|?|#|.|L|.|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|#|#|#|#|#|\n03|?|?|#|.|L|.|L|\n04|?|?|#|.|L|.|L|\n05|?|?|#|.|L|.|L|\n06|?|?|#|.|L|.|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|#|#|#|#|#|\n03|?|?|#|.|L|.|L|\n04|?|?|#|.|L|.|L|\n05|?|?|#|.|L|.|L|\n06|?|?|#|.|L|.|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|#|#|#|#|#|\n03|?|?|#|.|L|.|L|\n04|?|?|#|.|L|.|L|\n05|?|?|#|.|L|.|L|\n06|?|?|#|.|L|.|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|#|#|#|#|#|\n03|?|?|#|.|L|.|L|\n04|?|?|#|.|L|.|L|\n05|?|?|#|.|L|.|L|\n06|?|?|#|.|L|.|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is at row 07, column D, facing north. The cell directly ahead (row 06, column D) is clear floor (`.`). The cells to the left (column C) are walls, and to the right (column E) are lava. Since the goal is not yet visible, moving forward into the safe floor cell is the prudent choice to continue exploration.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|#|#|#|#|#|\n04|?|?|#|.|L|.|L|\n05|?|?|#|.|L|.|L|\n06|?|?|#|.|L|.|L|\n07|?|?|#|^|L|.|L|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is at row 07, column D, facing north (as indicated by `^`). The cell directly ahead (row 06, column D) is a safe floor (`.`). The cell to the right (east, row 07, column E) is lava (`L`), and the cell to the left (west, row 07, column C) is a wall (`#`). Therefore, the only safe move is to advance north into the corridor. Turning would not allow forward movement due to lava or walls. The goal is not yet visible, so exploration by moving forward is necessary.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|#|#|#|#|#|\n05|?|?|#|.|L|.|L|\n06|?|?|#|.|L|.|L|\n07|?|?|#|^|L|.|L|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07, column D, facing north. Directly in front of me is a floor cell (row 06, column D), safe to move into. To my left is a wall, to my right is lava. The goal is not yet visible. Moving forward will advance into the only safe adjacent cell and may reveal more of the map ahead.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|#|#|#|#|#|\n06|?|?|#|.|L|.|L|\n07|?|?|#|^|L|.|L|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe agent is at row 7 column D, facing north (up). The cell directly ahead (row 6 column D) is floor (.), which is safe to move into. The goal is not yet visible, so moving forward is the best option to explore further. No immediate threats in the forward direction.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|?|#|#|#|#|#|\n07|?|?|#|^|L|.|L|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        }
+    ]
+}

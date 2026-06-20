@@ -1,0 +1,144 @@
+{
+    "experiment": "deepseek-v4-pro-local_special-history5",
+    "config": {
+        "model_name": "deepseek-v4-pro",
+        "global_view": false,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "e8be24e326f6e3a39b677fdb472b451275a25a62",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 2,
+    "seed": 52995,
+    "max_steps": 15,
+    "steps": 15,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-20T14:37:23",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|#|#|#|#|#|\n05|?|?|#|.|.|G|#|\n06|?|?|#|L|.|L|#|\n07|?|?|#|^|.|.|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is at F5. My current position is D7 facing north. Directly ahead is lava at D6, so moving forward is not safe. To my left, C7 is a wall. To my right, E7 is an empty floor. I will turn right to face east and then move east onto E7. From there, I can turn left to face north and move to E6, then E5, then turn right to reach the goal at F5, avoiding the lava at F6.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|#|#|#|#|#|?|?|\n05|#|G|L|.|#|?|?|\n06|#|.|.|.|#|?|?|\n07|#|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is at B5. My current position is D7 facing north. Directly ahead is floor at D6, safe. Lava is at C7 left and C5 above left. Walls are at A7, E7, and D4. A safe path is: D7 north to D6, then west to C6, west to B6, then north to B5 (goal). So first, move forward to D6.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|#|#|#|#|#|?|?|\n06|#|G|L|.|#|?|?|\n07|#|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is at B5. I am currently at D6 facing north. To reach the goal, I need to move west to C6, then west to B6, then north to B5. First, I turn left to face west.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|#|#|#|#|#|?|\n05|?|#|.|.|G|#|?|\n06|?|#|L|.|L|#|?|\n07|?|#|.|^|.|#|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at D7 facing north. Ahead is D6 (floor, safe). D5 is floor, and the goal is at E5 to the east. I need to move north to D6, then D5, then turn right and move east to the goal. First step: move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|#|#|#|#|#|?|\n06|?|#|.|.|G|#|?|\n07|?|#|L|^|L|#|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at D7 facing north. The cell ahead (D6) is safe floor. Moving forward will take me to D6. The goal is at E6, which is to the east. After moving to D6, I can turn right and move east to the goal. So I will move forward now.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|#|#|#|#|#|?|\n07|?|#|.|^|G|#|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at D7 facing north. The goal is at E7, immediately to my right (east). I should turn right to face east, then move forward to reach the goal.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|#|#|#|#|#|\n06|?|?|#|G|L|.|#|\n07|?|?|#|^|.|.|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at D7 facing east. The goal is at D6, which is directly north of me. I need to turn left to face north, then move forward to reach the goal.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|#|#|#|#|#|?|\n07|?|#|.|^|G|#|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at D7 facing east. The goal is at E7, directly in front of me. I will move forward to reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|#|#|#|#|#|?|\n07|?|#|.|^|G|#|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is at E7, directly in front of me. I will move forward to reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|#|#|#|#|#|?|\n07|?|#|.|^|G|#|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is at E7, directly in front of me. I will move forward to reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|#|#|#|#|#|?|\n07|?|#|.|^|G|#|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is at E7, directly in front of me. I will move forward to reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|#|#|#|#|#|?|\n07|?|#|.|^|G|#|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|#|#|#|#|#|?|\n07|?|#|.|^|G|#|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is at E7, directly in front of me. I will move forward to reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|#|#|#|#|#|?|\n07|?|#|.|^|G|#|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is at E7, directly in front of me. I will move forward to reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|#|#|#|#|#|?|\n07|?|#|.|^|G|#|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is at E7, directly in front of me. I will move forward to reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

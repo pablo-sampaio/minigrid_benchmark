@@ -1,0 +1,64 @@
+{
+    "experiment": "gpt-5.4-local_special-history5",
+    "config": {
+        "model_name": "gpt-5.4",
+        "global_view": false,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "1828c3b71085ed842496c5551fe000c3e861aebd",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 3,
+    "seed": 56605,
+    "max_steps": 15,
+    "steps": 5,
+    "success": 1,
+    "reward": 0.955,
+    "completed_at": "2026-06-20T18:39:04",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|#|#|#|#|#|\n05|?|?|#|.|.|G|#|\n06|?|?|#|.|L|L|#|\n07|?|?|#|^|.|.|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is visible up ahead and to the right. I am facing upward, and the cell directly in front of me is open floor, so moving forward is safe and brings me closer to the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|#|#|#|#|#|\n06|?|?|#|.|.|G|#|\n07|?|?|#|^|L|L|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am still facing upward. The cell directly in front of me is open floor, while the cells to the right contain lava. Moving forward is safe and continues toward the visible goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|?|#|#|#|#|#|\n07|?|?|#|^|.|G|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is now visible two cells to my right on the same row, and the cell immediately to my right is safe floor. Since I am facing upward, I should turn right to align myself toward the open path to the goal.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|#|#|#|#|#|\n05|?|?|#|G|L|.|#|\n06|?|?|#|.|L|.|#|\n07|?|?|#|^|.|.|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am still facing upward. The cell directly ahead is safe floor, while turning right would point toward a corridor with lava nearby. Moving forward keeps me on a safe path and brings me closer to the goal’s row.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|#|#|#|#|#|\n06|?|?|#|G|L|.|#|\n07|?|?|#|^|L|.|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is directly ahead one cell, and that cell is safe. The cell to the right contains lava, so the best action is to move straight to reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

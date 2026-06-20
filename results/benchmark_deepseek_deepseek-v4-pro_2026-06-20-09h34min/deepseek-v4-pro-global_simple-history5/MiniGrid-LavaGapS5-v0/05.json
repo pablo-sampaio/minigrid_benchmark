@@ -1,0 +1,88 @@
+{
+    "experiment": "deepseek-v4-pro-global_simple-history5",
+    "config": {
+        "model_name": "deepseek-v4-pro",
+        "global_view": true,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "e8be24e326f6e3a39b677fdb472b451275a25a62",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 5,
+    "seed": 41726,
+    "max_steps": 15,
+    "steps": 8,
+    "success": 1,
+    "reward": 0.9279999999999999,
+    "completed_at": "2026-06-20T11:08:02",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#>L.#\n#.L.#\n#..G#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (1,1) facing right. The cell directly ahead (1,2) is lava (L), so moving forward is unsafe. Turning left would make me face up toward a wall (0,1). Turning right will orient me downward toward an empty floor cell (2,1), which is safe to move into.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#vL.#\n#.L.#\n#..G#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (1,1) facing down. The cell directly ahead (2,1) is a floor (.), safe to step on. Moving there gets me closer to the goal at (3,3). From there, I can later turn left to face right and approach the goal while avoiding the lava cells.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.L.#\n#vL.#\n#..G#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (2,1) facing down. The cell directly ahead (3,1) is a floor (.), safe to step on. Moving forward will bring me closer to the goal at (3,3) by moving to the same row.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.L.#\n#.L.#\n#v.G#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (3,1) facing down. The cell directly ahead (4,1) is a wall, so I cannot move forward. The goal is at (3,3) to my right. I need to turn clockwise to face right, then move forward to reach the goal.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.L.#\n#.L.#\n#<.G#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently facing left (<). The goal is two cells to the right (east), at (3,3). I need to change my orientation to right (>) to move towards it. Turning clockwise (TURN_RIGHT) once will make me face up (^), and then another turn will make me face right. I will start by turning right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.L.#\n#.L.#\n#^.G#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am now facing up (^) at (3,1). The goal is at (3,3) to the right. I need to face right to move towards it. Turning clockwise (TURN_RIGHT) from up will orient me to the right (>). Then I can move forward.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.L.#\n#.L.#\n#>.G#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing right (>) with an empty cell directly ahead at (3,2). The goal is at (3,3). I can safely move forward one step to get closer.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.L.#\n#.L.#\n#.>G#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am one step away from the goal, facing right. Moving forward will place me on the goal cell.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

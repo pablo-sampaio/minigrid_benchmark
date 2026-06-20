@@ -1,0 +1,144 @@
+{
+    "experiment": "deepseek-v4-pro-global_simple-history5",
+    "config": {
+        "model_name": "deepseek-v4-pro",
+        "global_view": true,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "e8be24e326f6e3a39b677fdb472b451275a25a62",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 2,
+    "seed": 3745,
+    "max_steps": 25,
+    "steps": 15,
+    "success": 1,
+    "reward": 0.9611111111111111,
+    "completed_at": "2026-06-20T11:17:13",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#>L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#>L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>I am facing right, but the cell directly ahead is lava. To reach the goal at the bottom right, I should navigate down the leftmost column, which appears clear. I need to turn right to face down.</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#vL.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>I am facing down, and the cell below is empty. I should move forward to progress towards the goal.</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#vL.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>I am now in the left column, facing down. The cell below is clear. I can continue moving down to reach the bottom row, where I will turn right to reach the goal.</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#vL.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing down, and the cell below me is an empty floor, so I can safely move forward to continue along the left pathway toward the bottom row.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#vL.L...#\n#.L.L...#\n#.LLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing down, and the cells below are clear floor. I will continue moving down to reach the bottom row, where I can then turn right toward the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#vL.L...#\n#.LLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at the row with the \"v\" (row 6 in the display) facing down. The cell below me is an empty floor, so I can safely move forward to reach the bottom row.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#vLLLLLL#\n#......G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 6, column 1, facing down. The cell directly below is empty floor, so moving forward is safe and brings me to the bottom row. From there I can turn left to face right and move toward the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#v.....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 7, column 1, facing down (`v`). The cell directly below is a wall, so I cannot move forward. To reach the goal at (7,7) to the right, I need to change orientation to face right. Turning left from down will face me right.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#>.....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am now facing right (`>`) and the path to the goal is clear, all empty floor cells. I can move forward safely toward the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#.>....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am now at (7,2) facing right. The path ahead is clear with empty floor, and the goal is five cells away. I will continue moving forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#..>...G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am now at row 7, column 3, facing right. The goal is at column 7, four cells ahead with all empty floor. I will move forward again.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#...>..G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am now at row 7, column 4, facing right. The goal is three cells ahead at column 7. The path is clear, so I will move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#....>.G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 7, column 5, facing right. The goal is two cells ahead at column 7, with an empty cell at column 6. I will move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.L.L...#\n#.LLLLLL#\n#.....>G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 7, column 6, facing right. The goal is directly ahead at column 7. I will move forward to reach it.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

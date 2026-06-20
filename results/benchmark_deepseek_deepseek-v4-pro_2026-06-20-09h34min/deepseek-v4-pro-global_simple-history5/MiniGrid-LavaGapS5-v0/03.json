@@ -1,0 +1,72 @@
+{
+    "experiment": "deepseek-v4-pro-global_simple-history5",
+    "config": {
+        "model_name": "deepseek-v4-pro",
+        "global_view": true,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "e8be24e326f6e3a39b677fdb472b451275a25a62",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 3,
+    "seed": 56605,
+    "max_steps": 15,
+    "steps": 6,
+    "success": 1,
+    "reward": 0.955,
+    "completed_at": "2026-06-20T11:06:32",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#>..#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (1,1) facing right. The goal is at (3,3). The cell directly ahead (1,2) is floor, and the path to the goal is east then south. I will move forward to get closer.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.>.#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am now at (1,2) facing right. The cell directly ahead (1,3) is floor. I need to go south later, but for now I can continue moving east to get out of the corridor.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#..>#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": ""
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#..>#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at (1,3) facing right, and the cell directly ahead (1,4) is a wall. To reach the goal at (3,3), I need to go south. Turning right will orient me down, allowing me to move into the floor cells below.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#..v#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing down, and the cell directly ahead (2,3) is floor. Moving forward will bring me closer to the goal at (3,3). No lava in the way.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#...#\n#.Lv#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 2, column 3, facing down. The cell directly ahead (row 3, column 3) is the goal 'G'. Moving forward will reach the goal immediately, and no walls or lava block the path.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}
