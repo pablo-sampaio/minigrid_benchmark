@@ -75,9 +75,9 @@ def run_benchmark_minigrid(
     configs = _build_default_8_configs(model_name=model_id, model=model)
 
     if results_folder_name is None or results_folder_name.strip() == "":
-        model_id_simplified = model_id.replace("/", "_")  # replace / with _ for file/folder names
-        curr_date_time_str = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        experiment_name = f"benchmark_{provider}_{model_id_simplified}_{curr_date_time_str}"
+        model_id_simplified = model_id.replace("/", "_")  # replace / with _ for names "developer/model_id"
+        curr_date_time_str = datetime.datetime.now().strftime("%Y-%m-%d_%Hh-%Mmin")
+        results_folder_name = f"benchmark_{provider}_{model_id_simplified}_{curr_date_time_str}"
 
     run_results = run_and_save_experiments(configs, experiment_name=results_folder_name, verbose=verbose)
 

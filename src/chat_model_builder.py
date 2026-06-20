@@ -86,6 +86,8 @@ def build_chat_model(provider: str, model_id: str, api_key: str|None, max_output
             task="text-generation",
             pipeline_kwargs={
                 "do_sample": True,
+                # Avoid transformers warning when models ship with default max_length.
+                "max_length": None,
                 "max_new_tokens": max_output_tokens,
                 "return_full_text": False,
             },
