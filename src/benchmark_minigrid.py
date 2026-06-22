@@ -8,7 +8,8 @@ from langchain.chat_models.base import BaseChatModel
 
 import experiments_util
 from experiments_util import create_experiment_config, run_and_save_experiments
-from chat_model_builder import resolve_api_key, build_chat_model
+from chat_model_builder import build_chat_model
+from run_full_benchmark_minigrid_helpers import resolve_api_key
 
 
 SUPPORTED_PROVIDERS = ("openai", "deepseek", "hf")
