@@ -9,7 +9,6 @@ from langchain.chat_models.base import BaseChatModel
 import experiments_util
 from experiments_util import create_experiment_config, run_and_save_experiments
 from chat_model_builder import build_chat_model
-from run_full_benchmark_minigrid_helpers import resolve_api_key
 
 
 SUPPORTED_PROVIDERS = ("openai", "deepseek", "hf")
@@ -65,11 +64,10 @@ def run_benchmark_minigrid(
     if results_base_dir:
         experiments_util.RESULTS_BASE_DIR = os.path.abspath(results_base_dir)
 
-    resolved_key = resolve_api_key(provider, api_key)
     model = build_chat_model(
         provider=provider,
         model_id=model_id,
-        api_key=resolved_key,
+        api_key=api_key,
         max_output_tokens=max_new_tokens,
         hf_quantization=quantization
     )
