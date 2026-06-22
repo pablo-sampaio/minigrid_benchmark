@@ -98,9 +98,12 @@ def resolve_api_key(provider: str, execution_env: str = "local") -> str | None:
         from google.colab import userdata
 
         for secret_name in secret_names:
-            api_key = userdata.get(secret_name)
-            if api_key:
-                return api_key
+            try:
+                api_key = userdata.get(secret_name)            
+                if api_key:
+                    return api_key
+            except Exception:
+                api_key = None
 
     elif execution_env == "kaggle":
         from kaggle_secrets import UserSecretsClient
@@ -109,10 +112,10 @@ def resolve_api_key(provider: str, execution_env: str = "local") -> str | None:
         for secret_name in secret_names:
             try:
                 api_key = user_secrets.get_secret(secret_name)
+                if api_key:
+                    return api_key
             except Exception:
                 api_key = None
-            if api_key:
-                return api_key
 
     for secret_name in secret_names:
         api_key = os.getenv(secret_name)
