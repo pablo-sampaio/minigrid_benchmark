@@ -93,7 +93,15 @@ def configure_results_dir(execution_env: str, repo_path: str) -> str:
 
 def resolve_api_key(provider: str, execution_env: str = "local") -> str | None:
     provider = provider.strip().lower()
-    secret_names = _provider_key_options(provider)
+
+    secret_names = None
+    if provider == "openai":
+        secret_names = ["OPENAI_API_KEY", "OPENAI_KEY"]
+    if provider == "deepseek":
+        secret_names = ["DEEPSEEK_API_KEY", "DEEPSEEK_KEY"]
+    if provider == "hf":
+        secret_names = ["HF_API_KEY", "HF_TOKEN"]
+
     if not secret_names:
         warnings.warn(f"Provider '{provider}' is not recognized for API key resolution.")
         return None
@@ -206,13 +214,3 @@ def zip_results_for_export(execution_env: str, summary_path: str) -> str | None:
     zip_path = os.path.join(os.path.dirname(benchmark_result_dir), f"{benchmark_name}_results_zip")
     shutil.make_archive(zip_path, "zip", benchmark_result_dir)
     return f"{zip_path}.zip"
-
-
-def _provider_key_options(provider: str) -> list[str]:
-    if provider == "openai":
-        return ["OPENAI_API_KEY", "OPENAI_KEY"]
-    if provider == "deepseek":
-        return ["DEEPSEEK_API_KEY", "DEEPSEEK_KEY"]
-    if provider == "hf":
-        return ["HF_API_KEY", "HF_TOKEN"]
-    return []
