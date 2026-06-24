@@ -1,0 +1,32 @@
+{
+    "experiment": "google/gemma-4-E2B-it-local_special-history5",
+    "config": {
+        "model_name": "google/gemma-4-E2B-it",
+        "global_view": false,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "73653c84731a5961d5ef9f455cdd063fce5e6697",
+        "git_dirty": false
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 3,
+    "seed": 98163,
+    "max_steps": 25,
+    "steps": 1,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-24T21:37:37",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|L|L|.|L|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal 'G' is not visible in the current observation. I am at row 7, column 3 ('^').\nThe map is 8x8.\nCurrent view:\nRow 01: ? ? # . . . . .\nRow 02: ? ? # L L . L .\nRow 03: ? ? # . . . . .\nRow 04: ? ? # L L L L L\nRow 05: ? ? # . . . . .\nRow 06: ? ? # L L L L L\nRow 07: ? ? # ^ . . . .\n\nI am at (7, 3).\nLooking forward (East, column 4): (7, 4) is '.', which is safe.\nLooking left (West, column 2): (7, 2) is '#', a wall.\nLooking up (North, row 6): (6, 3) is 'L', lava.\nLooking down (South, row 8 - out of bounds): N/A.\n\nMoving forward seems like the best immediate step to explore the open area.\n</thought>\n<action>\nMOVE_FORWARD\n</action><turn|>"
+        }
+    ]
+}

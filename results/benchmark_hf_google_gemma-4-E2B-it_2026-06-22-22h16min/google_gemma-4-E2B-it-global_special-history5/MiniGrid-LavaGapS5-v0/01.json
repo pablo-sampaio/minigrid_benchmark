@@ -1,0 +1,32 @@
+{
+    "experiment": "google/gemma-4-E2B-it-global_special-history5",
+    "config": {
+        "model_name": "google/gemma-4-E2B-it",
+        "global_view": true,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "73653c84731a5961d5ef9f455cdd063fce5e6697",
+        "git_dirty": false
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 1,
+    "seed": 45108,
+    "max_steps": 15,
+    "steps": 1,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-24T14:45:52",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|>|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal 'G' is at row 4, column D.\nMy current position is implicitly at the cell marked by the orientation symbol. Looking at the observation:\nRow 2: `#|>|L|.|#` -> I am at row 2, column B (based on the orientation symbol `>`).\nMy current orientation is right (`>`).\n\nCurrent state:\nPosition: (2, B)\nDirection: Right (>)\n\nGoal: (4, D)\n\nFrom (2, B), moving right leads to (2, C), which is `.`.\nFrom (2, C), moving right leads to (2, D), which is `.`.\nFrom (2, D), moving right leads to (2, E), which is `#` (wall).\nFrom (2, C), moving down leads to (3, C), which is `.`.\nFrom (3, C), moving down leads to (4, C), which is `L` (lava). This path is blocked.\n\nLet's try moving forward from (2, B) rightwards.\n1. Move forward: (2, C)\n2. At (2, C), facing right. Move forward: (2, D)\n3. At (2, D), facing right. Move forward: (2, E) -> Wall (`#`). Must turn.\n\nIf I move to (2, C):\nCurrent state: Position (2, C), Direction (>)\nMove forward: (2, D)\nCurrent state: Position (2, D), Direction (>)\nMove forward: (2, E) -> Wall. Need to turn.\n\nIf I turn right at (2, C): New direction is Down (`v`).\nFrom (2, C) facing down: (3, C) is `.`.\nFrom (3, C) facing down: (4, C) is `L`. Blocked.\n\nLet's re-evaluate the path to G at (4, D).\n\nCurrent position (2, B), facing Right (>).\n\nPath 1: Go right twice, then down.\n1. Move Forward: (2, C). Still facing Right.\n2. Move Forward: (2, D). Still facing Right.\n3. Now at (2, D), facing Right. I need to go down to row 4. I must turn down.\n   Action: TURN_RIGHT (Now facing Down, `v`).\n4. Move Forward: (3, D). Still facing Down.\n5. Move Forward: (4, D). GOAL!\n\nThis seems like a valid path.\n\nStep 1: Move forward (to (2, C)).\n</thought>\n<action>\nMOVE_FORWARD\n</action><turn|>"
+        }
+    ]
+}

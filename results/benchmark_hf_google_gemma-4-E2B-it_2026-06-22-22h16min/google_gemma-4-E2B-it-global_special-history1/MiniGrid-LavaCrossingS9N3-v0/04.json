@@ -1,0 +1,32 @@
+{
+    "experiment": "google/gemma-4-E2B-it-global_special-history1",
+    "config": {
+        "model_name": "google/gemma-4-E2B-it",
+        "global_view": true,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 1
+    },
+    "code_version": {
+        "git_commit": "498acfe80dcea2d89bef9bb77c7d188c08ce68a1",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 4,
+    "seed": 48547,
+    "max_steps": 25,
+    "steps": 1,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-23T00:25:23",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|>|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|.|.|.|.|.|.|.|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is to reach 'G' at row 8, column H.\nMy current position is not explicitly given, but the orientation is `>`.\nLet's map the grid based on the observation. The grid seems to be 10 rows (01 to 10) and 9 columns (A to I).\n\nObservation breakdown:\nRow 02: `#|>|L|.|.|.|L|.|#` (At column B, facing right `>`)\nRow 03: `#|.|L|.|.|.|L|.|#`\nRow 04: `#|.|L|.|.|.|L|.|#`\nRow 05: `#|.|L|.|.|.|L|.|#`\nRow 06: `#|.|.|.|.|.|.|.|#`\nRow 07: `#|L|L|L|L|L|L|.|#`\nRow 08: `#|.|L|.|.|.|L|G|#` (Goal 'G' is at column H)\nRow 09: `#|#|#|#|#|#|#|#|#|`\n\nThe current orientation is `>`. I am at row 2, column B.\nGoal is at row 8, column H.\n\nFrom (2, B) facing right:\nMove forward (right) leads to (2, C). (2, C) is '.' (safe).\nFrom (2, C) facing right leads to (2, D). (2, D) is '.' (safe).\nFrom (2, D) facing right leads to (2, E). (2, E) is '.' (safe).\nFrom (2, E) facing right leads to (2, F). (2, F) is '.' (safe).\nFrom (2, F) facing right leads to (2, G). (2, G) is '.' (safe).\nFrom (2, G) facing right leads to (2, H). (2, H) is '.' (safe).\nFrom (2, H) facing right leads to (2, I). (2, I) is '#'. Stop.\n\nThis path seems viable for now. I will continue moving forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action><turn|>"
+        }
+    ]
+}

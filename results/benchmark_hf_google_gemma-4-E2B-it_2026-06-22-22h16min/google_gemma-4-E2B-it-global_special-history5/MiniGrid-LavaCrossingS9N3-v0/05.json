@@ -1,0 +1,32 @@
+{
+    "experiment": "google/gemma-4-E2B-it-global_special-history5",
+    "config": {
+        "model_name": "google/gemma-4-E2B-it",
+        "global_view": true,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "73653c84731a5961d5ef9f455cdd063fce5e6697",
+        "git_dirty": false
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 5,
+    "seed": 8805,
+    "max_steps": 25,
+    "steps": 1,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-24T15:50:14",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|>|L|.|.|.|.|.|#|\n03|#|.|L|.|.|.|.|.|#|\n04|#|.|L|.|.|.|.|.|#|\n05|#|.|L|L|L|L|L|L|#|\n06|#|.|.|.|.|.|.|.|#|\n07|#|L|L|L|L|L|.|L|#|\n08|#|.|L|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal 'G' is at row 8, column H.\nMy current position is not explicitly given by coordinates, but the orientation symbol `>` at row 02, column B suggests I am at (2, B) facing right.\n\nMap interpretation:\nRows are 01 to 09. Columns are A to I.\nCurrent state: Row 02, Column B, facing right (>).\n\nMap details:\n01: # # # # # # # # # #\n02: # > | L | . | . | . | . | . | . | #  (At (2, B), facing right)\n03: # . | L | . | . | . | . | . | #\n04: # . | L | . | . | . | . | . | . | #\n05: # . | L | L | L | L | L | L | L | #\n06: # . | . | . | . | . | . | . | . | #\n07: # L | L | L | L | L | . | L | #\n08: # . | L | . | . | . | . | . | G | #  (Goal at (8, H))\n09: # # # # # # # # # #\n\nFrom (2, B) facing right (>):\n1. Move forward to (2, C). Cell (2, C) is '.'. This is safe.\n2. From (2, C), I can continue moving right.\n3. I need to navigate towards (8, H).\n\nLet's plan a path:\nCurrent: (2, B) facing >.\nMove 1: MOVE_FORWARD -> (2, C). Still facing >.\nMove 2: MOVE_FORWARD -> (2, D). Cell (2, D) is '.'. Still facing >.\nMove 3: MOVE_FORWARD -> (2, E). Cell (2, E) is '.'. Still facing >.\nMove 4: MOVE_FORWARD -> (2, F). Cell (2, F) is '.'. Still facing >.\nMove 5: MOVE_FORWARD -> (2, G). Cell (2, G) is '.'. Still facing >.\nMove 6: MOVE_FORWARD -> (2, H). Cell (2, H) is '.'. Still facing >.\nMove 7: MOVE_FORWARD -> (2, I). Cell (2, I) is '#'. Stop.\n\nIf I reach (2, H) facing right, I need to go down to reach row 8. I must turn.\n\nFrom (2, H) facing right (>):\nTurn_RIGHT -> Facing Down (v).\nMOVE_FORWARD -> (3, H). Cell (3, H) is '.'.\n... repeat until row 8.\n\nLet's execute the moves step by step.\nCurrent: (2, B), facing >.\nNext step: MOVE_FORWARD to (2, C).\n</thought>\n<action>\nMOVE_FORWARD\n</action><turn|>"
+        }
+    ]
+}

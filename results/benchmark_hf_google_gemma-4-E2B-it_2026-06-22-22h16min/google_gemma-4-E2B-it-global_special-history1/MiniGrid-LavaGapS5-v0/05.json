@@ -1,0 +1,32 @@
+{
+    "experiment": "google/gemma-4-E2B-it-global_special-history1",
+    "config": {
+        "model_name": "google/gemma-4-E2B-it",
+        "global_view": true,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 1
+    },
+    "code_version": {
+        "git_commit": "498acfe80dcea2d89bef9bb77c7d188c08ce68a1",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 5,
+    "seed": 41726,
+    "max_steps": 15,
+    "steps": 1,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-22T23:32:36",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|>|L|.|#|\n03|#|.|L|.|#|\n04|#|.|.|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal 'G' is at position (row 4, column D).\nMy current observation shows:\nRow 01: # # # # #\nRow 02: # > | L | . | #\nRow 03: # . | L | . | #\nRow 4: # . | . | G | #\nRow 04: # . | . | G | # (Wait, the observation format seems to imply the orientation symbol is part of the row data, let's re-examine the input structure based on the prompt's example.)\n\nThe prompt structure is:\n`--|A|B|C|D|E|` (Header/Labels)\n`01|#|#|#|#|#|` (Row 1)\n`02|#|>|L|.|#|` (Row 2) -> This implies my position/orientation is at the start of the row, or the orientation symbol is just placed there.\n`03|#|.|L|.|#|`\n`04|#|.|.|G|#|`\n`05|#|#|#|#|#|`\n\nLet's assume the orientation symbol is *at* my current location, and the grid coordinates are implicit.\nIf I look at row 02: `|>` is present. This suggests I am at a position marked by `>`.\nIf I am at (R2, C2) facing right (`>`).\nThe goal 'G' is at (R4, C4).\n\nCurrent state: Facing right (`>`).\nGoal: (4, 3) if we use 0-indexing for columns (A=0, B=1, C=2, D=3, E=4).\n\nFrom (2, 2) facing right:\n1. Move forward: (2, 3). Cell (2, 3) is '.'. Safe.\n2. Move forward: (2, 4). Cell (2, 4) is '#'. Blocked.\n\nLet's try moving forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action><turn|>"
+        }
+    ]
+}

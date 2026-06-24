@@ -1,0 +1,32 @@
+{
+    "experiment": "google/gemma-4-E2B-it-global_special-history1",
+    "config": {
+        "model_name": "google/gemma-4-E2B-it",
+        "global_view": true,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 1
+    },
+    "code_version": {
+        "git_commit": "498acfe80dcea2d89bef9bb77c7d188c08ce68a1",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 1,
+    "seed": 45108,
+    "max_steps": 15,
+    "steps": 1,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-22T22:56:51",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|>|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently at row 02, column B, and facing right (`>`).\nThe goal 'G' is at row 04, column D.\nMy current position is (2, B).\nI need to move towards (4, D).\n\nCurrent state:\nRow 02: # | > | . | L | . | #\nRow 03: # | . | . | . | . | #\nRow 4: # | . | L | G | #\n\n1.  **Move Forward**: If I move forward, I go to (2, C). Cell (2, C) is '.', which is safe.\n2.  From (2, C), I can move forward again to (2, D). Cell (2, D) is '.', which is safe.\n3.  From (2, D), I can move forward again to (2, E). Cell (2, E) is '#', which is a wall (invalid move).\n\nLet's try moving forward first.\n</thought>\n<action>\nMOVE_FORWARD\n</action><turn|>"
+        }
+    ]
+}
