@@ -1,0 +1,64 @@
+{
+    "experiment": "Qwen/Qwen2.5-7B-Instruct-global_simple-history5",
+    "config": {
+        "model_name": "Qwen/Qwen2.5-7B-Instruct",
+        "global_view": true,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "73653c84731a5961d5ef9f455cdd063fce5e6697",
+        "git_dirty": false
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 1,
+    "seed": 40926,
+    "max_steps": 25,
+    "steps": 5,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-24T17:56:34",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#>L...L.#\n#.L...L.#\n#.L...L.#\n#.LLLLLL#\n#.....L.#\n#.L.....#\n#.L...LG#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nCurrently, I am facing right (`>`), and I can see that there are lava cells (`L`) directly ahead and to the sides. The goal is located at the top-right corner of the map. To avoid the lava and reach the goal, I should first turn left to face down (`v`) and then move forward until I am aligned with the top row where the goal is located.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#^L...L.#\n#.L...L.#\n#.L...L.#\n#.LLLLLL#\n#.....L.#\n#.L.....#\n#.L...LG#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nNow that I have turned left, I am facing down (`^`). The next step is to move forward to align myself with the top row where the goal is located.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#^L...L.#\n#.L...L.#\n#.L...L.#\n#.LLLLLL#\n#.....L.#\n#.L.....#\n#.L...LG#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nAfter moving forward, I am still not aligned with the top row. I need to continue moving forward until I reach the top row where the goal is located.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#^L...L.#\n#.L...L.#\n#.L...L.#\n#.LLLLLL#\n#.....L.#\n#.L.....#\n#.L...LG#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI have moved forward again and am now at the top row but still not aligned properly. I need to turn right to face right and then move forward to reach the goal.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#>L...L.#\n#.L...L.#\n#.L...L.#\n#.LLLLLL#\n#.....L.#\n#.L.....#\n#.L...LG#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nNow that I am facing to the right and on the top row, I can move forward to reach the goal cell.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

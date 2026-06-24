@@ -1,0 +1,224 @@
+{
+    "experiment": "Qwen/Qwen2.5-7B-Instruct-local_special-history5",
+    "config": {
+        "model_name": "Qwen/Qwen2.5-7B-Instruct",
+        "global_view": false,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "73653c84731a5961d5ef9f455cdd063fce5e6697",
+        "git_dirty": false
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 4,
+    "seed": 48547,
+    "max_steps": 25,
+    "steps": 25,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-24T20:44:54",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|L|L|L|L|\n03|?|?|#|.|.|.|.|\n04|?|?|#|.|.|.|.|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is not visible in this view, but I can see a wall directly in front of me and lava cells to the right. My immediate objective should be to avoid the lava cells and find a path towards the goal. Turning right will allow me to move to an empty cell without encountering the lava.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|L|.|#|?|?|\n02|L|L|L|L|#|?|?|\n03|.|.|.|.|#|?|?|\n04|.|.|L|.|#|?|?|\n05|.|.|L|.|#|?|?|\n06|.|.|L|.|#|?|?|\n07|.|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is not immediately visible, but I need to avoid the lava cells. Currently, I am facing left, and the cell in front of me is a wall. Turning right will help me move to an empty cell without encountering the lava. This will allow me to continue exploring the map safely.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is not yet visible, but I can see that the cell in front of me is a wall. I need to move to an empty cell to continue exploring. Turning right will help me move to the cell to the right, which appears to be empty based on the previous observations.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|?|#|#|#|#|#|\n07|?|?|#|^|L|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell in front of me contains a wall, so I cannot move forward. Turning right will allow me to move to the right, where the cell appears to be empty. This will help me continue exploring the map.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|L|L|L|L|\n03|?|?|#|.|.|.|.|\n04|?|?|#|.|.|.|.|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell in front of me is a lava cell, so I cannot move forward. Turning right will allow me to move to the right, where the cell appears to be empty. This will help me continue exploring the map without risking falling into lava.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|L|.|#|?|?|\n02|L|L|L|L|#|?|?|\n03|.|.|.|.|#|?|?|\n04|.|.|L|.|#|?|?|\n05|.|.|L|.|#|?|?|\n06|.|.|L|.|#|?|?|\n07|.|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell in front of me is a lava cell, so I cannot move forward. Turning right will allow me to move to the right, where the cell appears to be empty. This will help me continue exploring the map without risking falling into lava.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is located at row 06, column F. The cell directly in front of me is a wall (`#`), so I need to find a way to navigate around it. Turning right will allow me to move to the right, where the cell appears to be empty. This will help me continue moving towards the goal.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|?|#|#|#|#|#|\n07|?|?|#|^|L|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell in front of me is a wall (`#`), so I cannot move forward. Turning right will allow me to move to the right, where the cell appears to be empty. This will help me continue exploring the map and potentially find a path to the goal.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|L|L|L|L|\n03|?|?|#|.|.|.|.|\n04|?|?|#|.|.|.|.|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell in front of me is a lava cell (`L`), so I cannot move forward. Turning right will allow me to move to the right, where the cell appears to be empty. This will help me avoid the lava and continue exploring the map to find a path to the goal.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|L|.|#|?|?|\n02|L|L|L|L|#|?|?|\n03|.|.|.|.|#|?|?|\n04|.|.|L|.|#|?|?|\n05|.|.|L|.|#|?|?|\n06|.|.|L|.|#|?|?|\n07|.|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell in front of me is a lava cell (`L`), so I cannot move forward. Turning right will allow me to move to the right, where the cell appears to be empty. This will help me avoid the lava and continue exploring the map to find a path to the goal.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell in front of me is unknown (`?`), but it is not a wall (`#`). Since it's the only option available, I will move forward to explore this cell and potentially find a path towards the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell in front of me is still unknown (`?`), and it is surrounded by walls (`#`). Moving forward would likely lead me into a wall, which is not a viable option. Instead, I should explore the left or right side to find an open path.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|?|#|#|#|#|#|\n07|?|?|#|^|L|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell in front of me is now a wall (`#`). To the right, there is a floor (`.`) but also lava (`L`). I need to turn left to avoid the lava and continue exploring the area.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell in front of me is a wall (`#`). To the right, there is an unknown cell (`?`). I should move forward to explore this unknown cell, as it might lead to a clearer path or the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell in front of me is still a wall (`#`). To the right, there is an unknown cell (`?`). Since moving forward again would lead to the same wall, I should turn right to explore the unknown cell on my right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|?|#|#|#|#|#|\n07|?|?|#|^|L|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell in front of me is a wall (`#`). To the right, there is a lava cell (`L`). I need to find a way around the wall. Turning left will allow me to move to the unknown cell on my left, which might provide a clearer path.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell in front of me is a wall (`#`). To the right, there is an unknown cell (`?`). Since moving forward or turning right would lead to the same wall, I should continue exploring the left side. Turning left will allow me to move into the unknown cell on my left, potentially finding a path forward.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|L|.|#|?|?|\n02|L|L|L|L|#|?|?|\n03|.|.|.|.|#|?|?|\n04|.|.|L|.|#|?|?|\n05|.|.|L|.|#|?|?|\n06|.|.|L|.|#|?|?|\n07|.|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell directly in front of me contains lava (`L`), and all adjacent cells also contain lava. The only viable option is to explore the cells to the left. Moving left will help me avoid the lava and potentially find a path forward.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|L|L|L|L|\n03|?|?|#|.|.|.|.|\n04|?|?|#|.|.|.|.|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell in front of me is lava (`L`), so I cannot move forward. The cells to the right and below also contain lava. My best option is to explore the left side, where the cells are currently marked as unknown (`?`). Turning left will help me avoid the lava and potentially find a safe path.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|?|#|#|#|#|#|\n07|?|?|#|^|L|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell directly in front of me contains lava (`L`), and the cells to the right and below also appear to be walls (`#`). The only viable option is to explore the cells to the left, where they are currently marked as unknown (`?`). Turning left will help me avoid the known lava and potentially find a safe path.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell directly in front of me is a wall (`#`), so I cannot move forward. The cells to the right and below also appear to be walls or unknown (`?`). The only viable option is to explore the cells to the left, where they are currently marked as unknown (`?`). Turning left will help me avoid the known wall and potentially find a safe path.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|L|.|#|?|?|\n02|L|L|L|L|#|?|?|\n03|.|.|.|.|#|?|?|\n04|.|.|L|.|#|?|?|\n05|.|.|L|.|#|?|?|\n06|.|.|L|.|#|?|?|\n07|.|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell directly in front of me is a wall (`#`), and the cells to the right and below are either lava (`L`) or walls (`#`). The only viable option is to explore the cells to the left, where they are currently marked as floor (`.`). Turning left will help me avoid the known hazards and potentially find a safe path towards the goal.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|L|L|L|L|\n03|?|?|#|.|.|.|.|\n04|?|?|#|.|.|.|.|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell directly in front of me is a lava cell (`L`), so I cannot move forward. To the right, the cells are walls (`#`) or lava (`L`). The only safe option is to explore the cells to the left, where they are currently marked as unknown (`?`). Turning left will help me avoid the known hazards and potentially find a safe path towards the goal.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|?|#|#|#|#|#|\n07|?|?|#|^|L|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell directly in front of me is lava (`L`), so I cannot move forward. To the right, the cells are walls (`#`). The only safe option is to explore the cells to the left, where they are currently marked as unknown (`?`). Turning left will help me avoid the known hazards and potentially find a safe path towards the goal.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe cell directly in front of me is a wall (`#`), so I cannot move forward. To the right, the cells are unknown (`?`). Turning right will allow me to explore these unknown cells, which might lead to a safe path.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        }
+    ]
+}

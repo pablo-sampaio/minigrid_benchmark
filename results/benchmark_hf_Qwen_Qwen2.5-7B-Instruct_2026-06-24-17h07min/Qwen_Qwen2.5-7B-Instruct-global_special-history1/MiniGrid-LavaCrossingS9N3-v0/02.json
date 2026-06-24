@@ -1,0 +1,168 @@
+{
+    "experiment": "Qwen/Qwen2.5-7B-Instruct-global_special-history1",
+    "config": {
+        "model_name": "Qwen/Qwen2.5-7B-Instruct",
+        "global_view": true,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 1
+    },
+    "code_version": {
+        "git_commit": "73653c84731a5961d5ef9f455cdd063fce5e6697",
+        "git_dirty": false
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 2,
+    "seed": 3745,
+    "max_steps": 25,
+    "steps": 18,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-24T17:37:51",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|>|L|.|L|.|.|.|#|\n03|#|.|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently at row 04, column B, facing right (`>`). My immediate path is blocked by lava on the right side. To avoid the lava and move closer to the goal, I need to turn left to face down (`v`) and move forward.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|^|L|.|L|.|.|.|#|\n03|#|.|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 02 column A and I am facing up (^). My immediate goal should be to avoid the lava cells (L) and find a path towards the goal at row 08 column G. Since I am facing up and the first cell in front of me contains lava, I need to turn left to face left (<).\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|<|L|.|L|.|.|.|#|\n03|#|.|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 02 column A and I am facing left (`<`). The path to the goal involves avoiding lava cells. My immediate goal should be to move forward since the lava is directly in front of me, and turning would lead me into danger.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|<|L|.|L|.|.|.|#|\n03|#|.|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 02 column A and facing left (`<`). The path to the goal involves avoiding the lava cells. Since I am facing left and the first cell to the left is lava, I need to turn right to avoid it. After turning right, I can move forward to navigate around the lava.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|^|L|.|L|.|.|.|#|\n03|#|.|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently at cell row 02 column A facing up (^). The path ahead is blocked by lava cells, so I need to find an alternative route. The most direct way to avoid the lava and reach the goal is to move right until I can go down towards the goal. I will first move forward to get out of the lava zone.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|^|L|.|L|.|.|.|#|\n03|#|.|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently at position A2 facing up (^). There is a lava cell directly ahead of me in B2, so I need to find an alternative path. Moving right would take me into more lava cells, so I should turn left to avoid them. Turning left will orient me to face left (<), allowing me to move around the lava.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|<|L|.|L|.|.|.|#|\n03|#|.|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 02 column A and I am facing left (`<`). There is lava in the way to the goal, so I need to find an alternative path. Moving forward will lead me into lava, so I should turn right to face down (`v`) and move towards the bottom of the map.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|^|L|.|L|.|.|.|#|\n03|#|.|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 02 column A and I am facing up (^). The path ahead is blocked by lava, so I need to find an alternative route. The safest path would be to move right and then down to avoid the lava cells. First, I need to turn right to face right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|>|L|.|L|.|.|.|#|\n03|#|.|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently at row 04, column B, facing right (`>`). The path ahead is blocked by lava cells (`L`), so I need to find an alternative route. The only viable path seems to be going upwards to row 03, then left to avoid the lava cells and eventually move downwards towards the goal at row 08, column H.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|^|L|.|L|.|.|.|#|\n03|#|.|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 02 column A and I am facing up (^). The path to the goal at row 08 column 9 is obstructed by lava. Therefore, I must first navigate around the lava. To do so, I should move forward to avoid the lava at row 02 column B.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|^|L|.|L|.|.|.|#|\n03|#|.|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently at row 02 column A facing up (`^`). There is lava directly in front of me at row 02 column B. I need to avoid this and find an alternative path. Since there are multiple consecutive lava cells blocking my way, I should turn left to face left (`<`) and try to navigate around the obstacles.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|<|L|.|L|.|.|.|#|\n03|#|.|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 02 column A and I am facing left (`<`). The path to the goal involves moving away from the lava cells. First, I need to move forward to avoid the lava at row 02 column B. After that, I should continue moving forward until I am aligned with the path towards the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|<|L|.|L|.|.|.|#|\n03|#|.|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 02 column A and facing left (\"<\"). The path to the goal at row 08 column G is blocked by lava cells. I need to find an alternative route. Moving forward will lead me into lava, so I should first try turning right to explore other directions.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|^|L|.|L|.|.|.|#|\n03|#|.|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently at cell row 02 column A facing up (^). There is lava in all the cells to the right of me. To avoid the lava and move closer to the goal, I need to turn left to face left (<) and move forward.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|<|L|.|L|.|.|.|#|\n03|#|.|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 02 column A and I am facing left (`<`). My immediate next cell is lava (`L`), so I need to avoid it. Since I can't turn right as I would still move into lava, I should turn left to face down (`v`) and then move forward to get closer to the goal.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|v|L|.|L|.|.|.|#|\n03|#|.|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently at row 02 column B and facing down (`v`). The path ahead is blocked by lava cells, so I need to find an alternative route. Looking to the right, I see a clear path towards column E, but there are lava cells blocking further movement. Therefore, I should move forward to column E and then find a way around the lava cells.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|L|.|.|.|#|\n03|#|v|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently at row 03 column B and facing down (`v`). The path to the goal at row 08 column 8 is obstructed by lava cells. My immediate goal should be to avoid these lava cells and find an alternative route. Since the lava cells are directly in front of me and to the sides, I need to turn left to move towards the floor cells.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|L|.|.|.|#|\n03|#|>|L|.|L|.|.|.|#|\n04|#|.|L|.|L|.|.|.|#|\n05|#|.|L|.|L|.|.|.|#|\n06|#|.|L|.|L|.|.|.|#|\n07|#|.|L|L|L|L|L|L|#|\n08|#|.|.|.|.|.|.|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently at row 03 column B facing right (`>`). The path ahead is blocked by lava, so I need to find an alternative route. Looking around, the only viable option is to go up to row 02 column B and then move right to avoid the lava. Since I am already facing right, I just need to move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

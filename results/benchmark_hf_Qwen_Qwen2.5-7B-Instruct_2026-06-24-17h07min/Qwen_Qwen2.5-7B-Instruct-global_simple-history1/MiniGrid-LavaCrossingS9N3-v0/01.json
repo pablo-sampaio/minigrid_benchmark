@@ -1,0 +1,48 @@
+{
+    "experiment": "Qwen/Qwen2.5-7B-Instruct-global_simple-history1",
+    "config": {
+        "model_name": "Qwen/Qwen2.5-7B-Instruct",
+        "global_view": true,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 1
+    },
+    "code_version": {
+        "git_commit": "73653c84731a5961d5ef9f455cdd063fce5e6697",
+        "git_dirty": false
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 1,
+    "seed": 40926,
+    "max_steps": 25,
+    "steps": 3,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-24T17:16:10",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#>L...L.#\n#.L...L.#\n#.L...L.#\n#.LLLLLL#\n#.....L.#\n#.L.....#\n#.L...LG#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nCurrently, I am facing right (`>`), and I can see that there is lava in front of me in the first row. The safest path would be to turn left to avoid the lava. Once I have turned left, I can move forward towards the goal.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#^L...L.#\n#.L...L.#\n#.L...L.#\n#.LLLLLL#\n#.....L.#\n#.L.....#\n#.L...LG#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nCurrently, I am facing left (`<`) and am located at the top-left corner of the map. The goal is located in the bottom-right corner. To move towards the goal, I should first turn right to face down (`v`), and then move forward to proceed downwards.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#>L...L.#\n#.L...L.#\n#.L...L.#\n#.LLLLLL#\n#.....L.#\n#.L.....#\n#.L...LG#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nCurrently, I am facing right (`>`), and I am surrounded by lava cells (`L`) with the exception of the floor cells. My goal is to navigate to the `G` (goal) cell. Since I am already facing the correct direction towards the goal, I should move forward to progress closer to the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

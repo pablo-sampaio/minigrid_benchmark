@@ -8,15 +8,19 @@ SUPPORTED_PROVIDERS = ("openai", "deepseek", "hf")
 
 MODEL_OPTIONS = {
     "openai": [
-        ("gpt-5.4", None), 
-        ("gpt-5.4-mini", None)
+        ("gpt-5.5", None), 
+        ("gpt-5.4", None),
+        ("gpt-5.4-mini", None),
+        ("gpt-5.4-nano", None), 
+        ("gpt-4.1", None),
+        ("gpt-4.1-mini", None),
     ],
     "deepseek": [
         ("deepseek-v4-flash", None),
         ("deepseek-v4-pro", None),
     ],
     "hf": [
-        ("google/gemma-3-4b-it", None),  # quantizar?
+        ("google/gemma-3-4b-it", None),                 # quantizar?
         ("google/gemma-3-12b-it-qat-q4_0-gguf", None),
         ("google/gemma-4-E2B-it", None),
         ("google/gemma-4-12B-it-qat-q4_0-gguf", None),        
