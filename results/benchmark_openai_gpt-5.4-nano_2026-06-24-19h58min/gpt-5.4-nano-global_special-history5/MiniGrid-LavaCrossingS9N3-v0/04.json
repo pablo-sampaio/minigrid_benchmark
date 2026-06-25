@@ -1,0 +1,160 @@
+{
+    "experiment": "gpt-5.4-nano-global_special-history5",
+    "config": {
+        "model_name": "gpt-5.4-nano",
+        "global_view": true,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "e1e0837ccdf3fe3562a5187227a6d50340ccac8b",
+        "git_dirty": false
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 4,
+    "seed": 48547,
+    "max_steps": 25,
+    "steps": 17,
+    "success": 1,
+    "reward": 0.9527777777777777,
+    "completed_at": "2026-06-24T20:11:12",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|>|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|.|.|.|.|.|.|.|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 02 column B facing right (`>`). The goal is at row 08 column G. Moving forward would hit lava at row 02 column C, so I should turn to avoid it. I’ll turn down (`v`) by turning right from facing right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|v|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|.|.|.|.|.|.|.|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nNow I’m at row 02 column B facing down (`v`). Forward would go to row 03 column B, which is a safe floor (`.`). I’ll move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|.|.|L|.|#|\n03|#|v|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|.|.|.|.|.|.|.|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m at row 03 column B facing down (`v`). Forward would move to row 04 column B, which is a safe floor (`.`). I’ll move forward to continue descending toward the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|v|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|.|.|.|.|.|.|.|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m at row 04 column B facing down (`v`). Forward would go to row 05 column B, which is safe floor (`.`). I’ll move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|v|L|.|.|.|L|.|#|\n06|#|.|.|.|.|.|.|.|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m at row 05 column B facing down (`v`). Forward would move to row 06 column B, which is a safe floor (`.`). I’ll move forward to keep progressing.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|v|.|.|.|.|.|.|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m at row 06 column B facing down (`v`). Forward goes to row 07 column B, which is lava (`L`), so it’s unsafe. I should turn to avoid lava; turning right would make me face left (`<`) relative to map? Actually from `v`, TURN_RIGHT faces left (`<`?)—on a compass, down->left for TURN_RIGHT. Left cell is row 06 column A which is `#` (wall). TURN_LEFT from down faces right (`>`) which would move to row 06 column C, also `.`. I’ll turn left to face right and proceed.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|>|.|.|.|.|.|.|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m at row 06 column B facing right (`>`). Forward would move to row 06 column C, which is safe floor (`.`). I’ll move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|.|>|.|.|.|.|.|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m at row 06 column C facing right (`>`). Forward would move to row 06 column D, which is `.` and safe. I should move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|.|.|>|.|.|.|.|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m at row 06 column D facing right (`>`). Forward would move to row 06 column E, which is `.` and safe. I’ll move forward to progress toward the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|.|.|.|>|.|.|.|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m at row 06 column E facing right (`>`). Forward would move to row 06 column F, which is `.` and safe. I should move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|.|.|.|.|>|.|.|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m at row 06 column F facing right (`>`). Forward would move to row 06 column G, which is `.` and safe. Continue toward the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|.|.|.|.|.|>|.|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m at row 06 column G facing right (`>`). Forward would move to row 06 column H, which is `.` and safe (not lava or wall). Move forward toward the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|.|.|.|.|.|.|>|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m at row 06 column H facing right (`>`). Forward would move to row 06 column I, which is `.`? Actually column I is '.' and within the open area; the goal at row 08 column H is downwards, but I should keep heading to align with column H. Instead, I should turn left to head down toward the corridor while staying in column H.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|.|.|.|.|.|.|^|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m now at row 06 column H facing up (`^`). The goal is at row 08 column H, directly two cells below. So I need to face down (`v`) to move toward it. From up to down, I should turn right twice, but one step at a time: first TURN_RIGHT.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|.|.|.|.|.|.|>|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m at row 06 column H facing right (`>`). The goal is at row 08 column H, so I need to face down (`v`). From right to down is a 90° clockwise turn, so I will TURN_RIGHT.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|.|.|.|.|.|.|v|#|\n07|#|L|L|L|L|L|L|.|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m at row 06 column H facing down (`v`). The cell directly in front is row 07 column H, which is floor `.` (not lava `L` and not wall `#`). I should MOVE_FORWARD to get closer to the goal at row 08 column H.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|H|I|\n01|#|#|#|#|#|#|#|#|#|\n02|#|.|L|.|.|.|L|.|#|\n03|#|.|L|.|.|.|L|.|#|\n04|#|.|L|.|.|.|L|.|#|\n05|#|.|L|.|.|.|L|.|#|\n06|#|.|.|.|.|.|.|.|#|\n07|#|L|L|L|L|L|L|v|#|\n08|#|.|L|.|.|.|L|G|#|\n09|#|#|#|#|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI’m at row 07 column H facing down (`v`). The cell in front (row 08 column H) is `G`, the goal. I should MOVE_FORWARD to reach it.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}
