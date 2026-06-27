@@ -20,10 +20,10 @@ MODEL_OPTIONS = {
         ("deepseek-v4-pro", None),
     ],
     "hf": [
-        ("google/gemma-3-4b-it", None),                 # quantizar?
-        ("google/gemma-3-12b-it-qat-q4_0-gguf", None),
+        ("google/gemma-3-4b-it", None),
+        ("google/gemma-3-12b-it", "4bit"),
         ("google/gemma-4-E2B-it", None),
-        ("google/gemma-4-12B-it-qat-q4_0-gguf", None),        
+        ("google/gemma-4-12B-it", "4bit"),
         ("Qwen/Qwen2.5-3B-Instruct", None),
         ("Qwen/Qwen2.5-7B-Instruct", "8bit"),
         ("Qwen/Qwen3-4B-Instruct-2507-FP8", None),

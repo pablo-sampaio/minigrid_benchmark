@@ -1,0 +1,224 @@
+{
+    "experiment": "google/gemma-3-4b-it-local_special-history5",
+    "config": {
+        "model_name": "google/gemma-3-4b-it",
+        "global_view": false,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "dd05c2e68fc4bf820cd5c59fdac23aa12b79f27b",
+        "git_dirty": false
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 3,
+    "seed": 98163,
+    "max_steps": 25,
+    "steps": 25,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-25T22:59:27",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|L|L|.|L|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently at row 07 column F, facing downwards. The goal is at row 05 column E. I need to move right and down to reach the goal. The cell in front of me is a wall, so I need to turn right to move to the right.\n</thought>\n<action>\nTURN_RIGHT\n</action>\n"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|L|.|L|.|#|?|?|\n02|L|.|L|.|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column F, facing downwards. The goal is at row 05 column E. I need to move right and down to reach the goal. The cell in front of me is a wall, so I need to turn right to move to the right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. I need to move right and down to reach the goal. The cell in front of me is a wall, so I need to turn right to move to the right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|?|#|#|#|#|#|\n07|?|?|#|^|L|.|L|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. I need to move right and down to reach the goal. The cell in front of me is a lava cell, so I cannot move forward. I need to turn right to move to the right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|.|\n02|?|?|#|L|L|.|L|\n03|?|?|#|.|.|.|.|\n04|?|?|#|L|L|L|L|\n05|?|?|#|.|.|.|.|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. I need to move right and down to reach the goal. The cell in front of me is a wall, so I need to turn right to move to the right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|L|.|L|.|#|?|?|\n02|L|.|L|.|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. I am surrounded by lava and walls. I need to turn right to move to the right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. I am now facing right. I can move forward to row 06. The cell in front of me is a wall. I need to turn left to move to the down direction.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|L|.|L|.|#|?|?|\n02|L|.|L|.|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. I am surrounded by lava and walls. I can't move forward. I need to turn right to head to the free neighbor cell at my right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. I am now facing right. The cell in front of me is a wall. I will turn left to move to the down direction.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|L|.|L|.|#|?|?|\n02|L|.|L|.|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. I am surrounded by lava and walls. I cannot move forward. I need to turn right to head to the free neighbor cell at my right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. The cell in front of me is a wall. I will turn left to move to the down direction.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|L|.|L|.|#|?|?|\n02|L|.|L|.|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. I cannot move forward due to lava and walls. I need to turn right to head to the free neighbor cell at my right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. The cell in front of me is a wall. I will turn left to move to the down direction.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|L|.|L|.|#|?|?|\n02|L|.|L|.|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. I cannot move forward due to lava and walls. I will turn right to head to the free neighbor cell at my right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. The cell in front of me is a wall. I will turn left to move to the down direction.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|L|.|L|.|#|?|?|\n02|L|.|L|.|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. The cell in front of me is lava. I will turn right to move to the right direction.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. The cell in front of me is a wall. I will turn left to move to the down direction.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|L|.|L|.|#|?|?|\n02|L|.|L|.|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. The cell in front of me is lava. I will turn right to move to the right direction.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. The cell in front of me is a wall. I will turn left to move to the down direction.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|L|.|L|.|#|?|?|\n02|L|.|L|.|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. The cell in front of me is lava. I will turn right to move to the right direction.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. The cell in front of me is a wall. I will turn left to move to the down direction.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|L|.|L|.|#|?|?|\n02|L|.|L|.|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. The cell in front of me is lava. I will turn right to move to the right direction.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. The cell in front of me is a wall. I will turn left to move to the down direction.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|L|.|L|.|#|?|?|\n02|L|.|L|.|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|.|L|.|#|?|?|\n05|L|.|L|.|#|?|?|\n06|L|.|L|.|#|?|?|\n07|L|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. The cell in front of me is lava. I will turn right to move to the right direction.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|#|#|#|#|#|?|?|\n07|.|.|.|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at row 07 column A, facing downwards. The goal is at row 05 column E. The cell in front of me is a wall. I will turn left to move to the down direction.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        }
+    ]
+}

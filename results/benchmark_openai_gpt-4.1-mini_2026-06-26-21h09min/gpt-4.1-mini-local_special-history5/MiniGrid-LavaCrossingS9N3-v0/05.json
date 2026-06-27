@@ -1,0 +1,104 @@
+{
+    "experiment": "gpt-4.1-mini-local_special-history5",
+    "config": {
+        "model_name": "gpt-4.1-mini",
+        "global_view": false,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "ff306b8d5652855d973269eafe220131a8ad9538",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 5,
+    "seed": 8805,
+    "max_steps": 25,
+    "steps": 10,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-27T12:29:31",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|#|.|.|.|L|\n02|?|?|#|.|.|.|L|\n03|?|?|#|.|.|.|L|\n04|?|?|#|.|.|.|L|\n05|?|?|#|.|.|.|L|\n06|?|?|#|L|L|L|L|\n07|?|?|#|^|.|.|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently at the bottom center of the view facing forward (upwards in the map). The cell directly in front of me (D6) is a wall (#), meaning I cannot move forward. To progress, I should turn either left or right. Turning right faces open floor cells, while turning left faces a wall. Turning right is the best choice as it avoids the wall and potential lava on the left.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|L|.|#|?|?|\n02|L|L|L|L|#|?|?|\n03|.|.|.|.|#|?|?|\n04|L|L|L|.|#|?|?|\n05|.|.|L|.|#|?|?|\n06|.|.|L|.|#|?|?|\n07|.|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing to the right now, with a floor (.) cell ahead at E7, so I can move forward safely. There is a wall (#) blocking further progress on the same row at F7, so I will continue moving forward to advance along the available path.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|#|#|#|#|#|?|?|\n02|.|.|L|.|#|?|?|\n03|L|L|L|L|#|?|?|\n04|.|.|.|.|#|?|?|\n05|L|L|L|.|#|?|?|\n06|.|.|L|.|#|?|?|\n07|.|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am still facing right with a floor cell ahead at E7, so moving forward is safe. Continuing forward moves me closer to the goal area while avoiding walls and lava.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|#|#|#|#|#|?|?|\n03|.|.|L|.|#|?|?|\n04|L|L|L|L|#|?|?|\n05|.|.|.|.|#|?|?|\n06|L|L|L|.|#|?|?|\n07|.|.|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe path ahead at E7 is still clear, so moving forward remains safe. Continuing forward will allow me to explore new parts of the map and possibly get closer to the goal. No immediate danger is present.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|#|#|#|#|#|?|?|\n04|.|.|L|.|#|?|?|\n05|L|L|L|L|#|?|?|\n06|.|.|.|.|#|?|?|\n07|L|L|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing right with a lava cell directly in front of me at E7. Moving forward would be deadly. Instead, I have open space to my left and right blocked by walls. I will turn left to face up and then check if moving forward upward is safe.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|.|L|.|L|G|\n02|.|.|.|L|.|.|.|\n03|.|.|.|L|.|L|.|\n04|.|.|.|L|.|L|.|\n05|.|.|.|L|.|L|.|\n06|L|L|L|L|.|L|L|\n07|.|.|.|^|.|L|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am now facing upward and standing on row 7, column D. The cell directly ahead at D6 is lava, so moving forward would be deadly. To reach the goal at G1, I must avoid lava cells. Since forward is lava, I should turn right to face right and move towards safer cells on the right side of the map.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|#|#|#|#|#|?|?|\n04|.|.|L|.|#|?|?|\n05|L|L|L|L|#|?|?|\n06|.|.|.|.|#|?|?|\n07|L|L|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI seem to have rotated and returned to the previous map. The cell in front of me at D7 is a wall, so moving forward is not possible. I will turn left to face left, looking for a safe path in that direction.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|.|L|.|L|G|\n02|.|.|.|L|.|.|.|\n03|.|.|.|L|.|L|.|\n04|.|.|.|L|.|L|.|\n05|.|.|.|L|.|L|.|\n06|L|L|L|L|.|L|L|\n07|.|.|.|^|.|L|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing upwards again at row 7, column D. The cell in front (D6) is lava, so I cannot move forward. I will turn right to face right and explore a safer path towards the goal at G1.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|#|#|#|#|#|?|?|\n04|.|.|L|.|#|?|?|\n05|L|L|L|L|#|?|?|\n06|.|.|.|.|#|?|?|\n07|L|L|L|^|#|?|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI seem to be facing upwards again with a wall directly in front of me, which prevents moving forward. The right side is blocked by wall cells as well. To find a path, I will turn left to face left and check for possible movement.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|.|.|.|L|.|L|G|\n02|.|.|.|L|.|.|.|\n03|.|.|.|L|.|L|.|\n04|.|.|.|L|.|L|.|\n05|.|.|.|L|.|L|.|\n06|L|L|L|L|.|L|L|\n07|.|.|.|^|.|L|.|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing left now, but the cell to my left at C7 is free and safe. Moving forward in this direction is safe and may help me navigate around the lava and towards the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

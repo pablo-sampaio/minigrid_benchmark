@@ -1,0 +1,48 @@
+{
+    "experiment": "gpt-4.1-mini-local_special-history5",
+    "config": {
+        "model_name": "gpt-4.1-mini",
+        "global_view": false,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "ff306b8d5652855d973269eafe220131a8ad9538",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 4,
+    "seed": 31804,
+    "max_steps": 15,
+    "steps": 3,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-27T12:26:36",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|#|#|#|#|#|\n05|?|?|#|.|.|G|#|\n06|?|?|#|.|L|L|#|\n07|?|?|#|^|.|.|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nThe goal is visible at row 05 column F, which is to the right and two cells ahead. The cell directly in front of me is a safe floor cell, so I will move forward to get closer to the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|#|#|#|#|#|\n06|?|?|#|.|.|G|#|\n07|?|?|#|^|L|L|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nNow I am standing on the cell just below the floor at D6. The goal is at F6, two cells to the right. The cell in front of me is a lava cell, so moving forward is dangerous. I should turn right to face towards the goal safely.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|#|#|#|#|#|?|\n05|?|#|G|L|.|#|?|\n06|?|#|.|L|.|#|?|\n07|?|#|.|^|.|#|?|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am now facing right, with the goal visible at row 05 column C, two cells above and one cell to the left. The cell directly ahead is a safe floor cell. I will move forward towards the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

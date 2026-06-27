@@ -1,0 +1,144 @@
+{
+    "experiment": "google/gemma-3-4b-it-global_special-history5",
+    "config": {
+        "model_name": "google/gemma-3-4b-it",
+        "global_view": true,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "dd05c2e68fc4bf820cd5c59fdac23aa12b79f27b",
+        "git_dirty": false
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 4,
+    "seed": 31804,
+    "max_steps": 15,
+    "steps": 15,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-25T21:23:06",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|>|.|.|#|\n03|#|.|L|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "CURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|>|.|.|#|\n03|#|.|L|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n<thought>\nI am at cell row 05 column B and I am facing down (`v`). My goal is at row 04 column C. I need to move to the right to reach the goal. I am currently facing down, so I need to turn right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|v|.|.|#|\n03|#|.|L|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing down (`v`). My goal is at row 04 column C. I need to move to the right to reach the goal. I am currently facing down, so I need to turn right. However, I cannot move forward as there is a wall to my right. I need to turn left to face left. Then I can move to the left.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|>|.|.|#|\n03|#|.|L|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing right (`>`). My goal is at row 04 column C. I need to move to the left to reach the goal. I am facing right, so I need to turn left.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|^|.|.|#|\n03|#|.|L|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing left (`<`). My goal is at row 04 column C. I need to move forward to reach the goal. I am facing left, so I need to turn right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|>|.|.|#|\n03|#|.|L|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing right (`>`). My goal is at row 04 column C. I need to move forward to reach the goal. I am facing right, so I should move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|>|.|#|\n03|#|.|L|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing right (`>`). My goal is at row 04 column C. I am currently blocked by a wall. I need to turn left to face down.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|^|.|#|\n03|#|.|L|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing down (`v`). My goal is at row 04 column C. I need to turn right to face right (`>`).\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|>|.|#|\n03|#|.|L|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing right (`>`). My goal is at row 04 column C. I need to move forward to reach row 04 column C.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|.|>|#|\n03|#|.|L|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing right (`>`). My goal is at row 04 column C. I am currently at row 5, column B. I need to move forward, which would take me to row 5, column C. However, that cell is blocked by a wall (`#`). I need to turn left to face down (`v`).\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|.|^|#|\n03|#|.|L|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing down (`v`). My goal is at row 04 column C. I need to turn right to face right (`>`).\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|.|>|#|\n03|#|.|L|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing right (`>`). My goal is at row 04 column C. I need to move forward, which would take me to row 5 column C. However, that cell is blocked by a wall (`#`). I need to turn left to face down (`v`).\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|.|^|#|\n03|#|.|L|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing down (`v`). My goal is at row 04 column C. I need to turn right to face right (`>`).\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|.|>|#|\n03|#|.|L|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing right (`>`). My goal is at row 04 column C. I need to move forward, which would take me to row 5 column C. However, that cell is blocked by a wall (`#`). I need to turn left to face down (`v`).\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|.|^|#|\n03|#|.|L|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing down (`v`). My goal is at row 04 column C. I need to turn right to face right (`>`).\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|.|>|#|\n03|#|.|L|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 05 column B and I am facing right (`>`). My goal is at row 04 column C. I need to move forward, which would take me to row 5 column C. That cell is blocked by a wall (`#`). I need to turn left to face down (`v`).\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        }
+    ]
+}

@@ -1,0 +1,72 @@
+{
+    "experiment": "google/gemma-3-4b-it-global_simple-history1",
+    "config": {
+        "model_name": "google/gemma-3-4b-it",
+        "global_view": true,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 1
+    },
+    "code_version": {
+        "git_commit": "dd05c2e68fc4bf820cd5c59fdac23aa12b79f27b",
+        "git_dirty": false
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 1,
+    "seed": 40926,
+    "max_steps": 25,
+    "steps": 6,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-25T13:03:36",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#>L...L.#\n#.L...L.#\n#.L...L.#\n#.LLLLLL#\n#.....L.#\n#.L.....#\n#.L...LG#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently at the bottom-left corner, facing down. The goal is at the top-right corner. I need to move up and to the right. First, I need to turn right to face the right direction.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#vL...L.#\n#.L...L.#\n#.L...L.#\n#.LLLLLL#\n#.....L.#\n#.L.....#\n#.L...LG#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently facing down (`v`) and located at the first cell in the first row. The goal is at the last cell in the last row. I need to move right to reach the goal. Therefore, I will move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>\n"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L...L.#\n#vL...L.#\n#.L...L.#\n#.LLLLLL#\n#.....L.#\n#.L.....#\n#.L...LG#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently facing down (`v`) and located at the second row, second column. The goal is at the second row, seventh column. To reach the goal, I need to move to the right. Since I am facing down, I need to turn right.\n</thought>\n<action>\nTURN_RIGHT\n</action>\n"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L...L.#\n#<L...L.#\n#.L...L.#\n#.LLLLLL#\n#.....L.#\n#.L.....#\n#.L...LG#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently at the bottom-left corner facing down. The goal is at the top-right corner. I need to move right to reach the goal. Since I'm facing down, I need to turn right.\n</thought>\n<action>\nTURN_RIGHT\n</action>\n"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L...L.#\n#^L...L.#\n#.L...L.#\n#.LLLLLL#\n#.....L.#\n#.L.....#\n#.L...LG#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently at the bottom-left corner, facing down. The goal is at the top-right. I need to move right, so I will turn right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#.L...L.#\n#>L...L.#\n#.L...L.#\n#.LLLLLL#\n#.....L.#\n#.L.....#\n#.L...LG#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently at the bottom left corner, facing right (`>`). The goal is at the top right corner. I need to move right to get closer to the goal. Since I am facing right, I can move forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>\n"
+        }
+    ]
+}
