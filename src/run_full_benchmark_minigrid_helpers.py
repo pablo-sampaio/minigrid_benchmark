@@ -176,33 +176,27 @@ def create_model_selector_widgets(model_options: dict[str, list[tuple[str, str |
 
 
 def resume_from_previous_results_folder(
-        repo_path: str,
-        next_results_dir: str,
         provider: str,
         model_id: str,
-        experiment_name_to_resume: str | None = None,
-    ) -> str | None:
+        resume_from: str,
+        resume_to: str,
+     ) -> str | None:
 
-    prev_results_dir = os.path.join(repo_path, "results")
-    if not os.path.isdir(prev_results_dir):
-        return experiment_name_to_resume
+    if not os.path.isdir(resume_from):
+        return None
 
     model_id_simplified = model_id.replace("/", "_")
-    base_experiment_name = experiment_name_to_resume or f"benchmark_{provider}_{model_id_simplified}"
+    base_experiment_name = f"benchmark_{provider}_{model_id_simplified}_"
 
-    for file_name in os.listdir(prev_results_dir):
-        prev_experiment_folder = os.path.join(prev_results_dir, file_name)
-        if not file_name.startswith(base_experiment_name) or not os.path.isdir(prev_experiment_folder):
-            continue
+    for filename in os.listdir(resume_from):
+        candidate_file_path = os.path.join(resume_from, filename)
+        if filename.startswith(base_experiment_name) and os.path.isdir(candidate_file_path):
+            dest_folder = os.path.join(resume_to, filename)
+            if not os.path.exists(dest_folder):
+                shutil.copytree(candidate_file_path, dest_folder)
+            return filename
 
-        dest_folder = os.path.join(next_results_dir, file_name)
-        if not os.path.exists(dest_folder):
-            shutil.copytree(prev_experiment_folder, dest_folder)
-            return file_name
-
-        return experiment_name_to_resume or file_name
-
-    return experiment_name_to_resume
+    return None
 
 
 def zip_results_for_export(execution_env: str, summary_path: str) -> str | None:
