@@ -11,7 +11,7 @@ from experiments_util import create_experiment_config, run_and_save_experiments
 from chat_model_builder import build_chat_model
 
 
-SUPPORTED_PROVIDERS = ("openai", "deepseek", "hf", "qwen-local-server")
+SUPPORTED_PROVIDERS = ("openai", "deepseek", "hf")
 
 
 def _build_default_8_configs(model_name: str, model: Any) -> list[dict[str, Any]]:
