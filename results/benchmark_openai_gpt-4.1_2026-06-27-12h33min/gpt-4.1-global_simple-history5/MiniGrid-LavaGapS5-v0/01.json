@@ -1,0 +1,64 @@
+{
+    "experiment": "gpt-4.1-global_simple-history5",
+    "config": {
+        "model_name": "gpt-4.1",
+        "global_view": true,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "00375ed481823ab165f0f22375950a0280ce91d9",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 1,
+    "seed": 45108,
+    "max_steps": 15,
+    "steps": 5,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-27T14:20:20",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#>L.#\n#...#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am in the second row from the top, second column from the left, facing right. Directly in front of me (to the right) is a lava cell ('L'), which is dangerous to move into. Instead, I should avoid moving forward and should turn to find a safer route to the goal, which is at the bottom row towards the right. Turning downwards will allow me to proceed towards the open floor path.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#vL.#\n#...#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nNow I am facing down. The cell directly below me is an empty floor, which is safe to step on. Moving forward will bring me closer to the bottom row and towards the path that leads to the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.L.#\n#v..#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am now in the third row from the top, facing down. The cell directly below me is an empty floor and will let me advance closer to the row with the goal. Moving forward is the best choice.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.L.#\n#...#\n#vLG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI'm now on the row with the goal, two cells left of it, facing down. To reach the goal, I need to face right and move towards it. I will turn left to change my direction from down to right.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.L.#\n#...#\n#>LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am now facing right (>) on the same row as the goal. There are no obstacles between me and the goal, so I should move forward toward the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

@@ -1,0 +1,112 @@
+{
+    "experiment": "gpt-4.1-global_special-history5",
+    "config": {
+        "model_name": "gpt-4.1",
+        "global_view": true,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "00375ed481823ab165f0f22375950a0280ce91d9",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 2,
+    "seed": 52995,
+    "max_steps": 15,
+    "steps": 11,
+    "success": 1,
+    "reward": 0.901,
+    "completed_at": "2026-06-27T14:23:03",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|>|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 02 column B and facing right (`>`), toward cell 02 column C, which contains lava (`L`). Moving forward would be deadly. The only safe adjacent cell is behind me (cell 03 column B, which is open). To move toward the goal, I should turn right to face down (`v`), enabling me to eventually navigate around the lava.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|v|L|.|#|\n03|#|.|.|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 02 column B and now facing down (`v`). The cell ahead (row 03 column B) is empty and safe to move into. This direction allows me to progress toward the open path leading to the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|L|.|#|\n03|#|v|.|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 03 column B and facing down (`v`). The cell immediately ahead (row 04 column B) is safe and empty, and moving forward continues my path toward the goal at row 04 column D.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|L|.|#|\n03|#|.|.|.|#|\n04|#|v|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 04 column B, facing down (`v`). The cell in front of me (row 05 column B) is a wall (`#`) and cannot be entered. To advance toward the goal at row 04 column D, I should reorient to face right (`>`), allowing me to move toward the empty cells in that direction.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|L|.|#|\n03|#|.|.|.|#|\n04|#|>|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 04 column B, facing right (`>`). The cell to my right (row 04 column C) is lava (`L`), which is unsafe and must be avoided. To reach the goal at row 04 column D, I should instead move up toward a safe cell, then approach the goal from a different direction. I need to turn left to face up (`^`) so I can move to the safe cell above (row 03 column B).\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|L|.|#|\n03|#|.|.|.|#|\n04|#|^|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 04 column B, facing up (`^`). The cell in front of me (row 03 column B) is a safe floor cell (`.`). Moving forward will place me on a safe cell and position me to continue toward the goal via a safe route.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|L|.|#|\n03|#|^|.|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 03 column B, facing up (`^`). The cell in front of me (row 02 column B) is also a safe floor cell. However, the goal is located at row 04 column D. To reach it, I should move toward the right along row 03 and then head down when I'm aligned with the goal. I need to turn right to face the right direction.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|L|.|#|\n03|#|>|.|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 03 column B, facing right (`>`). The cell in front of me (row 03 column C) is a safe floor cell (`.`). Moving forward will bring me closer to aligning vertically with the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|L|.|#|\n03|#|.|>|.|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 03 column C, facing right (`>`). The cell in front of me (row 03 column D) is a safe floor cell (`.`). Moving forward will bring me directly above the goal cell, making it easier to access in the next move.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|L|.|#|\n03|#|.|.|>|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 03 column D, facing right (`>`). The cell in front of me (row 03 column E) is a wall (`#`), which is not passable. The goal is directly below me at row 04 column D. I should turn right to face down so I can move towards the goal on my next move.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|\n01|#|#|#|#|#|\n02|#|.|L|.|#|\n03|#|.|.|v|#|\n04|#|.|L|G|#|\n05|#|#|#|#|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at cell row 03 column D, facing down (`v`). The cell directly in front of me (row 04 column D) is the goal (`G`). I should move forward to reach the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

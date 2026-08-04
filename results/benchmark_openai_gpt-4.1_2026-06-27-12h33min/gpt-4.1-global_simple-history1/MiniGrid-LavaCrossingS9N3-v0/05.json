@@ -1,0 +1,224 @@
+{
+    "experiment": "gpt-4.1-global_simple-history1",
+    "config": {
+        "model_name": "gpt-4.1",
+        "global_view": true,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 1
+    },
+    "code_version": {
+        "git_commit": "00375ed481823ab165f0f22375950a0280ce91d9",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaCrossingS9N3-v0",
+    "run": 5,
+    "seed": 8805,
+    "max_steps": 25,
+    "steps": 25,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-27T14:14:40",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#>L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI'm currently facing right (`>`) near the upper-left corner. There is lava (`L`) immediately in front of me. Moving forward would put me in danger. To proceed safely towards the goal, I should turn downwards and follow a path that avoids the lava. Turning right will make me face down (`v`), which is safer at this point.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#vL.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am in the top-left quadrant of the map, facing down (`v`). Directly in front of me is a lava cell (`L`), which is dangerous. To proceed toward the goal (`G`) on the lower right, I need to avoid the lava and move onto a safe cell. The cell to my left is a wall, but to my right is an open path. Therefore, I should turn right to face the clear path.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#<L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am near the left edge of the map, facing left (`<`). In front of me is a wall. To proceed towards the goal (which is at the lower right), I need to turn around. Facing right (`>`) would allow me to move towards the goal. I should turn right twice to face right.\n</thought>\n<action>\nTURN_RIGHT\n</action>\n"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#^L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am currently facing up (`^`) near the top-left corner. Directly ahead of me is a lava cell (`L`), which is dangerous to move into. To find a safe path toward the goal (`G`) in the lower-right, I should turn right so I face east (`>`), which will allow me to move along the open floor area.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#>L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am on the top row, facing right (`>`). There is a lava cell (`L`) directly in front of me, so moving forward would put me in danger. The path to the goal seems to be toward the bottom and right of the map, so I will turn downwards to look for a safe way around the lava. Turning right (to face down) will allow me to assess the path below.\n</thought>\n<action>\nTURN_RIGHT\n</action>\n"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#vL.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am in the second row from the top and the second column from the left, facing down (`v`). In front of me is lava (`L`), so moving forward is not safe. The open path seems to be towards the right. I should turn right to face the open space.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#<L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am positioned in the second row from the top, second column from the left, facing left (`<`). My immediate left is a wall. The goal `G` is located in the bottom right of the map. To start progressing toward the goal, I should turn right to face down so I can move toward the lower rows (since the left is blocked).\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#^L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am in the second row from the top, first column, facing up (`^`). There is a wall directly above me. In order to begin moving toward the goal, which is near the bottom right of the map, I need to face right and advance through the open space. Thus, I should turn right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#>L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am on the second row from the top, facing right. Directly in front of me is a lava cell ('L'), so moving forward would be dangerous. Instead, I should turn to avoid the lava. Turning downwards will allow me to look for a safer path.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#vL.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am at the left edge of the map, facing down (`v`). Directly in front of me is a lava (`L`) cell, so moving forward would be dangerous. To find a path, I should turn right to face towards the open corridor on my right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#<L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am near the left edge of the map, facing left (`<`). To progress toward the goal, which is at the middle right edge, I need to move right along the corridor of open floor. Therefore, I need to turn around to face right (`>`), which requires two right turns or two left turns. I will turn right to start adjusting my orientation.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#^L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am in the top-left corner, facing up (`^`). There is a wall above and to the left, so moving forward or rotating left would not make progress. The only way to proceed towards the goal (bottom right) is to turn right to face the open path.\n</thought>\n<action>\nTURN_RIGHT\n</action>\n"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#>L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing right (`>`) near the upper-left corner. There is lava (`L`) immediately in front of me, so moving forward is not safe. The clearest path avoiding lava seems to be heading downwards. I will turn right to face down.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#vL.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am located near the top-left corner of the map, facing downward (`v`). Directly in front of me (down) is a lava cell (`L`). To avoid moving into the lava, I should either turn left or right. To start making progress toward the goal, which is at the lower right, it is better to face right and follow along the safer floor cells. I will turn right to face the open pathway.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#<L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am in the second row from the top, second column from the left, facing left `<`. Directly to my left is a wall, so I cannot move forward. The path toward the goal is to my right, so I should turn around to face right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#^L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am in the upper left of the map, facing up (`^`). There is a wall above me, so I cannot move forward. To make progress toward the goal (which is in the lower right corner), I should turn to face right (`>`), which will allow me to advance along the top row past the lava and then explore further toward the goal.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#>L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am in the top left corner facing right (`>`), with lava directly in front of me. Moving forward would lead me into lava. To find a safe path, I should turn downwards and head towards the open area below. Turning right will align me in the correct direction.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#vL.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am on the left edge of the map, facing down (`v`). Directly in front of me is a lava cell (`L`). Moving forward would be unsafe. I should turn to face a direction with a safer path. If I turn right, I will face toward the right side of the map where there is empty space and potentially a safer path toward the goal.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#<L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am located near the left side of the map, facing left (`<`). Directly in front of me is a wall (`#`), so moving forward is not possible. Since the goal (`G`) is on the lower right, I should begin turning to face downward or right to find a path around the lava (`L`). First, I should turn left to face downward.\n</thought>\n<action>\nTURN_LEFT\n</action>\n"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#vL.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am on the second row from the top, second column from the left, facing down (`v`). There is lava (`L`) directly in front of me, so moving forward is not safe. I should turn right to face towards an open path to the right.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#<L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am near the left edge of the map, facing left `<`. Directly in front of me is a wall. I need to turn to face an open direction to start moving towards the goal, which is at the far-right of the map. The open path is to my right, so I should turn right to face upward.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#^L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am near the top-left corner, facing up (`^`). Directly in front of me is a wall (`#`), so I cannot move forward. I need to reach the goal (`G`) at the bottom-right, which will likely require moving to the right. To begin moving towards the open path, I should turn right to face east (`>`).\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#>L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing right (`>`) near the left side of the map. There is a lava cell (`L`) directly ahead of me. Moving forward would put me in the lava, which I want to avoid. The only option to avoid the lava is to change direction. Turning down or up might offer a safer path. I will turn to face downward first to explore the possibility of moving south.\n</thought>\n<action>\nTURN_RIGHT\n</action>\n"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#vL.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am in the top-left area of the map, facing down (`v`). Directly in front of me is a lava cell (`L`), so moving forward is not an option. I should turn to find a safe path. Turning RIGHT will have me facing toward the open pathway on my right (`>`).\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#########\n#<L.....#\n#.L.....#\n#.L.....#\n#.LLLLLL#\n#.......#\n#LLLLL.L#\n#.L....G#\n#########\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing left `<` on the second row from the top, first column (excluding the outer wall). To make progress towards the goal `G` in the lower-right, I need to turn around and head right. First, I will turn right to face up, getting me closer to facing the direction I want to go in the future (towards the right).\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        }
+    ]
+}

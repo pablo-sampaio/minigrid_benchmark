@@ -1,0 +1,64 @@
+{
+    "experiment": "gpt-4.1-global_simple-history5",
+    "config": {
+        "model_name": "gpt-4.1",
+        "global_view": true,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "00375ed481823ab165f0f22375950a0280ce91d9",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 3,
+    "seed": 56605,
+    "max_steps": 15,
+    "steps": 5,
+    "success": 1,
+    "reward": 0.955,
+    "completed_at": "2026-06-27T14:20:35",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#>..#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing right (`>`) in the top row, one cell away from the left edge. The goal (`G`) is toward the bottom right. There are no obstacles directly in front, so I should proceed forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.>.#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI moved one cell to the right and am still facing right. There are no obstacles directly ahead, and moving forward brings me closer to the row with the goal. I should continue moving forward.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#..>#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nNow I am at the rightmost cell in the top row, facing right. Ahead of me is a wall, so I cannot move forward. I need to turn to find a path down towards the goal. Turning right would make me face down, which aligns with the direction of the goal.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#..v#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing down with an open path below me. Moving forward will take me closer to the goal row. I should proceed downwards.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#...#\n#.Lv#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am now one row above the goal and facing downwards. The cell directly below me is clear, so moving forward will bring me to the same row as the goal.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

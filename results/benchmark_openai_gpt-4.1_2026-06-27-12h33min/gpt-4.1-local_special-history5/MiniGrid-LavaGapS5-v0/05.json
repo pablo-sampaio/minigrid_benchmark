@@ -1,0 +1,48 @@
+{
+    "experiment": "gpt-4.1-local_special-history5",
+    "config": {
+        "model_name": "gpt-4.1",
+        "global_view": false,
+        "show_numbers": true,
+        "separate_cells": true,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "00375ed481823ab165f0f22375950a0280ce91d9",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 5,
+    "seed": 41726,
+    "max_steps": 15,
+    "steps": 3,
+    "success": 0,
+    "reward": 0.0,
+    "completed_at": "2026-06-27T14:42:24",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|#|#|#|#|#|\n05|?|?|#|.|.|G|#|\n06|?|?|#|L|L|.|#|\n07|?|?|#|^|.|.|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing a wall of lava cells directly in front of me and slightly to my right. The spaces to my left (column C and D, row 07) are unknown, which could contain safe ground or obstacles. Since moving forward would lead into lava and turning right would also point me towards more lava, I should turn left to reveal and potentially access safe ground.\n</thought>\n<action>\nTURN_LEFT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|?|?|?|?|?|\n05|?|?|?|?|?|?|?|\n06|?|?|#|#|#|#|#|\n07|?|?|#|^|L|.|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nNow I am facing left relative to my previous orientation. The cell directly in front of me (column C, row 07) is a wall (#), so I cannot move forward. Turning left would point me towards unknown cells, but could also potentially lead me away from the navigable corridor. To make progress, I should turn right to face towards the open area (column E, row 07) where there is a safe floor cell visible.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n--|A|B|C|D|E|F|G|\n01|?|?|?|?|?|?|?|\n02|?|?|?|?|?|?|?|\n03|?|?|?|?|?|?|?|\n04|?|?|#|#|#|#|#|\n05|?|?|#|.|.|G|#|\n06|?|?|#|L|L|.|#|\n07|?|?|#|^|.|.|#|\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nNow I am facing the open corridor again. The cell directly in front of me (column E, row 07) is a safe floor cell, so I can move forward safely toward the goal area.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}

@@ -1,0 +1,64 @@
+{
+    "experiment": "gpt-4.1-global_simple-history5",
+    "config": {
+        "model_name": "gpt-4.1",
+        "global_view": true,
+        "show_numbers": false,
+        "separate_cells": false,
+        "history_size": 5
+    },
+    "code_version": {
+        "git_commit": "00375ed481823ab165f0f22375950a0280ce91d9",
+        "git_dirty": true
+    },
+    "env": "MiniGrid-LavaGapS5-v0",
+    "run": 4,
+    "seed": 31804,
+    "max_steps": 15,
+    "steps": 5,
+    "success": 1,
+    "reward": 0.955,
+    "completed_at": "2026-06-27T14:20:40",
+    "history": [
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#>..#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI'm currently facing right (`>`) on the second row, second column. Directly ahead is an empty floor cell. Moving forward will bring me closer to the goal, which is located in the bottom row, second cell from the right. There are no immediate obstacles ahead.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#.>.#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI moved one step right and am still facing right (`>`) in an empty cell. The cell in front of me is also empty. Continuing forward keeps me on the path toward the goal, and there are no obstacles directly ahead.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#..>#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nNow I am at the far right of the second row, facing right (`>`). There is a wall immediately to my right, so moving forward would result in a collision. I should turn to face downward to progress toward the goal located on the bottom row.\n</thought>\n<action>\nTURN_RIGHT\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#..v#\n#.L.#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am now facing down (`v`) at the rightmost end of the second row. The cell below me is empty, so moving forward will take me closer to the goal on the bottom row.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        },
+        {
+            "role": "human",
+            "content": "\nCURRENT OBSERVATION:\n#####\n#...#\n#.Lv#\n#.LG#\n#####\n"
+        },
+        {
+            "role": "ai",
+            "content": "<thought>\nI am facing down (`v`) and directly above the cell below, which is empty. Moving forward again will bring me closer to the goal, which is a few tiles to my left.\n</thought>\n<action>\nMOVE_FORWARD\n</action>"
+        }
+    ]
+}
