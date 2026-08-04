@@ -54,6 +54,8 @@ def build_chat_model(
 
             if hf_quantization in ("8bit", "8bits"):
                 bnb_config = BitsAndBytesConfig(load_in_8bit=True)
+                # MatMul8bitLt quantizes from fp16; setting torch_dtype avoids bf16->fp16 casts.
+                model_kwargs["torch_dtype"] = compute_dtype
             elif hf_quantization in ("4bit", "4bits"):
                 quant_type = "nf4"  # better than "fp4" for virtually all LLM use cases in general
                 bnb_config = BitsAndBytesConfig(

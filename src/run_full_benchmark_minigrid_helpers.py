@@ -23,7 +23,7 @@ MODEL_OPTIONS = {
         ("google/gemma-3-4b-it", None),
         ("google/gemma-3-12b-it", "4bit"),
         ("google/gemma-4-E2B-it", None),
-        ("google/gemma-4-E4B-it", None),
+        ("google/gemma-4-E4B-it", "8bit"),
         ("google/gemma-4-12B-it", "4bit"),
         ("Qwen/Qwen2.5-3B-Instruct", None),
         ("Qwen/Qwen2.5-7B-Instruct", "8bit"),
