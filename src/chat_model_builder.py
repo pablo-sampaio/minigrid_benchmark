@@ -3,7 +3,7 @@ import os
 from langchain.chat_models.base import BaseChatModel
 
 
-SUPPORTED_PROVIDERS = ("openai", "deepseek", "hf")
+SUPPORTED_PROVIDERS = ("openai", "deepseek", "hf", "qwen-local-server")
 
 
 def build_chat_model(
@@ -30,6 +30,18 @@ def build_chat_model(
         return ChatDeepSeek(
             model=model_id,
             api_key=api_key,
+            max_tokens=max_output_tokens,
+            max_retries=5,
+        )
+
+    if provider == "qwen-local-server":
+        from langchain_openai import ChatOpenAI
+
+        base_url = os.getenv("OPENAI_BASE_URL", "http://127.0.0.1:8000/v1")
+        return ChatOpenAI(
+            model=model_id,
+            api_key=api_key or "EMPTY",
+            base_url=base_url,
             max_tokens=max_output_tokens,
             max_retries=5,
         )
@@ -70,24 +82,21 @@ def build_chat_model(
             model_kwargs["device_map"] = "auto"
 
         # ------------------------------------------------------------------
-        # Multimodal and task normalization support
-        # Some causal text-only models are tagged by registry heuristics as
-        # "text2text-generation", which would route them to Seq2Seq loaders
-        # and fail. Preserve true multimodal task routing, and normalize
-        # non-encoder-decoder text models to "text-generation".
+        # Multimodal support
+        # Models like LLaVA, Idefics, or Qwen-VL are registered as
+        # "image-text-to-text" in the Transformers task registry and fail when
+        # forced into a "text-generation" pipeline.  We detect the actual task
+        # first and fall back to "text-generation" only when the model is
+        # text-only.  The processor/tokenizer is loaded explicitly so that
+        # multimodal tokenizers are handled correctly even though we feed the
+        # pipeline plain text.
         # ------------------------------------------------------------------
-        _TEXT_COMPATIBLE_TASKS = {"text-generation", "image-text-to-text"}
+        _TEXT_COMPATIBLE_TASKS = {"text-generation", "image-text-to-text", "text2text-generation"}
 
-        from transformers import AutoConfig
         from transformers.pipelines import get_task
-
         detected_task = get_task(model_id, token=api_key)
 
-        if detected_task == "text2text-generation":
-            config = AutoConfig.from_pretrained(model_id, token=api_key, trust_remote_code=True)
-            if not getattr(config, "is_encoder_decoder", False):
-                detected_task = "text-generation"
-        elif detected_task not in _TEXT_COMPATIBLE_TASKS:
+        if detected_task not in _TEXT_COMPATIBLE_TASKS:
             detected_task = "text-generation"
 
         # For multimodal models, the pipeline needs an AutoProcessor; for

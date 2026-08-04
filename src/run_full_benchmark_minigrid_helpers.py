@@ -1,10 +1,14 @@
 import os
+import subprocess
 import shutil
 import sys
+import time
+import urllib.error
+import urllib.request
 import warnings
 
 
-SUPPORTED_PROVIDERS = ("openai", "deepseek", "hf")
+SUPPORTED_PROVIDERS = ("openai", "deepseek", "hf", "qwen-local-server")
 
 MODEL_OPTIONS = {
     "openai": [
@@ -36,6 +40,11 @@ MODEL_OPTIONS = {
         ("Qwen/Qwen3.5-2B", None),
         ("Qwen/Qwen3.5-4B", None),
         ("WeiboAI/VibeThinker-3B", "8bit"),
+    ],
+    "qwen-local-server": [
+        ("Qwen/Qwen3.5-0.8B", None),
+        ("Qwen/Qwen3.5-2B", None),
+        ("Qwen/Qwen3.5-4B", None),
     ],
 }
 
@@ -108,6 +117,8 @@ def resolve_api_key(provider: str, execution_env: str = "local") -> str | None:
         secret_names = ["DEEPSEEK_API_KEY", "DEEPSEEK_KEY"]
     if provider == "hf":
         secret_names = ["HF_API_KEY", "HF_TOKEN"]
+    if provider == "qwen-local-server":
+        secret_names = ["QWEN_LOCAL_API_KEY", "LOCAL_OPENAI_API_KEY", "OPENAI_API_KEY"]
 
     if not secret_names:
         warnings.warn(f"Provider '{provider}' is not recognized for API key resolution.")
@@ -141,8 +152,124 @@ def resolve_api_key(provider: str, execution_env: str = "local") -> str | None:
         if api_key:
             return api_key
 
+    if provider == "qwen-local-server":
+        return "EMPTY"
+
     warnings.warn(f"API key not found for provider '{provider}'.")
     return None
+
+
+def ensure_qwen_local_server(
+        provider: str,
+        model_id: str,
+        execution_env: str,
+        repo_path: str,
+        port: int = 8000,
+        startup_timeout_s: int = 240,
+        max_model_len: int = 32768,
+    ) -> dict[str, str | int | None]:
+    provider = provider.strip().lower()
+    if provider != "qwen-local-server":
+        return {
+            "started": False,
+            "base_url": None,
+            "log_path": None,
+            "pid": None,
+        }
+
+    base_url = f"http://127.0.0.1:{port}/v1"
+    os.environ["OPENAI_BASE_URL"] = base_url
+    os.environ.setdefault("OPENAI_API_KEY", "EMPTY")
+
+    if _is_server_ready(base_url):
+        return {
+            "started": False,
+            "base_url": base_url,
+            "log_path": None,
+            "pid": None,
+        }
+
+    if execution_env in ("colab", "kaggle"):
+        _install_vllm_if_missing()
+
+    logs_dir = os.path.join(repo_path, "results", "server_logs")
+    os.makedirs(logs_dir, exist_ok=True)
+    log_path = os.path.join(logs_dir, f"qwen_local_server_{model_id.replace('/', '_')}_{int(time.time())}.log")
+
+    command = [
+        "vllm",
+        "serve",
+        model_id,
+        "--host",
+        "127.0.0.1",
+        "--port",
+        str(port),
+        "--tensor-parallel-size",
+        "1",
+        "--max-model-len",
+        str(max_model_len),
+        "--language-model-only",
+    ]
+
+    with open(log_path, "w", encoding="utf-8") as log_file:
+        process = subprocess.Popen(
+            command,
+            stdout=log_file,
+            stderr=subprocess.STDOUT,
+            text=True,
+            cwd=repo_path,
+        )
+
+    _wait_for_server_ready(base_url=base_url, timeout_s=startup_timeout_s)
+    return {
+        "started": True,
+        "base_url": base_url,
+        "log_path": log_path,
+        "pid": process.pid,
+    }
+
+
+def _install_vllm_if_missing() -> None:
+    try:
+        import vllm  # noqa: F401
+
+        return
+    except Exception:
+        pass
+
+    command = [
+        sys.executable,
+        "-m",
+        "pip",
+        "install",
+        "vllm",
+        "--torch-backend=auto",
+        "--extra-index-url",
+        "https://wheels.vllm.ai/nightly",
+    ]
+    subprocess.check_call(command)
+
+
+def _is_server_ready(base_url: str) -> bool:
+    models_url = f"{base_url}/models"
+    request = urllib.request.Request(models_url, method="GET")
+    try:
+        with urllib.request.urlopen(request, timeout=2) as response:  # noqa: S310
+            return 200 <= response.status < 300
+    except Exception:
+        return False
+
+
+def _wait_for_server_ready(base_url: str, timeout_s: int) -> None:
+    start = time.time()
+    while time.time() - start < timeout_s:
+        if _is_server_ready(base_url):
+            return
+        time.sleep(2)
+
+    raise TimeoutError(
+        f"Qwen local server did not become ready at '{base_url}' within {timeout_s} seconds."
+    )
 
 
 def create_model_selector_widgets(model_options: dict[str, list[tuple[str, str | None]]] | None = None):
