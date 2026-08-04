@@ -55,14 +55,13 @@ def build_chat_model(
             if hf_quantization in ("8bit", "8bits"):
                 bnb_config = BitsAndBytesConfig(load_in_8bit=True)
             elif hf_quantization in ("4bit", "4bits"):
-                quant_type = "nf4"  # better than "fp4" for virtually all LLM use cases in general
                 bnb_config = BitsAndBytesConfig(
                     load_in_4bit=True,
-                    bnb_4bit_quant_type=quant_type,
+                    bnb_4bit_quant_type="nf4",  # better than "fp4" for virtually all LLM use cases
                     bnb_4bit_compute_dtype=compute_dtype,
-                    # Double-quantization: quantize the quantization constants
-                    # themselves, saving ~0.4 bits/param (valuable on a T4), with near-zero quality cost.
-                    bnb_4bit_use_double_quant=False, #True,
+                    # Double-quantization (when enabled): quantize the quantization constants themselves, saving ~0.4 bits/param 
+                    # (with near-zero quality cost, but with a slight loss in compute time). Disabled.
+                    bnb_4bit_use_double_quant=False,
                 )
             else:
                 raise ValueError(f"Unsupported quantization type for HF: {hf_quantization!r}. Use '8bit', '4bit' or None.")
@@ -71,21 +70,24 @@ def build_chat_model(
             model_kwargs["device_map"] = "auto"
 
         # ------------------------------------------------------------------
-        # Multimodal support
-        # Models like LLaVA, Idefics, or Qwen-VL are registered as
-        # "image-text-to-text" in the Transformers task registry and fail when
-        # forced into a "text-generation" pipeline.  We detect the actual task
-        # first and fall back to "text-generation" only when the model is
-        # text-only.  The processor/tokenizer is loaded explicitly so that
-        # multimodal tokenizers are handled correctly even though we feed the
-        # pipeline plain text.
+        # Multimodal and task normalization support
+        # Some causal text-only models are tagged by registry heuristics as
+        # "text2text-generation", which would route them to Seq2Seq loaders
+        # and fail. Preserve true multimodal task routing, and normalize
+        # non-encoder-decoder text models to "text-generation".
         # ------------------------------------------------------------------
-        _TEXT_COMPATIBLE_TASKS = {"text-generation", "image-text-to-text", "text2text-generation"}
+        _TEXT_COMPATIBLE_TASKS = {"text-generation", "image-text-to-text"}
 
+        from transformers import AutoConfig
         from transformers.pipelines import get_task
+
         detected_task = get_task(model_id, token=api_key)
 
-        if detected_task not in _TEXT_COMPATIBLE_TASKS:
+        if detected_task == "text2text-generation":
+            config = AutoConfig.from_pretrained(model_id, token=api_key, trust_remote_code=True)
+            if not getattr(config, "is_encoder_decoder", False):
+                detected_task = "text-generation"
+        elif detected_task not in _TEXT_COMPATIBLE_TASKS:
             detected_task = "text-generation"
 
         # For multimodal models, the pipeline needs an AutoProcessor; for
