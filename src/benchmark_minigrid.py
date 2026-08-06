@@ -2,6 +2,7 @@ import argparse
 import os
 import warnings
 import datetime
+import shutil
 from typing import Any
 
 from langchain.chat_models.base import BaseChatModel
@@ -12,6 +13,35 @@ from chat_model_builder import build_chat_model
 
 
 SUPPORTED_PROVIDERS = ("openai", "deepseek", "hf")
+
+
+def _make_results_folder_name(provider: str, model_id: str, quantization: str | None) -> str:
+    model_id_simplified = model_id.replace("/", "_")
+    return f"benchmark_{provider}_{model_id_simplified}_" + (f"quant{quantization}_" if quantization else "")
+
+
+def find_previous_results_folder(
+        provider: str,
+        model_id: str,
+        quantization: str | None,
+        resume_from: str,
+        resume_to: str,
+     ) -> str | None:
+
+    if not os.path.isdir(resume_from):
+        return None
+
+    base_experiment_name = _make_results_folder_name(provider, model_id, quantization)
+
+    for filename in os.listdir(resume_from):
+        candidate_file_path = os.path.join(resume_from, filename)
+        if filename.startswith(base_experiment_name) and os.path.isdir(candidate_file_path):
+            dest_folder = os.path.join(resume_to, filename)
+            if not os.path.exists(dest_folder):
+                shutil.copytree(candidate_file_path, dest_folder)
+            return filename
+
+    return None
 
 
 def _build_default_8_configs(model_name: str, model: Any) -> list[dict[str, Any]]:
@@ -74,9 +104,9 @@ def run_benchmark_minigrid(
     configs = _build_default_8_configs(model_name=model_id, model=model)
 
     if results_folder_name is None or results_folder_name.strip() == "":
-        model_id_simplified = model_id.replace("/", "_")  # replace / with _ for names "developer/model_id"
+        results_folder_name = _make_results_folder_name(provider, model_id, quantization)
         curr_date_time_str = datetime.datetime.now().strftime("%Y-%m-%d-%Hh%Mmin")
-        results_folder_name = f"benchmark_{provider}_{model_id_simplified}_{curr_date_time_str}"
+        results_folder_name = f"{results_folder_name}{curr_date_time_str}"
 
     run_results = run_and_save_experiments(configs, experiment_name=results_folder_name, verbose=verbose)
 

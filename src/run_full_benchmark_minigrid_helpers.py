@@ -67,14 +67,6 @@ def resolve_repo_path(execution_env: str, cwd: str | None = None) -> str:
     return cwd
 
 
-def clone_repo_if_needed(execution_env: str, repo_path: str, repo_url: str = "https://github.com/pablo-sampaio/minigrid_benchmark.git") -> bool:
-    if execution_env not in ("colab", "kaggle") or os.path.exists(repo_path):
-        return False
-
-    os.system(f"git clone {repo_url} {repo_path}")
-    return True
-
-
 def append_src_to_syspath(repo_path: str) -> str:
     src_path = os.path.join(repo_path, "src")
     if src_path not in sys.path:
@@ -179,29 +171,6 @@ def create_model_selector_widgets(model_options: dict[str, list[tuple[str, str |
     update_model_options()
     return provider_dd, model_dd, selection
 
-
-def resume_from_previous_results_folder(
-        provider: str,
-        model_id: str,
-        resume_from: str,
-        resume_to: str,
-     ) -> str | None:
-
-    if not os.path.isdir(resume_from):
-        return None
-
-    model_id_simplified = model_id.replace("/", "_")
-    base_experiment_name = f"benchmark_{provider}_{model_id_simplified}_"
-
-    for filename in os.listdir(resume_from):
-        candidate_file_path = os.path.join(resume_from, filename)
-        if filename.startswith(base_experiment_name) and os.path.isdir(candidate_file_path):
-            dest_folder = os.path.join(resume_to, filename)
-            if not os.path.exists(dest_folder):
-                shutil.copytree(candidate_file_path, dest_folder)
-            return filename
-
-    return None
 
 
 def zip_results_for_export(execution_env: str, summary_path: str) -> str | None:
