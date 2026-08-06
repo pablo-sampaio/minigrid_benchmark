@@ -18,17 +18,13 @@ class _SuppressBnbMatMul8bitLtCastWarning(logging.Filter):
 
 
 def _configure_hf_warning_filters() -> None:
-    warnings.filterwarnings(
-        "ignore",
-        message="MatMul8bitLt: inputs will be cast from torch.bfloat16 to float16 during quantization"
-    )
-    '''warnings.filterwarnings("ignore", message=".*torch_dtype is deprecated.*")
+    warnings.filterwarnings("ignore", message=".*torch_dtype is deprecated.*")
 
     bnb_logger = logging.getLogger("bitsandbytes.autograd._functions")
     marker_name = "_minigrid_cast_filter_installed"
     if not getattr(bnb_logger, marker_name, False):
         bnb_logger.addFilter(_SuppressBnbMatMul8bitLtCastWarning())
-        setattr(bnb_logger, marker_name, True)'''
+        setattr(bnb_logger, marker_name, True)
 
 
 def build_chat_model(
@@ -63,6 +59,8 @@ def build_chat_model(
         from langchain_huggingface import ChatHuggingFace, HuggingFacePipeline
         from transformers import BitsAndBytesConfig
 
+        _configure_hf_warning_filters()
+
         # Ensure HF auth is available to transformers in Colab/Kaggle/local runs.
         os.environ.setdefault("HF_TOKEN", api_key)
 
@@ -78,9 +76,9 @@ def build_chat_model(
             compute_dtype = torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
 
             if hf_quantization in ("8bit", "8bits"):
-                _configure_hf_warning_filters()
-                bnb_config = BitsAndBytesConfig(load_in_8bit=True)
+                bnb_config = BitsAndBytesConfig(load_in_8bit=True, bnb_8bit_compute_dtype=compute_dtype)
                 # MatMul8bitLt quantizes from fp16; setting torch_dtype avoids bf16->fp16 casts.
+                model_kwargs["dtype"] = compute_dtype
             elif hf_quantization in ("4bit", "4bits"):
                 quant_type = "nf4"  # better than "fp4" for virtually all LLM use cases in general
                 bnb_config = BitsAndBytesConfig(
@@ -94,7 +92,6 @@ def build_chat_model(
             else:
                 raise ValueError(f"Unsupported quantization type for HF: {hf_quantization!r}. Use '8bit', '4bit' or None.")
 
-            model_kwargs["dtype"] = compute_dtype
             model_kwargs["quantization_config"] = bnb_config
             model_kwargs["device_map"] = "auto"
 
