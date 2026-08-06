@@ -23,17 +23,17 @@ MODEL_OPTIONS = {
         ("google/gemma-3-4b-it", None),
         ("google/gemma-3-12b-it", "4bit"),
         ("google/gemma-4-E2B-it", None),
-        ("google/gemma-4-E4B-it", "8bit"),
+        ("google/gemma-4-E4B-it", "4bit"),
         ("google/gemma-4-12B-it", "4bit"),
         ("Qwen/Qwen2.5-3B-Instruct", None),
-        ("Qwen/Qwen2.5-7B-Instruct", "8bit"),
+        ("Qwen/Qwen2.5-7B-Instruct", "4bit"),
         ("Qwen/Qwen3-4B", None),  # mais antigo, de propósito híbrido (instrutivo + thinking)
         ("Qwen/Qwen3-4B-Instruct-2507", None),
         ("Qwen/Qwen3-4B-Thinking-2507", None),
         #("Qwen/Qwen3.5-0.8B", None),  # não carregam diretamente no código HF...
         #("Qwen/Qwen3.5-2B", None),
         #("Qwen/Qwen3.5-4B", None),
-        ("WeiboAI/VibeThinker-3B", "8bit"),
+        ("WeiboAI/VibeThinker-3B", None) #"8bit"
     ],
 }
 
