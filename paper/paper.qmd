@@ -1,0 +1,158 @@
+---
+title: "Medindo a Capacidade dos Modelos de Linguagem de Navegarem em Espaços Representados em Formato 2D Textual"
+author:
+  - name: "Pablo A. Sampaio"
+    affiliation: "Universidade Federal Rural de Pernambuco"
+    email: "pablo.sampaio@ufrpe.br"
+
+abstract: |
+  Este é o resumo do artigo. Ele apresenta brevemente o problema,
+  a abordagem proposta, os principais resultados e as conclusões.
+
+keywords:
+  - Artificial Intelligence
+  - Large Language Models
+  - Multi-Agent Systems
+
+bibliography: references.bib
+
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    fontsize: 11pt
+    geometry:
+      - margin=2.5cm
+    linestretch: 1.15
+    number-sections: true
+---
+
+# Introduction
+
+O sucesso recente dos grandes modelos de linguagem (LLMs) baseados em *redes transfomers autorregressivas*
+veio da sua adoção como motores cognitivos para realização de diversos tipos de tarefas. As tarefas para as quais
+eles foram e são usados vão desde tarefas ligadas ao processamento textual direto (conversar, traduzir, informar 
+e resumir textos) até tarefas que onde o modelo é usado em múltiplos passos, tais como: realização
+buscas profundas na web, realização de pesquisa científica, ou desenvolver código. 
+
+<!-- FAZER - completar até 1 parágrafo - detalhar a importância de benchmarks para avanço da área -->
+O lançamento de novos modelos e a expectativa crescente sobre as capacidades dos modelos à criação de diversos *benchmarks* para avaliá-los em tarefas específicas. 
+
+Em alguns desses benchmarks o modelo é avaliado de forma direta por meio do fornecimento de uma entrada, para comparar 
+sua saída a alguma saída desejada. Citar alguns...
+
+Outros benchmarks avaliam o uso do modelo associado a uma camada de software adicional, chamada de *harness*, para a realização de tarefas que envolvem um processo cíclico de observação, tomada de decisão (realização de ações) que afeta o estado da tarefa e as observações futuras. Dessa forma, o LLM e o *harness* podem ser conceituados como *agente inteligente* [@russell1995artificial][@shoham2009multiagent]. Tarefas como as citadas serão chamadas de *tarefas agênticas*, 
+neste trabalho. 
+
+<!-- FAZER - completar até 1 parágrafo -->
+Modelos de linguagem (grandes ou pequenos) são testados por meio de benchmarks. E existem vários. 
+
+Benchmarks agênticos testando os modelos em situações que requerem tomar decisões, em passos sequenciais, etc. Falar da importância. Citar rapidamente alguns deles.
+
+Diante disso, estamos propondo...
+usar o minigrid, trocando a representação para 2D
+avaliar os resultados para diferentes providers (pegandos os modelos mais importantes)
+para diferentes modelos de uma mesma família (variando o tamanho)
+entre famílias (considerando um tamanho fixo de modelo)
+
+
+## Problem Statement
+ASA
+
+## Contributions
+
+As principais contribuições deste trabalho são:
+
+- primeira contribuição;
+- segunda contribuição;
+- terceira contribuição.
+
+# Related Work
+
+Dar detalhes dos outros benchmarks agênticos que existem. 
+
+Escolher uns 5 recentes, dos mais citados.
+
+BALROG [@paglieri2025balrog]
+https://proceedings.iclr.cc/paper_files/paper/2025/file/f0b1515be276f6ba82b4f2b25e50bef0-Paper-Conference.pdf 
+um benchmark para avaliar capacidades agênticas de LLMs e VLMs em tarefas de longo horizonte temporal. Os autores argumentam que benchmarks existentes normalmente envolvem poucas interações (como navegação na web ou uso de ferramentas), sendo insuficientes para avaliar habilidades como planejamento de longo prazo, raciocínio espacial, exploração e adaptação em ambientes dinâmicos.
+Eu diria que este é um dos artigos mais relevantes para a sua revisão. Diferentemente de benchmarks voltados para uso de ferramentas (como AgentBench, WebArena ou τ-Bench), o BALROG tem como foco explícito a avaliação de capacidades cognitivas de agentes em ambientes interativos, incluindo planejamento, raciocínio espacial, exploração, atribuição de crédito, descoberta da dinâmica do ambiente e tomada de decisão sequencial. A principal diferença para o seu benchmark é que o BALROG agrega vários ambientes já existentes, enquanto o seu trabalho propõe um ambiente textual próprio, representando um mundo 2D descrito apenas por texto, especificamente para avaliar esse tipo de tomada de decisão. 
+
+How Well Do Agentic Skills Work in the Wild: Benchmarking LLM Skill Usage in Realistic Settings
+[@liu2026well]
+https://arxiv.org/abs/2604.04323
+ler e resumir
+ele faz algo que é bastante complementar ao meu trabalho: ele investiga como o uso de "skills" (memórias procedurais reutilizáveis) afeta o desempenho de agentes baseados em LLM em benchmarks agênticos, e argumenta que avaliações anteriores são excessivamente otimistas por utilizarem condições irreais.
+Para o contexto do seu artigo, eu destacaria principalmente a discussão metodológica sobre como construir benchmarks agênticos mais realistas, pois ela dialoga diretamente com a motivação do seu benchmark.
+
+Pesquisa no scispace:
+https://scispace.com/chat/83a8e6e9-5de4-4f87-8384-22f50675ea72 
+
+Outro benchmark que mede a capacidade de usar skills:
+[@cho2026skillret]
+
+Trazer alguns resultados já divulgados.
+
+Mostrar que não tem benchmark como o nosso
+que represente informação 2D como texto (fácil para o humano entender)
+e que seja agêntico
+de longo prazo
+(O mais próximo é o BALROG)
+
+
+# Method
+
+Explicar como é o benchmark proposto
+Código de um agente ReAct - fixo
+Prompts fixos - fixos (inglês)
+Adaptação dos ambientes MiniGrid
+retornar observações textuais puramente
+onde o mapa 2D é representado em múltiplas linhas de texto 
+Variações
+informação global vs local
+representação do mapa
+Explica como são os testes (centenas/milhares de execuções)
+rodar X vezes em tal ambiente
+rodar Y vezes em tal ambiente
+...
+Métrica final
+no final, retorna o percentual de ambientes resolvidos
+
+## Experimental Setup
+
+Descrição dos experimentos.
+
+4.1 Modelos top de diferentes providers
+
+4.2 Modelos de diferentes tamanhos, de uma mesma família
+
+4.3 Modelos de mesmo tamanho, de diferentes famílias
+
+
+
+# Results
+
+Apresentação dos resultados.
+
+# Discussion
+
+Discussão dos resultados.
+
+# Conclusion
+
+Muito brevemente, relembrar:
+o que foi proposto
+e os resultados que obteve
+
+Esperada: ele é um bom benchmark agêntico, capaz de diferenciar modelos mais capazes dos menos capazes.
+
+Trabalhos futuros.
+
+# Acknowledgments
+
+
+
+# References
+
+::: {#refs}
+:::
