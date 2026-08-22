@@ -30,9 +30,9 @@ MODEL_OPTIONS = {
         ("Qwen/Qwen3-4B", None),  # mais antigo, de propósito híbrido (instrutivo + thinking)
         ("Qwen/Qwen3-4B-Instruct-2507", None),
         ("Qwen/Qwen3-4B-Thinking-2507", None),
-        #("Qwen/Qwen3.5-0.8B", None),  # não carregam diretamente no código HF...
-        #("Qwen/Qwen3.5-2B", None),
-        #("Qwen/Qwen3.5-4B", None),
+        ("Qwen/Qwen3.5-0.8B", None),  # não carregam diretamente no código HF...
+        ("Qwen/Qwen3.5-2B", None),
+        ("Qwen/Qwen3.5-4B", None),
         ("WeiboAI/VibeThinker-3B", None) #"8bit"
     ],
 }

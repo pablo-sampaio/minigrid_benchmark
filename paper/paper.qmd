@@ -29,25 +29,23 @@ format:
 
 # Introduction
 
-O sucesso recente dos grandes modelos de linguagem (LLMs) baseados em *redes transfomers autorregressivas*
-veio da sua adoção como motores cognitivos para realização de diversos tipos de tarefas. As tarefas para as quais
-eles foram e são usados vão desde tarefas ligadas ao processamento textual direto (conversar, traduzir, informar 
-e resumir textos) até tarefas que onde o modelo é usado em múltiplos passos, tais como: realização
-buscas profundas na web, realização de pesquisa científica, ou desenvolver código. 
+O sucesso recente dos *grandes modelos de linguagem* (LLMs) baseados em *redes transfomers autorregressivas*
+veio da sua adoção como motores cognitivos para realização de tarefas diversas, variando entre tarefas ligadas ao processamento textual direto (conversar, traduzir, informar, resumir textos) até tarefas que onde o modelo é usado em múltiplos passos, tais como: realização
+buscas profundas na web, realização de pesquisa científica, ou desenvolver código [@zhao2026survey]. As crescentes expectativas levaram ao rápido avanço na área, com lançamento de novos modelos, criação de variações arquiteturais e novos regimes de treinamento. Porém, para uma comparação adequada e para avaliar o progresso que os novos modelos representam, é preciso avaliá-los. Para isso, são aplicados diversos *benchmarks* (existentes antes ou novos). 
 
 <!-- FAZER - completar até 1 parágrafo - detalhar a importância de benchmarks para avanço da área -->
-O lançamento de novos modelos e a expectativa crescente sobre as capacidades dos modelos à criação de diversos *benchmarks* para avaliá-los em tarefas específicas. 
 
-Em alguns desses benchmarks o modelo é avaliado de forma direta por meio do fornecimento de uma entrada, para comparar 
-sua saída a alguma saída desejada. Citar alguns...
+Em alguns desses benchmarks, o modelo de linguagem é avaliado com base na sua capacidade de gerar uma saída correta em apenas uma etapa. Tipicamente, tais benchmarks são baseados em um dataset de onde são obtidas as entradas que são fornecidas ao modelo. A saída gerada pelo modelo é, então, avaliada, seja pela simples comparação com uma resposta de referência ou por algum método programático. Por exemplo, o **MMLU** (*Massive Multitask Language Understanding*) avalia o conhecimento e a capacidade de resolução de problemas de modelos de linguagem em 57 disciplinas por meio de questões de múltipla escolha [@hendrycks2020measuring]. O **GSM8K** (*Grade School Math 8K*), por sua vez, avalia a capacidade de resolver problemas matemáticos, usando um dataset de perguntas textuais com respostas conhecidas [@cobbe2021training]. O **HumanEval** fornece problemas de programação para os quais o código gerado como saída do modelo é avaliado por testes funcionais [@chen2021evaluating]. 
 
-Outros benchmarks avaliam o uso do modelo associado a uma camada de software adicional, chamada de *harness*, para a realização de tarefas que envolvem um processo cíclico de observação, tomada de decisão (realização de ações) que afeta o estado da tarefa e as observações futuras. Dessa forma, o LLM e o *harness* podem ser conceituados como *agente inteligente* [@russell1995artificial][@shoham2009multiagent]. Tarefas como as citadas serão chamadas de *tarefas agênticas*, 
-neste trabalho. 
+> Resumo legal:
+> Em alguns benchmarks tradicionais, o modelo recebe uma entrada e sua resposta é avaliada diretamente segundo um gabarito ou critério de correção predefinido. Exemplos incluem o *MMLU*, que avalia questões de múltipla escolha em 57 disciplinas [@hendrycks2020measuring], o *GSM8K*, voltado à resolução de problemas matemáticos [@cobbe2021training], e o *HumanEval*, que avalia código gerado por meio de testes funcionais [@chen2021evaluating].”
 
-<!-- FAZER - completar até 1 parágrafo -->
-Modelos de linguagem (grandes ou pequenos) são testados por meio de benchmarks. E existem vários. 
 
-Benchmarks agênticos testando os modelos em situações que requerem tomar decisões, em passos sequenciais, etc. Falar da importância. Citar rapidamente alguns deles.
+Outros benchmarks avaliam a capacidade de usar o modelo em tarefas que requerem *múltiplas* etapas de geração de saída. Nestes, o modelo é tipicamente testado acoplado a uma camada de software adicional [^rod_harness] previamente definida, que usa o modelo para a realização da tarefa em um processo que repete: observar (receber uma entrada que representa) o estado da tarefa, tomar uma decisão (realizar de ação) capaz de afetar o estado da tarefa. Juntos, o LLM e essa camada podem ser conceituados como um *agente inteligente* [@russell1995artificial][@shoham2009multiagent]. Tarefas como as citadas serão chamadas de *tarefas agênticas* e benchmarks que avaliam alguma habilidade de um agente baseado em LLM são chamados *benchmarks agênticos*, neste trabalho. 
+
+[^rod_harness]: Atualmente, esta camada tem sido chamada de *harness* do agente. Porém, podemos considerar que o sofware é o *próprio* agente, e que o modelo é usado como um módulo dele.
+
+Note que cada *benchmark* mede a capacidade do modelo em um aspecto ou em um tipo de tarefa em particular. Esse trabalho é baseado na crença de que novos *benchmarks* ainda precisam sugir para medir o modelo sobre diferentes aspectos. 
 
 Diante disso, estamos propondo...
 usar o minigrid, trocando a representação para 2D
@@ -57,7 +55,11 @@ entre famílias (considerando um tamanho fixo de modelo)
 
 
 ## Problem Statement
-ASA
+
+Veja [@fig-dresses].
+
+![1907 Franklin Model D roadster. Photograph by Harris \& Ewing, Inc. [Public domain], via Wikimedia Commons. (<https://goo.gl/VLCRBB>).](ztest_quarto/sample-franklin.png){#fig-dresses fig-alt="A woman and a girl in white dresses sit in an open car."}
+
 
 ## Contributions
 
@@ -69,7 +71,43 @@ As principais contribuições deste trabalho são:
 
 # Related Work
 
-Dar detalhes dos outros benchmarks agênticos que existem. 
+<!-- Definindo agentes -->
+Ver [@xi2025rise] e [@acharya2025agentic]
+
+Sobre mecanismos de tomada decisão, pode ser útil (decidir): https://jasss.soc.surrey.ac.uk/17/4/13.html (2014)
+
+<!-- Importância -->
+
+Falar que permite medir avanços
+- O uso de bench é uma prática bem estabelecida
+- times usam os benchmarks ao lancar os modelos, e.g. [@achiam2023gpt]  [@team2026gemma]
+
+
+<!-- Críticas  -->
+
+Críticas gerais:
+- [@mcintosh2025inadequacies]
+
+- críticas e recomendações: https://proceedings.neurips.cc/paper_files/paper/2025/hash/1967e0fc3aa6cbbace562f5cb8e3954e-Abstract-Datasets_and_Benchmarks_Track.html
+
+- críticas e recomendações: https://aclanthology.org/2024.emnlp-main.764/
+
+- pode ter ideias interessantes: https://arxiv.org/abs/2601.03986
+
+- falar de test contamination que atrapalha os avanços e cria uma necessidade de novos
+https://proceedings.iclr.cc/paper_files/paper/2025/hash/e4a46394ba5378b3f9a186a5b4c650d1-Abstract-Conference.html
+> Test set contamination, wherein test data from a benchmark ends up in a newer model's training set, is a well-documented obstacle for fair LLM evaluation and can quickly render benchmarks obsolete. To mitigate this, many recent benchmarks crowdsource new prompts and evaluations from human or LLM judges; howev
+
+
+<!-- Agênticos  -->
+
+Dar detalhes dos benchmarks agênticos que existem. 
+
+À medida que surgem agentes para fazer pesquisa de ML [@lu2026towards] -- artigo da Nature --, surgem benchmarks
+MLE-bench [@chan2025mle]
+
+Outros benchmarks, como o **GLUE**, agregam uma coleção de datasets, que representam tarefas de compreensão de linguagem natural com suas respostas; cada dataset tem um métrica própria de avaliação [@wang2018glue].
+
 
 Escolher uns 5 recentes, dos mais citados.
 
