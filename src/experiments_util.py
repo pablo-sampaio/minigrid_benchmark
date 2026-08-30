@@ -56,7 +56,7 @@ def create_experiment_config(model_name, model, global_view, show_numbers, separ
             raise ValueError("Invalid combination of show_numbers and separate_cells for global view. Only (False, False) and (True, True) are supported.")
     else:
         wrapper_fn = lambda env: wrappers.MiniGridTextLocalObsWrapper(env, show_numbers=show_numbers, separate_cells=separate_cells)
-        if separate_cells and separate_cells:
+        if show_numbers and separate_cells:
             view_str = "local_special"
             prompt = wrappers.prompts.SYSTEM_PROMPT_LOCAL_2
         elif not show_numbers and not separate_cells:

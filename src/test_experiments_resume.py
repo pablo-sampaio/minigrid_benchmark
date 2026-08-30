@@ -72,8 +72,8 @@ class ResumeExperimentsTests(unittest.TestCase):
                         verbose=False,
                     )
 
-                self.assertTrue(os.path.exists(os.path.join(tmp_dir, experiment_name, "exp", "DummyEnv-v0", "1.json")))
-                self.assertTrue(os.path.exists(os.path.join(tmp_dir, experiment_name, "exp", "DummyEnv-v0", "2.json")))
+                self.assertTrue(os.path.exists(os.path.join(tmp_dir, experiment_name, "exp", "DummyEnv-v0", "01.json")))
+                self.assertTrue(os.path.exists(os.path.join(tmp_dir, experiment_name, "exp", "DummyEnv-v0", "02.json")))
 
                 resumed_agent = _CountingAgent()
                 resumed_config = [{
@@ -106,7 +106,7 @@ class ResumeExperimentsTests(unittest.TestCase):
                     ("DummyEnv-v0", 3),
                 ])
 
-                run_payload_path = os.path.join(tmp_dir, experiment_name, "exp", "DummyEnv-v0", "3.json")
+                run_payload_path = os.path.join(tmp_dir, experiment_name, "exp", "DummyEnv-v0", "03.json")
                 run_payload = eu._load_json_if_exists(run_payload_path)
                 self.assertEqual(run_payload.get("config"), resumed_config[0]["config_params"])
                 self.assertEqual(run_payload.get("code_version"), {

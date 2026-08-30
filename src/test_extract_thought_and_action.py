@@ -15,7 +15,7 @@ MOVE_FORWARD
 """
         thought, action = extract_thought_and_action(response)
         self.assertEqual(thought, "I should move forward.")
-    self.assertEqual(action, "MOVE_FORWARD")
+        self.assertEqual(action, "MOVE_FORWARD")
 
     def test_xml_action_with_trailing_punctuation(self):
         response = """

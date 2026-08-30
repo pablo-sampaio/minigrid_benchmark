@@ -1,5 +1,4 @@
 import gymnasium as gym
-from matplotlib.pyplot import grid
 import minigrid
 import numpy as np
 

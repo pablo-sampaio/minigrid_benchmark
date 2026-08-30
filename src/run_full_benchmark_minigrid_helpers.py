@@ -173,6 +173,33 @@ def create_model_selector_widgets(model_options: dict[str, list[tuple[str, str |
 
 
 
+def create_config_selector_widgets(config_labels: list[str]):
+    """
+    Creates a checkbox per configuration (all checked by default, i.e. run everything)
+    and returns (widget_box, get_selected_indices). Call get_selected_indices() after
+    the user has (optionally) unchecked some boxes, to get the list of indices to pass
+    as `config_indices` to run_benchmark_minigrid.
+
+    Use this to run only part of the standard 8 configurations (e.g. only global-view
+    ones, or only a couple of history sizes) instead of the full matrix.
+    """
+    import ipywidgets as widgets
+
+    checkboxes = [
+        widgets.Checkbox(value=True, description=label, indent=False, layout=widgets.Layout(width="max-content"))
+        for label in config_labels
+    ]
+    box = widgets.VBox(checkboxes)
+
+    def get_selected_indices() -> list[int]:
+        selected = [i for i, checkbox in enumerate(checkboxes) if checkbox.value]
+        if not selected:
+            raise ValueError("Select at least one configuration to run.")
+        return selected
+
+    return box, get_selected_indices
+
+
 def zip_results_for_export(execution_env: str, summary_path: str) -> str | None:
     if execution_env not in ("colab", "kaggle"):
         return None

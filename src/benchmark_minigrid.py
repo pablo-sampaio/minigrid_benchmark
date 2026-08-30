@@ -44,22 +44,43 @@ def find_previous_results_folder(
     return None
 
 
-def _build_default_8_configs(model_name: str, model: Any) -> list[dict[str, Any]]:
-    # each item is a configuration (gloval observation?, show numbers AND cells separator?, history size)
-    config_params = [
-        (True, False, 1),
-        (True, True, 1), 
-        (True, False, 5),
-        (True, True, 5),
-        (False, False, 1),
-        (False, True, 1),
-        (False, False, 5),
-        (False, True, 5),
-    ]
+# Each item is a configuration (global observation?, show numbers AND cells separator?, history size).
+# Index in this list is the stable identifier used by `config_indices` in run_benchmark_minigrid,
+# and by the configuration-selector widget in run_full_benchmark_minigrid.ipynb.
+DEFAULT_CONFIG_PARAMS: list[tuple[bool, bool, int]] = [
+    (True, False, 1),
+    (True, True, 1),
+    (True, False, 5),
+    (True, True, 5),
+    (False, False, 1),
+    (False, True, 1),
+    (False, False, 5),
+    (False, True, 5),
+]
 
-    experiment_configs = [ 
+
+def _config_label(global_view: bool, show_numbers_and_separators: bool, history_size: int) -> str:
+    view = "global" if global_view else "local"
+    fmt = "annotated" if show_numbers_and_separators else "simple"
+    return f"{view} view | {fmt} format | history={history_size}"
+
+
+CONFIG_LABELS: list[str] = [_config_label(*params) for params in DEFAULT_CONFIG_PARAMS]
+
+
+def _build_configs(model_name: str, model: Any, config_indices: list[int] | None = None) -> list[dict[str, Any]]:
+    """
+    Builds ReAct agent configurations for a subset (or all, by default) of the 8
+    standard (view x format x history) combinations in DEFAULT_CONFIG_PARAMS.
+    """
+    selected_params = (
+        DEFAULT_CONFIG_PARAMS if config_indices is None
+        else [DEFAULT_CONFIG_PARAMS[i] for i in config_indices]
+    )
+
+    experiment_configs = [
         create_experiment_config(model_name, model, global_view=gv, show_numbers=num_and_sep, separate_cells=num_and_sep, history_size=hist_sz,)
-        for (gv, num_and_sep, hist_sz) in config_params
+        for (gv, num_and_sep, hist_sz) in selected_params
     ]
 
     return experiment_configs
@@ -73,15 +94,21 @@ def run_benchmark_minigrid(
         results_folder_name: str | None = None,
         max_new_tokens: int = 2048,
         quantization: str | None = None,
+        config_indices: list[int] | None = None,
         verbose: bool = True,
     ):
     """
-    Executa benchmark MiniGrid com 8 configuracoes fixas para um modelo.
+    Executa benchmark MiniGrid para um modelo, usando 8 configuracoes fixas por padrao
+    (ou um subconjunto delas, se `config_indices` for informado).
 
-    Configuracoes usadas (8), variando estas 3 características:
+    Configuracoes disponiveis (8, ver DEFAULT_CONFIG_PARAMS / CONFIG_LABELS), variando
+    estas 3 características:
     - Visão presente na observação      : global x local
     - Formato da observação             : simples x especial (com números e separadores)
     - Tamanho do histórico de mensagens : 1 x 5 últimas mensagens
+
+    config_indices: indices (0-7) de DEFAULT_CONFIG_PARAMS/CONFIG_LABELS a executar.
+        Se None (padrao), executa todas as 8 configuracoes.
     """
     provider = provider.strip().lower()
     if provider not in SUPPORTED_PROVIDERS:
@@ -101,7 +128,7 @@ def run_benchmark_minigrid(
         max_output_tokens=max_new_tokens,
         hf_quantization=quantization
     )
-    configs = _build_default_8_configs(model_name=model_id, model=model)
+    configs = _build_configs(model_name=model_id, model=model, config_indices=config_indices)
 
     if results_folder_name is None or results_folder_name.strip() == "":
         results_folder_name = _make_results_folder_name(provider, model_id, quantization)
@@ -122,12 +149,7 @@ def _build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--results-dir", default=None, help="Diretorio base para salvar resultados")
     parser.add_argument("--api-key", default=None, help="API key (opcional). Se omitido, busca nas variaveis de ambiente")
     parser.add_argument("--quiet", action="store_true", help="Desativa barras de progresso")
-    parser.add_argument("--hf-max-new-tokens", type=int, default=2048, help="max_new_tokens para provider hf (HuggingFace)")
-    parser.add_argument(
-        "--hf-no-sampling",
-        action="store_true",
-        help="Desativa do_sample no pipeline HuggingFace",
-    )
+    parser.add_argument("--max-new-tokens", type=int, default=2048, help="Numero maximo de tokens gerados pelo modelo por resposta")
     return parser
 
 
@@ -141,8 +163,7 @@ def main() -> None:
         results_base_dir=args.results_dir,
         api_key=args.api_key,
         verbose=not args.quiet,
-        hf_max_new_tokens=args.hf_max_new_tokens,
-        hf_do_sample=not args.hf_no_sampling,
+        max_new_tokens=args.max_new_tokens,
     )
 
     print(f"Benchmark concluido. Configuracoes executadas: {len(final_results)}")
