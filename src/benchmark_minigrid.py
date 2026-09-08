@@ -20,30 +20,6 @@ def _make_results_folder_name(provider: str, model_id: str, quantization: str | 
     return f"benchmark_{provider}_{model_id_simplified}_" + (f"quant{quantization}_" if quantization else "")
 
 
-def find_previous_results_folder(
-        provider: str,
-        model_id: str,
-        quantization: str | None,
-        resume_from: str,
-        resume_to: str,
-     ) -> str | None:
-
-    if not os.path.isdir(resume_from):
-        return None
-
-    base_experiment_name = _make_results_folder_name(provider, model_id, quantization)
-
-    for filename in os.listdir(resume_from):
-        candidate_file_path = os.path.join(resume_from, filename)
-        if filename.startswith(base_experiment_name) and os.path.isdir(candidate_file_path):
-            dest_folder = os.path.join(resume_to, filename)
-            if not os.path.exists(dest_folder):
-                shutil.copytree(candidate_file_path, dest_folder)
-            return filename
-
-    return None
-
-
 # Each item is a configuration (global observation?, show numbers AND cells separator?, history size).
 # Index in this list is the stable identifier used by `config_indices` in run_benchmark_minigrid,
 # and by the configuration-selector widget in run_full_benchmark_minigrid.ipynb.
@@ -96,6 +72,7 @@ def run_benchmark_minigrid(
         quantization: str | None = None,
         config_indices: list[int] | None = None,
         verbose: bool = True,
+        on_config_complete=None,
     ):
     """
     Executa benchmark MiniGrid para um modelo, usando 8 configuracoes fixas por padrao
@@ -109,6 +86,10 @@ def run_benchmark_minigrid(
 
     config_indices: indices (0-7) de DEFAULT_CONFIG_PARAMS/CONFIG_LABELS a executar.
         Se None (padrao), executa todas as 8 configuracoes.
+
+    on_config_complete: callback opcional repassado a `run_and_save_experiments`, chamado logo
+        após cada configuração terminar e ter seu resumo salvo (ex.: para gerar/atualizar um
+        checkpoint de export a cada configuração, em vez de esperar o fim do benchmark inteiro).
     """
     provider = provider.strip().lower()
     if provider not in SUPPORTED_PROVIDERS:
@@ -135,7 +116,12 @@ def run_benchmark_minigrid(
         curr_date_time_str = datetime.datetime.now().strftime("%Y-%m-%d-%Hh%Mmin")
         results_folder_name = f"{results_folder_name}{curr_date_time_str}"
 
-    run_results = run_and_save_experiments(configs, experiment_name=results_folder_name, verbose=verbose)
+    run_results = run_and_save_experiments(
+        configs,
+        experiment_name=results_folder_name,
+        verbose=verbose,
+        on_config_complete=on_config_complete,
+    )
 
     return run_results
 

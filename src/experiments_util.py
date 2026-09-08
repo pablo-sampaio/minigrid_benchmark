@@ -229,7 +229,7 @@ def recompute_main_json_from_run_files(results_dir: str, write_file: bool = True
 
 
 
-def run_and_save_experiments(experiment_configs, experiment_name=None, verbose=False):
+def run_and_save_experiments(experiment_configs, experiment_name=None, verbose=False, on_config_complete=None):
     """
     Args:
     experiment_configs: List of dicts with {'name': str, 'agent': ReActAgent, 'wrapper_fn': function}
@@ -240,6 +240,11 @@ def run_and_save_experiments(experiment_configs, experiment_name=None, verbose=F
                  runs (identified by their per-run JSON files) are skipped and the summary is saved back to the same file.
     
     verbose: If True, shows progress bars and prints more info about the experiment progress.
+
+    on_config_complete: Optional callback invoked as on_config_complete(agent_name, results_dir, filepath)
+                 right after a configuration's summary is saved, e.g. to refresh an export/checkpoint
+                 without waiting for the whole experiment to finish. Exceptions raised by the callback
+                 are caught and only reported, so a checkpoint failure never aborts the benchmark run.
     """
     full_results_base_dir = os.path.abspath(os.fspath(RESULTS_BASE_DIR))
 
@@ -405,6 +410,14 @@ def run_and_save_experiments(experiment_configs, experiment_name=None, verbose=F
                 test_env.close()
 
         all_experiment_data[agent_name] = list(agent_results_index.values())
+        _write_json_atomic(filepath, all_experiment_data)
+
+        if on_config_complete is not None:
+            try:
+                on_config_complete(agent_name, results_dir, filepath)
+            except Exception as exc:
+                if verbose:
+                    print(f"Checkpoint callback failed after config '{agent_name}': {exc}")
 
     # 3. Save to Google Drive
     _write_json_atomic(filepath, all_experiment_data)

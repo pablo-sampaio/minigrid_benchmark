@@ -88,6 +88,43 @@ def configure_results_dir(execution_env: str, repo_path: str) -> str:
     return results_dir
 
 
+def find_previous_results_folder(
+        provider: str,
+        model_id: str,
+        quantization: str | None,
+        results_dir: str,
+        execution_env: str = "local",
+        repo_path: str | None = None,
+    ) -> str | None:
+    """
+    Procura uma pasta de resultados de uma execução anterior para o mesmo provider/modelo/
+    quantização: primeiro em `results_dir` (progresso da sessão atual, útil ao reiniciar o
+    kernel sem perder o que já rodou) e, se nada for achado e o ambiente for Kaggle, em
+    `repo_path/results` (resultados de sessões anteriores enviados manualmente ao GitHub,
+    ver GUIA_KAGGLE.md).
+    """
+    from benchmark_minigrid import _make_results_folder_name
+
+    base_experiment_name = _make_results_folder_name(provider, model_id, quantization)
+
+    search_dir_list = [results_dir]
+    if execution_env == "kaggle" and repo_path:
+        search_dir_list.append(os.path.join(repo_path, "results"))
+
+    for search_dir in search_dir_list:
+        if not os.path.isdir(search_dir):
+            continue
+        for filename in os.listdir(search_dir):
+            candidate_path = os.path.join(search_dir, filename)
+            if filename.startswith(base_experiment_name) and os.path.isdir(candidate_path):
+                dest_folder = os.path.join(results_dir, filename)
+                if not os.path.exists(dest_folder):
+                    shutil.copytree(candidate_path, dest_folder)
+                return filename
+
+    return None
+
+
 def resolve_api_key(provider: str, execution_env: str = "local") -> str | None:
     provider = provider.strip().lower()
 
@@ -207,5 +244,21 @@ def zip_results_for_export(execution_env: str, summary_path: str) -> str | None:
     benchmark_result_dir = os.path.dirname(summary_path)
     benchmark_name = os.path.basename(benchmark_result_dir)
     zip_path = os.path.join(os.path.dirname(benchmark_result_dir), f"{benchmark_name}_results_zip")
-    shutil.make_archive(zip_path, "zip", benchmark_result_dir)
+    shutil.make_archive(zip_path, "zip", benchmark_result_dir)  # overwrites any previous zip at zip_path
     return f"{zip_path}.zip"
+
+
+def make_checkpoint_callback(execution_env: str, verbose: bool = True):
+    """
+    Returns an `on_config_complete(agent_name, results_dir, filepath)` callback for
+    `run_benchmark_minigrid`/`run_and_save_experiments` that re-zips the results directory
+    after every completed configuration. This keeps a downloadable checkpoint in
+    /kaggle/working (or the Colab equivalent) up to date at all times, instead of only
+    once at the very end of the whole benchmark.
+    """
+    def checkpoint(agent_name: str, results_dir: str, filepath: str) -> None:
+        zip_path = zip_results_for_export(execution_env, filepath)
+        if verbose and zip_path:
+            print(f"Checkpoint updated after config '{agent_name}': {zip_path}")
+
+    return checkpoint
