@@ -44,7 +44,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--wrapper",
         choices=["global", "local"],
-        default="local",
+        default="global",
         help="Text wrapper to use.",
     )
     parser.add_argument(

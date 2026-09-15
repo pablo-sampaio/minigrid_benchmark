@@ -35,13 +35,13 @@ buscas profundas na web, realização de pesquisa científica, ou desenvolver c�
 
 <!-- FAZER - completar até 1 parágrafo - detalhar a importância de benchmarks para avanço da área -->
 
-Em alguns desses benchmarks, o modelo de linguagem é avaliado com base na sua capacidade de gerar uma saída correta em apenas uma etapa. Tipicamente, tais benchmarks são baseados em um dataset de onde são obtidas as entradas que são fornecidas ao modelo. A saída gerada pelo modelo é, então, avaliada, seja pela simples comparação com uma resposta de referência ou por algum método programático. Por exemplo, o **MMLU** (*Massive Multitask Language Understanding*) avalia o conhecimento e a capacidade de resolução de problemas de modelos de linguagem em 57 disciplinas por meio de questões de múltipla escolha [@hendrycks2020measuring]. O **GSM8K** (*Grade School Math 8K*), por sua vez, avalia a capacidade de resolver problemas matemáticos, usando um dataset de perguntas textuais com respostas conhecidas [@cobbe2021training]. O **HumanEval** fornece problemas de programação para os quais o código gerado como saída do modelo é avaliado por testes funcionais [@chen2021evaluating]. 
+Em alguns desses benchmarks, o modelo de linguagem é avaliado com base na sua capacidade de gerar uma saída correta em apenas uma etapa. Tipicamente, tais benchmarks são baseados em um dataset de onde são obtidas as entradas que são fornecidas ao modelo. A saída gerada pelo modelo é, então, avaliada pela comparação com uma resposta de referência ou por meio algum critério de verificação automatizado com programação. Por exemplo, o **MMLU** (*Massive Multitask Language Understanding*) avalia o conhecimento e a capacidade de resolução de problemas de modelos de linguagem em 57 disciplinas por meio de questões de múltipla escolha [@hendrycks2020measuring]. O **GSM8K** (*Grade School Math 8K*), por sua vez, avalia a capacidade de resolver problemas matemáticos, usando um dataset de perguntas textuais com respostas conhecidas [@cobbe2021training]. O **HumanEval** fornece problemas de programação para os quais o código gerado como saída do modelo é avaliado por testes funcionais [@chen2021evaluating]. 
 
 > Resumo legal:
 > Em alguns benchmarks tradicionais, o modelo recebe uma entrada e sua resposta é avaliada diretamente segundo um gabarito ou critério de correção predefinido. Exemplos incluem o *MMLU*, que avalia questões de múltipla escolha em 57 disciplinas [@hendrycks2020measuring], o *GSM8K*, voltado à resolução de problemas matemáticos [@cobbe2021training], e o *HumanEval*, que avalia código gerado por meio de testes funcionais [@chen2021evaluating].”
 
 
-Outros benchmarks avaliam a capacidade de usar o modelo em tarefas que requerem *múltiplas* etapas de geração de saída. Nestes, o modelo é tipicamente testado acoplado a uma camada de software adicional [^rod_harness] previamente definida, que usa o modelo para a realização da tarefa em um processo que repete: observar (receber uma entrada que representa) o estado da tarefa, tomar uma decisão (realizar de ação) capaz de afetar o estado da tarefa. Juntos, o LLM e essa camada podem ser conceituados como um *agente inteligente* [@russell1995artificial][@shoham2009multiagent]. Tarefas como as citadas serão chamadas de *tarefas agênticas* e benchmarks que avaliam alguma habilidade de um agente baseado em LLM são chamados *benchmarks agênticos*, neste trabalho. 
+Outros benchmarks avaliam a capacidade de usar o modelo em tarefas que requerem *múltiplas* etapas sequenciais de geração de saída. Nestes, o modelo é tipicamente testado acoplado a uma camada de software adicional [^rod_harness] previamente definida, que usa o modelo para a realização da tarefa em um processo que repete ciclicamente os passos de *observar* (receber uma entrada que representa) o estado da tarefa e de *tomar uma decisão* (realizar de ação) capaz de afetar o estado da tarefa. Esse ciclo se encerra ao finalizar a tarefa ou em algum critério de parada específico. Juntos, o LLM e essa camada podem ser conceituados como um *agente inteligente* [@russell1995artificial][@shoham2009multiagent]. Tarefas como as citadas serão chamadas de *tarefas agênticas*, enquanto os benchmarks que avaliam alguma habilidade típica de um agente baseado em LLM são chamados *benchmarks agênticos*, neste trabalho. 
 
 [^rod_harness]: Atualmente, esta camada tem sido chamada de *harness* do agente. Porém, podemos considerar que o sofware é o *próprio* agente, e que o modelo é usado como um módulo dele.
 
@@ -69,7 +69,17 @@ As principais contribuições deste trabalho são:
 - segunda contribuição;
 - terceira contribuição.
 
+
 # Related Work
+
+Estrutura
+- Definir agentes
+- Definir agentes de LLM
+- Motivar o desenvolvimento de agentes de LLM
+- Falar de como os benchmarks são uma prática bem estabelecida para treinar LLMs
+- Falar de como benchmarks agênticos têm sido criados para testar também os modelos, visando tarefas agênticas
+- Ou, motivar de outra forma, os benchmarks agênticos
+- Descrever exemplos de benchmarks agênticos
 
 <!-- Definindo agentes -->
 Ver [@xi2025rise] e [@acharya2025agentic]
@@ -101,37 +111,58 @@ https://proceedings.iclr.cc/paper_files/paper/2025/hash/e4a46394ba5378b3f9a186a5
 
 <!-- Agênticos  -->
 
-Dar detalhes dos benchmarks agênticos que existem. 
+Definir/diferenciar 
 
-À medida que surgem agentes para fazer pesquisa de ML [@lu2026towards] -- artigo da Nature --, surgem benchmarks
+Temos também o que pode ser chamado de um **benchmark de componente agêntico**, que testa, de forma isolada, capacidades 
+específicas de um modelo, acompanhado de um harness. 
+
+Benchmarks específicos de domínio
+- À medida que surgem agentes para fazer pesquisa de ML [@lu2026towards] -- artigo da Nature --, surgem benchmarks
 MLE-bench [@chan2025mle]
 
-Outros benchmarks, como o **GLUE**, agregam uma coleção de datasets, que representam tarefas de compreensão de linguagem natural com suas respostas; cada dataset tem um métrica própria de avaliação [@wang2018glue].
+- Outros benchmarks, como o **GLUE**, agregam uma coleção de datasets, que representam tarefas de compreensão de linguagem natural com suas respostas; cada dataset tem um métrica própria de avaliação [@wang2019glue].
 
 Benchmarks agênticos (para ver os nomes e identificar se tem algum similar): https://benchlm.ai/benchmarks
 
 
+
 Escolher uns 5 recentes, dos mais citados.
+
+
+### funções 
+
+Um benchmark agêntico é o $\tau$-bench ($\text{tau}^2$-bench) que avalia a capacidade de agentes conversacionais de alterarem adequadamente um sistema. Isso acontece por meio de decisões que resultam na chamada de ferramentas adequadas para atenderem à solicitação de um (suposto) usuário humano. O $\tau^2$-bench ($\text{tau}^2$-bench) é uma extensão para ambientes nos quais tanto o agente quanto o usuário (simulado) possuem acesso a ferramentas para modificar o estado de um ambiente compartilhado. A diferença é que, no  $\tau^2$-bench, o agente deve ser capaz de instruir o usuário sobre ações que somente ele pode fazer, avaliando, dessa forma, a habilidade do modelo de comunicação orientada à resolução de problemas complexos.
+
+Revisao da IA:
+O $\tau$-bench é um benchmark projetado para avaliar a capacidade de agentes conversacionais de solucionar solicitações de usuários por meio de chamadas sequenciais de ferramentas em ambientes de controle único. Como uma extensão direta desse arcabouço, o $\tau^2$-bench foi desenvolvido para cenários de controle dual, nos quais tanto o agente quanto o usuário (simulado) possuem acesso a ferramentas para modificar o estado de um ambiente compartilhado. Nessa evolução, o agente não apenas executa ações próprias, mas precisa ser capaz de instruir ativamente o usuário a realizar etapas cruciais que estão fora do seu alcance, avaliando assim a competência do modelo em comunicação colaborativa e na resolução de problemas complexos.
+
+### skills
+
+Alguns benchmarks, como o SkillBench [@li2026skillsbench] e outros [@liu2026well], avaliam a capacidade do modelo usar conjuntos de "skills" de modo eficaz em tarefas agênticas. (Um "skill", em agentes baseados em LLMs, é um conjunto de prompts, scripts e arquivos auxiliares carregados sob demanda. Eles têm sido frequentemente adotados em diversos *harnesses* como módulos de conhecimento reutilizável contendo conhecimento detalhado específico de domínio.) Outro benchmark avalia, de forma mais restrita, a capacidade de recuperar os skills corretos para uma dada requisição [@cho2026skillret].
+
+
+O $\tau^2$-bench ($\text{tau}^2$-bench) avalia a capacidade de agentes conversacionais de inteligência artificial operarem em ambientes de controle dual (dual-control), nos quais tanto o agente quanto o usuário (simulado) possuem acesso a ferramentas para modificar o estado de um mundo compartilhado.
+Tau^2-Bench
+[@barres2025tau]
+
+ARC-AGI
 
 BALROG [@paglieri2025balrog]
 https://proceedings.iclr.cc/paper_files/paper/2025/file/f0b1515be276f6ba82b4f2b25e50bef0-Paper-Conference.pdf 
 um benchmark para avaliar capacidades agênticas de LLMs e VLMs em tarefas de longo horizonte temporal. Os autores argumentam que benchmarks existentes normalmente envolvem poucas interações (como navegação na web ou uso de ferramentas), sendo insuficientes para avaliar habilidades como planejamento de longo prazo, raciocínio espacial, exploração e adaptação em ambientes dinâmicos.
 Eu diria que este é um dos artigos mais relevantes para a sua revisão. Diferentemente de benchmarks voltados para uso de ferramentas (como AgentBench, WebArena ou τ-Bench), o BALROG tem como foco explícito a avaliação de capacidades cognitivas de agentes em ambientes interativos, incluindo planejamento, raciocínio espacial, exploração, atribuição de crédito, descoberta da dinâmica do ambiente e tomada de decisão sequencial. A principal diferença para o seu benchmark é que o BALROG agrega vários ambientes já existentes, enquanto o seu trabalho propõe um ambiente textual próprio, representando um mundo 2D descrito apenas por texto, especificamente para avaliar esse tipo de tomada de decisão. 
 
-How Well Do Agentic Skills Work in the Wild: Benchmarking LLM Skill Usage in Realistic Settings
-[@liu2026well]
-https://arxiv.org/abs/2604.04323
-ler e resumir
-ele faz algo que é bastante complementar ao meu trabalho: ele investiga como o uso de "skills" (memórias procedurais reutilizáveis) afeta o desempenho de agentes baseados em LLM em benchmarks agênticos, e argumenta que avaliações anteriores são excessivamente otimistas por utilizarem condições irreais.
-Para o contexto do seu artigo, eu destacaria principalmente a discussão metodológica sobre como construir benchmarks agênticos mais realistas, pois ela dialoga diretamente com a motivação do seu benchmark.
 
 Pesquisa no scispace:
 https://scispace.com/chat/83a8e6e9-5de4-4f87-8384-22f50675ea72 
 
-Outro benchmark que mede a capacidade de usar skills:
-[@cho2026skillret]
+
+Tau-Bench para avaliar chamadas de funções (muito citado!)
+[@yao2024tau]
 
 Trazer alguns resultados já divulgados.
+
+### O nosso
 
 Mostrar que não tem benchmark como o nosso
 que represente informação 2D como texto (fácil para o humano entender)
@@ -139,6 +170,7 @@ e que seja agêntico
 de longo prazo
 (O mais próximo é o BALROG)
 
+benchmark proposto utiliza um ambiente espacial discreto, explicitamente representado por caracteres, e exige controle passo a passo de um agente em um grid 2D
 
 # Method
 
